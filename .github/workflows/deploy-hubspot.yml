@@ -9,6 +9,10 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
 
+    env:
+      HUBSPOT_ACCOUNT_ID: ${{ secrets.HUBSPOT_ACCOUNT_ID }}
+      HUBSPOT_PERSONAL_ACCESS_KEY: ${{ secrets.HUBSPOT_PERSONAL_ACCESS_KEY }}
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -22,20 +26,20 @@ jobs:
         run: npm install -g @hubspot/cli
 
       - name: Configure HubSpot CLI
+        shell: bash
         run: |
           mkdir -p ~/.hscli
           cat > ~/.hscli/config.yml <<EOF
-          defaultPortal: 147534610
+          defaultPortal: fitnessgrams
           portals:
-            - name: 147534610
-              accountId: 147534610
-              personalAccessKey: HUBSPOT_PERSONAL_ACCESS_KEY
+            - name: fitnessgrams
+              accountId: ${HUBSPOT_ACCOUNT_ID}
+              personalAccessKey: ${HUBSPOT_PERSONAL_ACCESS_KEY}
           EOF
-        env:
-          HUBSPOT_ACCOUNT_ID: 147534610
-          HUBSPOT_PERSONAL_ACCESS_KEY: ${{ secrets.HUBSPOT_PERSONAL_ACCESS_KEY }}
+
+          echo "----- config.yml -----"
+          sed 's/personalAccessKey: .*/personalAccessKey: [HIDDEN]/' ~/.hscli/config.yml
+          echo "----------------------"
 
       - name: Upload theme to HubSpot
-        run: hs cms upload theme/fitness-grams /fitness-grams --account=147534610
-        env:
-          HUBSPOT_ACCOUNT_ID: 147534610
+        run: hs cms upload theme/fitness-grams /fitness-grams --account=fitnessgrams
