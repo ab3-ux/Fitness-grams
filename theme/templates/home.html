@@ -1,1 +1,141 @@
-
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitness-Grams | Performance & Nutrition</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .animate-scroll {
+            display: flex;
+            width: max-content;
+            animation: scroll 30s linear infinite;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900 overflow-x-hidden">
+    <!-- 1. TOP ANNOUNCEMENT BAR -->
+    <div class="bg-black text-white py-2.5 px-4 text-center text-[10px] md:text-xs font-bold tracking-widest uppercase border-b border-orange-500"> ✨ Livraison offerte dès 50€ sur notre <a href="VOTRE_LIEN_SUMUP" target="_blank" class="text-orange-500 underline underline-offset-4 hover:text-white transition">Boutique Officielle SumUp</a> ✨ </div>
+    <!-- 2. HEADER NAVIGATION -->
+    <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md shadow-sm py-4 px-6 md:px-12 flex justify-between items-center">
+        <div class="font-black text-2xl tracking-tighter uppercase italic">FITNESS<span class="text-orange-500">-GRAMS</span></div>
+        <div class="hidden md:flex space-x-10 font-bold text-xs uppercase tracking-widest">
+            <a href="VOTRE_LIEN_SUMUP" target="_blank" class="hover:text-orange-500 transition">Boutique</a>
+            <a href="#promo" class="hover:text-orange-500 transition">Promotions</a>
+            <a href="#about" class="hover:text-orange-500 transition">À propos</a>
+        </div>
+        <div class="flex items-center">
+            <a href="VOTRE_LIEN_SUMUP" target="_blank" class="bg-black text-white px-6 py-2.5 rounded-full text-[11px] font-black hover:bg-orange-600 transition shadow-xl flex items-center">
+                <span class="mr-2">🛒</span> VOIR MON PANIER </a>
+        </div>
+    </nav>
+    <!-- 3. HERO SECTION -->
+    <section class="relative h-[85vh] flex items-center justify-center text-white overflow-hidden bg-black">
+        <div class="absolute inset-0 opacity-60">
+            <img src="https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?auto=format&fit=crop&q=80" alt="Fitness Background" class="w-full h-full object-cover">
+        </div>
+        <div class="relative z-10 max-w-5xl mx-auto text-center px-6">
+            <span class="bg-orange-500 text-[10px] font-black uppercase tracking-[0.3em] px-4 py-1.5 rounded-full mb-8 inline-block">Énergie Maximale</span>
+            <h1 class="text-5xl md:text-8xl font-black mb-8 leading-none tracking-tighter">DÉPASSEZ VOS <br><span class="text-orange-500 text-outline">LIMITES</span></h1>
+            <p class="text-lg md:text-xl mb-10 text-gray-200 max-w-2xl mx-auto font-medium">La nutrition premium sélectionnée par Fitness-Grams pour vos entraînements les plus intenses.</p>
+            <a href="VOTRE_LIEN_SUMUP" target="_blank" class="bg-white text-black px-12 py-5 rounded-full font-black text-sm uppercase tracking-widest hover:bg-orange-500 hover:text-white transition-all transform hover:scale-105 shadow-2xl inline-block"> Découvrir la collection </a>
+        </div>
+    </section>
+    <!-- 4. INFINITE SCROLL TICKER -->
+    <div class="bg-gray-100 py-6 border-y border-gray-200 overflow-hidden relative">
+        <div class="animate-scroll flex items-center space-x-16 px-4">
+            <div class="flex items-center space-x-16 text-gray-400 font-black uppercase tracking-widest text-[11px]">
+                <span class="flex items-center">⚡ Énergie Longue Durée</span>
+                <span class="flex items-center">🌱 Ingrédients Premium</span>
+                <span class="flex items-center">📦 Expédition 24/48H</span>
+                <span class="flex items-center">💪 Protéine Haute Qualité</span>
+                <span class="flex items-center">⭐ Service Client 5 Étoiles</span>
+            </div>
+            <!-- Duplicate for Infinite effect -->
+            <div class="flex items-center space-x-16 text-gray-400 font-black uppercase tracking-widest text-[11px]">
+                <span class="flex items-center">⚡ Énergie Longue Durée</span>
+                <span class="flex items-center">🌱 Ingrédients Premium</span>
+                <span class="flex items-center">📦 Expédition 24/48H</span>
+                <span class="flex items-center">💪 Protéine Haute Qualité</span>
+                <span class="flex items-center">⭐ Service Client 5 Étoiles</span>
+            </div>
+        </div>
+    </div>
+    <!-- 5. FLEXIBLE AD SLIDER (Text LEFT) -->
+    <section class="py-16 px-6 md:px-12 max-w-7xl mx-auto">
+        <div class="bg-orange-500 rounded-[2rem] overflow-hidden flex flex-col md:flex-row min-h-[500px] shadow-2xl">
+            <div class="w-full md:w-1/2 p-12 md:p-20 flex flex-col justify-center text-white">
+                <h3 class="font-black tracking-[0.2em] uppercase mb-4 text-xs opacity-80 italic">Best-Seller</h3>
+                <h2 class="text-4xl md:text-6xl font-black mb-8 leading-tight">BEURRE DE <br>CACAHUÈTE BIO</h2>
+                <p class="text-lg mb-10 text-orange-100 font-medium">Sans huile de palme, riche en protéines. Le carburant parfait pour vos matins sportifs.</p>
+                <a href="VOTRE_LIEN_PRODUIT_SUMUP" target="_blank" class="bg-black text-white px-10 py-4 rounded-xl font-black text-sm uppercase tracking-widest hover:bg-white hover:text-black transition w-fit"> Commander sur SumUp </a>
+            </div>
+            <div class="w-full md:w-1/2 h-80 md:h-auto">
+                <img src="https://images.unsplash.com/photo-1590080875515-8a3a8dc5735e?auto=format&fit=crop&q=80" class="w-full h-full object-cover">
+            </div>
+        </div>
+    </section>
+    <!-- 6. CATEGORY GRID (Redirects) -->
+    <section class="py-20 px-6 md:px-12 max-w-7xl mx-auto">
+        <h2 class="text-3xl font-black uppercase mb-12 italic tracking-tighter">Explorer par <span class="text-orange-500">Objectif</span></h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Bloc A -->
+            <div class="group relative h-[450px] rounded-[2rem] overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&q=80" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent p-12 flex flex-col justify-end">
+                    <h3 class="text-white text-3xl font-black uppercase mb-4 tracking-tighter">Nutrition & Encas</h3>
+                    <a href="VOTRE_LIEN_CATEGORIE_SUMUP" target="_blank" class="text-orange-500 font-black uppercase tracking-widest text-xs hover:text-white transition">Découvrir la gamme →</a>
+                </div>
+            </div>
+            <!-- Bloc B -->
+            <div class="group relative h-[450px] rounded-[2rem] overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1551698618-1fed5d978044?auto=format&fit=crop&q=80" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent p-12 flex flex-col justify-end">
+                    <h3 class="text-white text-3xl font-black uppercase mb-4 tracking-tighter">Boissons Énergie</h3>
+                    <a href="VOTRE_LIEN_CATEGORIE_SUMUP" target="_blank" class="text-orange-500 font-black uppercase tracking-widest text-xs hover:text-white transition">Commander maintenant →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- 7. MODULAR FOOTER -->
+    <footer id="footer" class="bg-[#111] text-white pt-20 pb-10 px-8">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+            <div class="md:col-span-1">
+                <div class="font-black text-2xl tracking-tighter uppercase italic mb-6">FITNESS<span class="text-orange-500">-GRAMS</span></div>
+                <p class="text-gray-500 text-sm leading-relaxed">Votre vitrine officielle vers le meilleur de la nutrition sportive. Paiement sécurisé via SumUp.</p>
+            </div>
+            <div>
+                <h4 class="font-black uppercase text-xs tracking-widest mb-8 text-orange-500">Navigation</h4>
+                <ul class="space-y-4 text-sm font-bold text-gray-400">
+                    <li><a href="VOTRE_LIEN_SUMUP" target="_blank" class="hover:text-white transition">Boutique SumUp</a></li>
+                    <li><a href="#" class="hover:text-white transition">Contact</a></li>
+                    <li><a href="#" class="hover:text-white transition">Mentions Légales</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-black uppercase text-xs tracking-widest mb-8 text-orange-500">Suivez-nous</h4>
+                <div class="flex space-x-4">
+                    <a href="#" class="w-10 h-10 bg-white/5 rounded-full flex items-center justify-center hover:bg-orange-500 transition">IG</a>
+                    <a href="#" class="w-10 h-10 bg-white/5 rounded-full flex items-center justify-center hover:bg-orange-500 transition">TK</a>
+                </div>
+            </div>
+            <div>
+                <h4 class="font-black uppercase text-xs tracking-widest mb-8 text-orange-500">Newsletter</h4>
+                <form class="flex space-x-2">
+                    <input type="email" placeholder="Email" class="bg-white/5 border border-white/10 px-4 py-2 rounded-lg focus:outline-none focus:border-orange-500 w-full text-sm">
+                    <button class="bg-orange-500 px-4 py-2 rounded-lg font-black text-xs uppercase">OK</button>
+                </form>
+            </div>
+        </div>
+        <div class="text-center pt-8 border-t border-white/5 text-[10px] text-gray-600 font-bold uppercase tracking-[0.2em]"> &copy; 2024 FITNESS-GRAMS. TOUS DROITS RÉSERVÉS. PAIEMENTS SÉCURISÉS PAR SUMUP. </div>
+    </footer>
+</body>
+</html>
