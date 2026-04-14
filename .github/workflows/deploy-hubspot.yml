@@ -30,17 +30,13 @@ jobs:
         run: |
           mkdir -p ~/.hscli
           cat > ~/.hscli/config.yml <<EOF
-          defaultPortal: fitnessgrams
+          defaultAccount: fitnessgrams
           portals:
             - name: fitnessgrams
               accountId: ${HUBSPOT_ACCOUNT_ID}
               personalAccessKey: ${HUBSPOT_PERSONAL_ACCESS_KEY}
           EOF
 
-          echo "----- config.yml -----"
-          sed 's/personalAccessKey: .*/personalAccessKey: [HIDDEN]/' ~/.hscli/config.yml
-          echo "----------------------"
-          
       - name: Debug HubSpot config
         run: |
           cat ~/.hscli/config.yml | sed 's/personalAccessKey: .*/personalAccessKey: [HIDDEN]/'
