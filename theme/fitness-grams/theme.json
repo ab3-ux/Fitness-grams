@@ -1,1 +1,4 @@
-
+{
+  "label": "Fitness Grams",
+  "preview_path": "./templates/home.html"
+}
