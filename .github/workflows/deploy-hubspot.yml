@@ -26,7 +26,8 @@ jobs:
         run: npm install -g @hubspot/cli
 
       - name: Authenticate HubSpot CLI
-        run: hs account auth --account=fitnessgrams --personal-access-key="$HUBSPOT_PERSONAL_ACCESS_KEY"
+        run: |
+          printf 'fitnessgrams\n' | hs account auth --personal-access-key="$HUBSPOT_PERSONAL_ACCESS_KEY"
 
       - name: List authenticated accounts
         run: hs account list
