@@ -34,12 +34,15 @@ jobs:
           portals:
             - name: fitnessgrams
               accountId: ${HUBSPOT_ACCOUNT_ID}
-              personalAccessKey: ${HUBSPOT_PERSONAL_ACCESS_KEY}
+              authType: personalaccesskey
+              auth:
+                tokenInfo:
+                  accessToken: ${HUBSPOT_PERSONAL_ACCESS_KEY}
           EOF
 
       - name: Debug HubSpot config
         run: |
-          cat ~/.hscli/config.yml | sed 's/personalAccessKey: .*/personalAccessKey: [HIDDEN]/'
+          cat ~/.hscli/config.yml | sed 's/accessToken: .*/accessToken: [HIDDEN]/'
 
       - name: Upload theme to HubSpot
         run: hs cms upload theme/fitness-grams /fitness-grams --account=fitnessgrams
