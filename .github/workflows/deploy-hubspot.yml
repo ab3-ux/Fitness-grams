@@ -29,18 +29,18 @@ jobs:
         shell: bash
         run: |
           mkdir -p ~/.hscli
-          cat > ~/.hscli/config.yml <<EOF
-          defaultAccount: fitnessgrams
-          portals:
-            - name: fitnessgrams
-              accountId: ${HUBSPOT_ACCOUNT_ID}
-              authType: HUBSPOT_PERSONAL_ACCESS_KEY
-              personalAccessKey: ${HUBSPOT_PERSONAL_ACCESS_KEY}
-          EOF
+          {
+            echo "defaultAccount: fitnessgrams"
+            echo "portals:"
+            echo "  - name: fitnessgrams"
+            echo "    accountId: ${HUBSPOT_ACCOUNT_ID}"
+            echo "    authType: personalaccesskey"
+            echo "    personalAccessKey: ${HUBSPOT_PERSONAL_ACCESS_KEY}"
+          } > ~/.hscli/config.yml
 
       - name: Debug HubSpot config
         run: |
-          cat ~/.hscli/config.yml | sed 's/personalAccessKey: .*/personalAccessKey: [HIDDEN]/'
+          sed 's/personalAccessKey: .*/personalAccessKey: [HIDDEN]/' ~/.hscli/config.yml
 
       - name: Upload theme to HubSpot
         run: hs cms upload theme/fitness-grams /fitness-grams --account=fitnessgrams
