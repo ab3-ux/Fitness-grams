@@ -25,11 +25,11 @@ jobs:
         run: |
           mkdir -p ~/.hscli
           cat > ~/.hscli/config.yml <<EOF
-          defaultPortal: $HUBSPOT_ACCOUNT_ID
+          defaultPortal: ${HUBSPOT_ACCOUNT_ID}
           portals:
-            - name: $HUBSPOT_ACCOUNT_ID
-              portalId: $HUBSPOT_ACCOUNT_ID
-              personalAccessKey: $HUBSPOT_PERSONAL_ACCESS_KEY
+            - name: ${HUBSPOT_ACCOUNT_ID}
+              accountId: ${HUBSPOT_ACCOUNT_ID}
+              personalAccessKey: ${HUBSPOT_PERSONAL_ACCESS_KEY}
           EOF
         env:
           HUBSPOT_ACCOUNT_ID: ${{ secrets.HUBSPOT_ACCOUNT_ID }}
