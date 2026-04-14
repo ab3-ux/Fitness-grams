@@ -40,6 +40,10 @@ jobs:
           echo "----- config.yml -----"
           sed 's/personalAccessKey: .*/personalAccessKey: [HIDDEN]/' ~/.hscli/config.yml
           echo "----------------------"
+          
+      - name: Debug HubSpot config
+        run: |
+          cat ~/.hscli/config.yml | sed 's/personalAccessKey: .*/personalAccessKey: [HIDDEN]/'
 
       - name: Upload theme to HubSpot
         run: hs cms upload theme/fitness-grams /fitness-grams --account=fitnessgrams
