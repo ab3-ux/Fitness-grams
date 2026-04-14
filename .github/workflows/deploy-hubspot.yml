@@ -25,22 +25,11 @@ jobs:
       - name: Install HubSpot CLI
         run: npm install -g @hubspot/cli
 
-      - name: Configure HubSpot CLI
-        shell: bash
-        run: |
-          mkdir -p ~/.hscli
-          {
-            echo "defaultAccount: fitnessgrams"
-            echo "portals:"
-            echo "  - name: fitnessgrams"
-            echo "    accountId: ${HUBSPOT_ACCOUNT_ID}"
-            echo "    authType: personalaccesskey"
-            echo "    personalAccessKey: ${HUBSPOT_PERSONAL_ACCESS_KEY}"
-          } > ~/.hscli/config.yml
+      - name: Authenticate HubSpot CLI
+        run: hs account auth --account=fitnessgrams --personal-access-key="$HUBSPOT_PERSONAL_ACCESS_KEY"
 
-      - name: Debug HubSpot config
-        run: |
-          sed 's/personalAccessKey: .*/personalAccessKey: [HIDDEN]/' ~/.hscli/config.yml
+      - name: List authenticated accounts
+        run: hs account list
 
       - name: Upload theme to HubSpot
         run: hs cms upload theme/fitness-grams /fitness-grams --account=fitnessgrams
