@@ -21,8 +21,21 @@ jobs:
       - name: Install HubSpot CLI
         run: npm install -g @hubspot/cli
 
+      - name: Configure HubSpot CLI
+        run: |
+          mkdir -p ~/.hscli
+          cat > ~/.hscli/config.yml <<EOF
+          defaultPortal: $HUBSPOT_ACCOUNT_ID
+          portals:
+            - name: $HUBSPOT_ACCOUNT_ID
+              portalId: $HUBSPOT_ACCOUNT_ID
+              personalAccessKey: $HUBSPOT_PERSONAL_ACCESS_KEY
+          EOF
+        env:
+          HUBSPOT_ACCOUNT_ID: ${{ secrets.HUBSPOT_ACCOUNT_ID }}
+          HUBSPOT_PERSONAL_ACCESS_KEY: ${{ secrets.HUBSPOT_PERSONAL_ACCESS_KEY }}
+
       - name: Upload theme to HubSpot
         run: hs cms upload theme/fitness-grams /fitness-grams --account=$HUBSPOT_ACCOUNT_ID
         env:
           HUBSPOT_ACCOUNT_ID: ${{ secrets.HUBSPOT_ACCOUNT_ID }}
-          HUBSPOT_PERSONAL_ACCESS_KEY: ${{ secrets.HUBSPOT_PERSONAL_ACCESS_KEY }}
