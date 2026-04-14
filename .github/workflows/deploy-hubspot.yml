@@ -34,7 +34,7 @@ jobs:
           portals:
             - name: fitnessgrams
               accountId: ${HUBSPOT_ACCOUNT_ID}
-              authType: personalAccessKey
+              authType: HUBSPOT_PERSONAL_ACCESS_KEY
               personalAccessKey: ${HUBSPOT_PERSONAL_ACCESS_KEY}
           EOF
 
