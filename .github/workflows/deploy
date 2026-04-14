@@ -22,7 +22,7 @@ jobs:
         run: npm install -g @hubspot/cli
 
       - name: Upload theme to HubSpot
-        run: hs cms upload theme/fitness-grams /fitness-grams --account=$HUBSPOT_ACCOUNT
+        run: hs cms upload theme/fitness-grams /fitness-grams --account=$HUBSPOT_ACCOUNT_ID
         env:
-          HUBSPOT_ACCOUNT: ${{ secrets.HUBSPOT_ACCOUNT }}
+          HUBSPOT_ACCOUNT_ID: ${{ secrets.HUBSPOT_ACCOUNT_ID }}
           HUBSPOT_PERSONAL_ACCESS_KEY: ${{ secrets.HUBSPOT_PERSONAL_ACCESS_KEY }}
