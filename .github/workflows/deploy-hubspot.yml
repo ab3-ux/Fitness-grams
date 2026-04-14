@@ -38,4 +38,4 @@ jobs:
       - name: Upload theme to HubSpot
         run: hs cms upload theme/fitness-grams /fitness-grams --account=$HUBSPOT_ACCOUNT_ID
         env:
-          HUBSPOT_ACCOUNT_ID: ${{ secrets.HUBSPOT_ACCOUNT_ID }}
+          HUBSPOT_ACCOUNT_ID: 147534610
