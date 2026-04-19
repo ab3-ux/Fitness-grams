@@ -1,13 +1,12 @@
-<!DOCTYPE html>
+<html lang="fr"><head></head><body class="bg-[#f2ece4] text-gray-900 overflow-x-hidden">```html
 
-<html lang="fr"><head>
+
+
+
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Fitness-Grams | Performance &amp; Nutrition</title>
-</head>
-<body class="bg-[#f2ece4] text-gray-900 overflow-x-hidden">
-    {{ standard_header_includes }}
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&amp;display=swap" rel="stylesheet"/>
 <style>
         body {
@@ -33,12 +32,82 @@
             color: transparent;
         }
         .text-outline-dark {
-            -webkit-text-stroke: 1px rgba(255,255,255,0.3);
+            -webkit-text-stroke: 2px rgba(255,255,255,0.5);
             color: transparent;
+        }
+        /* Product Card Effects */
+        .product-card {
+            perspective: 1000px;
+        }
+        .product-card-inner {
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+        .product-card:hover .product-card-inner {
+            transform: rotateY(5deg) rotateX(5deg);
+        }
+    </style>
+<style>
+        /* Targeting HubSpot form elements for a more compact look */
+        .hs-form-4fbef543-cde5-4bf0-9ac9-5700a6d5dea4_eu1 {
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 0.5rem !important;
+        }
+        .hs-form .hs-field {
+            margin-bottom: 0.5rem !important;
+        }
+        .hs-form .hs-input {
+            padding: 0.5rem 0.75rem !important;
+            font-size: 0.875rem !important;
+            height: 2.5rem !important;
+            border-radius: 0.5rem !important;
+            background-color: rgba(255,255,255,0.05) !important;
+            border: 1px solid rgba(255,255,255,0.1) !important;
+            color: white !important;
+        }
+        .hs-form label {
+            font-size: 0.75rem !important;
+            margin-bottom: 0.25rem !important;
+            font-weight: 700 !important;
+            text-transform: uppercase !important;
+            letter-spacing: 0.05em !important;
+            color: #9ca3af !important;
+        }
+        .hs-form .hs-submit {
+            margin-top: 0.5rem !important;
+        }
+        .hs-form .hs-button {
+            width: 100% !important;
+            padding: 0.75rem !important;
+            font-weight: 900 !important;
+            text-transform: uppercase !important;
+            font-size: 0.75rem !important;
+            background-color: #dc2626 !important;
+            border-radius: 0.5rem !important;
+            border: none !important;
+            color: white !important;
+            cursor: pointer !important;
+        }
+        .hs-form .legal-consent-container {
+            font-size: 0.65rem !important;
+            line-height: 1.2 !important;
+            color: #6b7280 !important;
+            margin-top: 0.5rem !important;
+        }
+        .hs-form .hs-richtext {
+            font-size: 0.65rem !important;
+        }
+        .hs-form .hs-form-checkbox-display {
+            display: flex !important;
+            align-items: flex-start !important;
+        }
+        .hs-form .hs-form-checkbox-display input {
+            margin-top: 0.125rem !important;
         }
     </style>
 <!-- 1. TOP ANNOUNCEMENT BAR -->
-<div class="bg-[#2a2a2a] text-white py-2.5 px-4 text-center text-[10px] md:text-xs font-bold tracking-widest uppercase border-b border-red-600">✨ LIVRAISON OFFERTE DÈS 50€ SUR NOTRE <a class="text-red-500 underline underline-offset-4 hover:text-white transition" href="VOTRE_LIEN_SUMUP" target="_blank">E-BOUTIQUE</a> ✨</div>
+<div class="bg-[#2a2a2a] text-white py-2.5 px-4 text-center text-[10px] md:text-xs font-bold tracking-widest uppercase border-b border-red-600">✨ LIVRAISON OFFERTE DÈS 50€ SUR NOTRE <a class="text-red-500 underline underline-offset-4 hover:text-white transition" href="#" target="_blank">E-BOUTIQUE</a> ✨</div>
 <!-- 2. HEADER NAVIGATION -->
 <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md shadow-sm py-4 px-6 md:px-12 flex justify-between items-center">
 <div class="font-black text-2xl tracking-tighter uppercase italic text-gray-800 flex items-center">
@@ -56,26 +125,21 @@
 </svg>FITNESS<span class="text-red-600">-GRAMS</span>
 </div>
 <div class="hidden md:flex space-x-10 font-bold text-xs uppercase tracking-widest">
-<a class="hover:text-red-600 transition" href="https://fitness-grams.sumupstore.com/" target="_blank">Boutique</a>
+<a class="hover:text-red-600 transition" href="#" target="_blank">Boutique</a>
 <a class="hover:text-red-600 transition" href="#about">À propos</a>
 </div>
-<div class="flex items-center">
-<a class="bg-[#2a2a2a] text-white px-6 py-2.5 rounded-full text-[11px] font-black hover:bg-red-700 transition shadow-xl flex items-center" href="VOTRE_LIEN_SUMUP" target="_blank">
-<span class="mr-2">🛒</span> VOIR MON PANIER 
-            </a>
-</div>
 </nav>
-<!-- 3. HERO SECTION - MONOCHROME TRANSFORMATION -->
-<section class="relative h-[90vh] flex items-center justify-center text-white overflow-hidden bg-black">
-<div class="absolute inset-0 opacity-40"><img alt="Fitness Background Monochrome" class="w-full h-full object-cover grayscale brightness-50" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDXgjW0KSo8ni5tB5BuaCFcMB5rwEfBWC5CtWOQjuKjnPneUnUwP4eRlJ25Ora5Z_6W9WYYAiAEif1LMTVAIB2XSF78IgTt-cfVSCTcuQj2-FN6MaSpILnxEqW2R6byrmx9okTfLHkC37Zr1F9oVbMSqPzF-FDmAHbRXS1PAeyjkh1NEgK8g1erFueQ1Vbzgpu_RRIeRbpaLLEReYAWMfm181pOpYNb8-SqOLwRguV9voFD1YUHf3_lhioHs1_5sHvXhsivq5-F_u8"/>
-<div class="absolute inset-0 flex flex-col items-center justify-center pointer-events-none select-none overflow-hidden">
-<div class="text-outline-dark text-7xl md:text-[12rem] font-black uppercase italic leading-none opacity-30 absolute top-10 -left-10 -rotate-12">FITNESS</div>
-<div class="text-outline-dark text-7xl md:text-[15rem] font-black uppercase italic leading-none opacity-30 absolute top-1/2 -right-20 -translate-y-1/2 rotate-12">NUTRITION</div>
-<div class="text-outline-dark text-7xl md:text-[10rem] font-black uppercase italic leading-none opacity-30 absolute bottom-20 left-10 rotate-6">WHEY</div>
-<div class="text-outline-dark text-7xl md:text-[14rem] font-black uppercase italic leading-none opacity-30 absolute -bottom-10 right-1/4 -rotate-6">WORKOUT</div>
-</div></div>
-<!-- Decorative subtle grid -->
-<div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-transparent via-black/20 to-black/80"></div>
+<!-- 3. HERO SECTION -->
+<section class="relative h-[90vh] flex items-center justify-center text-white overflow-hidden bg-[#0a0a0a]">
+<!-- Background Text Overlays -->
+<div class="absolute inset-0 pointer-events-none select-none overflow-hidden">
+<div class="text-outline-dark text-7xl md:text-[14rem] font-black uppercase italic leading-none absolute -top-10 -left-10 -rotate-12 opacity-70">WHEY</div>
+<div class="text-outline-dark text-7xl md:text-[18rem] font-black uppercase italic leading-none absolute top-1/4 -right-20 rotate-6 opacity-70">PROTÉINE</div>
+<div class="text-outline-dark text-7xl md:text-[12rem] font-black uppercase italic leading-none absolute bottom-1/4 left-10 -rotate-3 opacity-70">GAINER</div>
+<div class="text-outline-dark text-7xl md:text-[15rem] font-black uppercase italic leading-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rotate-12 opacity-70">NUTRITION</div>
+<div class="text-outline-dark text-7xl md:text-[10rem] font-black uppercase italic leading-none absolute -bottom-10 right-1/4 rotate-6 opacity-70">PERFORMANCE</div>
+</div>
+<div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_transparent_0%,_#000_90%)] opacity-70"></div>
 <div class="relative z-10 max-w-6xl mx-auto text-center px-6">
 <div class="flex items-center justify-center gap-4 mb-8">
 <div class="h-[1px] w-12 bg-white/20"></div>
@@ -83,96 +147,218 @@
 <div class="h-[1px] w-12 bg-white/20"></div>
 </div>
 <div class="relative inline-block mb-10">
-<h1 class="text-6xl md:text-[10rem] font-black leading-none tracking-tighter uppercase italic relative z-10">
-                    FITNESS<br/><span class="text-outline">GRAMS</span>
-</h1>
-<!-- Background decorative text for depth -->
+<h1 class="text-6xl md:text-[10rem] font-black leading-none tracking-tighter uppercase italic relative z-10">BOUTIQUE ECOMMERCE<br/><span class="text-outline">FITNESS &amp; PROTÉINE</span></h1>
 <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-9xl md:text-[14rem] font-black text-white/[0.03] select-none z-0 tracking-tighter italic">
-                    POWER
-                </div>
+                POWER
+            </div>
 </div>
 <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
-<a class="bg-white text-black px-12 py-5 rounded-full font-black text-xs uppercase tracking-[0.2em] hover:bg-gray-200 transition-all transform hover:scale-105 shadow-2xl inline-block" href="https://fitness-grams.sumupstore.com/" target="_blank">
-                    Commander ici
-                </a>
+<a class="bg-white text-black px-12 py-5 rounded-full font-black text-xs uppercase tracking-[0.2em] hover:bg-gray-200 transition-all transform hover:scale-105 shadow-2xl inline-block" href="#" target="_blank">
+                Commander ici
+            </a>
 <a class="border border-white/20 text-white px-10 py-5 rounded-full font-black text-xs uppercase tracking-[0.2em] hover:bg-white/10 transition-all inline-block" href="#about">
-                    Découvrir l'univers
-                </a>
+                Découvrir l'univers
+            </a>
 </div>
 </div>
-<!-- Bottom indicator -->
 <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3">
 <span class="text-[9px] font-black uppercase tracking-widest text-gray-500">Scroll</span>
 <div class="w-px h-12 bg-gradient-to-b from-white/40 to-transparent"></div>
 </div>
 </section>
-<!-- 4. INFINITE SCROLL TICKER -->
+<!-- 4. INFINITE SCROLL TICKER (MOVED HERE) -->
 <div class="bg-[#e8e1d9] py-6 border-y border-gray-300 overflow-hidden relative">
 <div class="animate-scroll flex items-center space-x-16 px-4">
 <div class="flex items-center space-x-16 text-gray-500 font-black uppercase tracking-widest text-[11px]">
-<span class="flex items-center">⚡ Nutrition Sportive</span>
-<span class="flex items-center">🥩 Aliment Protéinée</span>
-<span class="flex items-center">🥤 Boisson Energie</span>
-<span class="flex items-center">💪 Whey</span>
-<span class="flex items-center">🏋️ Gainer</span>
-<span class="flex items-center">🥗 Aliment Sain</span>
-<span class="flex items-center">💊 Complément Alimentaire</span>
+<span>⚡ Nutrition Sportive</span>
+<span>🥩 Aliment Protéinée</span>
+<span>🥤 Boisson Energie</span>
+<span>💪 Whey</span>
+<span>🏋️ Gainer</span>
+<span>🥗 Aliment Sain</span>
+<span>💊 Complément Alimentaire</span>
 </div>
-<!-- Duplicate for Infinite effect -->
 <div class="flex items-center space-x-16 text-gray-500 font-black uppercase tracking-widest text-[11px]">
-<span class="flex items-center">⚡ Nutrition Sportive</span>
-<span class="flex items-center">🥩 Aliment Protéinée</span>
-<span class="flex items-center">🥤 Boisson Energie</span>
-<span class="flex items-center">💪 Whey</span>
-<span class="flex items-center">🏋️ Gainer</span>
-<span class="flex items-center">🥗 Aliment Sain</span>
-<span class="flex items-center">💊 Complément Alimentaire</span>
+<span>⚡ Nutrition Sportive</span>
+<span>🥩 Aliment Protéinée</span>
+<span>🥤 Boisson Energie</span>
+<span>💪 Whey</span>
+<span>🏋️ Gainer</span>
+<span>🥗 Aliment Sain</span>
+<span>💊 Complément Alimentaire</span>
 </div>
 </div>
 </div>
-<!-- 5. FIDELITY & NEWSLETTER SECTION -->
+<!-- COMMITMENT SECTION -->
+<section class="py-12 px-6 md:px-12 -mt-10 relative z-20">
+<div class="max-w-5xl mx-auto bg-white rounded-[2.5rem] shadow-2xl overflow-hidden border border-gray-100 flex flex-col md:flex-row items-center">
+<div class="w-full md:w-1/4 bg-[#2a2a2a] py-12 flex flex-col items-center justify-center text-white space-y-4">
+<div class="w-16 h-16 rounded-full bg-red-600 flex items-center justify-center shadow-lg">
+<svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-1.947 3.42 3.42 0 016.438 0 3.42 3.42 0 001.946 1.947 3.42 3.42 0 010 6.438 3.42 3.42 0 00-1.946 1.946 3.42 3.42 0 01-6.438 0 3.42 3.42 0 00-1.946-1.946 3.42 3.42 0 010-6.438z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<span class="font-black uppercase tracking-[0.3em] text-[10px] text-red-500">Qualité Certifiée</span>
+</div>
+<div class="w-full md:w-3/4 p-10 md:p-14 text-center md:text-left">
+<h3 class="text-2xl md:text-3xl font-black uppercase italic tracking-tighter mb-4 text-gray-800">NOTRE <span class="text-red-600">ENGAGEMENT</span></h3>
+<p class="text-gray-600 font-medium leading-relaxed text-base md:text-lg">
+            Nous sélectionnons rigoureusement les meilleures marques de compléments et d'aliments auprès de fournisseurs de confiance. <span class="text-gray-900 font-black">Notre engagement :</span> vous fournir tout l'univers des compléments alimentaires avec une qualité irréprochable.
+        </p>
+</div>
+</div>
+</section>
+<!-- NEW PROMOTIONAL WIDGET SECTION -->
+<section class="py-12 px-6 md:px-12 max-w-7xl mx-auto">
+<div class="bg-red-600 rounded-[3rem] overflow-hidden flex flex-col md:flex-row items-center shadow-2xl border-4 border-white/10 group">
+<!-- Text/CTA Side -->
+<div class="w-full md:w-1/2 p-10 md:p-16 text-white order-2 md:order-1">
+<div class="flex items-center gap-3 mb-6">
+<span class="w-10 h-10 rounded-full bg-white flex items-center justify-center">
+<svg class="w-6 h-6 text-red-600" fill="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"></path></svg>
+</span>
+<span class="font-black uppercase tracking-[0.3em] text-[10px]">Offre Limitée</span>
+</div>
+<h2 class="text-4xl md:text-5xl lg:text-6xl font-black uppercase italic tracking-tighter leading-none mb-6">EXCLUSIVITÉS &amp; ACTUALITÉS À VENIR</h2>
+<p class="text-white/90 font-bold text-lg mb-8 max-w-md leading-tight">Restez connectés pour découvrir nos prochaines offres et nouveautés exclusives très prochainement sur Fitness-Grams.</p>
+</div>
+<!-- Image Side -->
+<div class="w-full md:w-1/2 h-80 md:h-full min-h-[400px] relative overflow-hidden order-1 md:order-2">
+<img alt="Promo Performance Nutrition" class="absolute inset-0 w-full h-full object-cover grayscale brightness-75 contrast-125 group-hover:scale-105 transition-transform duration-1000" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBkGR3BIDkeD_g7Js5dy2icqvtv2xrBUwMMW0QhBmQdpGnSH00ZNMno84hMdSZ-PBnGPRqboXG2BMUo6KSuKl1_U76ihyJtvxOlcHug6GBicFbs3kv98QyoB7JGBZsXwwlcU5w9_817I2hqEeXcsyr3nRDbFakyYKPe6CqEFJTi8kxUlp6ASE8LTckP-xzfkc8BtCLd4Lqm1g_e3uF1xkYwEY-boGg6k8CakPOlgtRRFMXadsdi0j_jGrZVOG6pWZ44UCPomvuihrA"/>
+<div class="absolute inset-0 bg-gradient-to-r from-red-600 md:from-transparent via-transparent to-transparent"></div>
+</div>
+</div>
+</section>
+<!-- 5. FIDELITY SECTION -->
 <section class="py-16 px-6 md:px-12 max-w-7xl mx-auto">
-<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-<!-- Fidelity Card -->
-<div class="lg:col-span-2 bg-[#8b735b] rounded-[2rem] overflow-hidden flex flex-col md:flex-row shadow-2xl min-h-[450px]">
+<div class="bg-[#8b735b] rounded-[2rem] overflow-hidden flex flex-col md:flex-row shadow-2xl min-h-[400px]">
 <div class="w-full md:w-3/5 p-10 md:p-16 flex flex-col justify-center text-white">
 <div class="flex items-center gap-2 mb-4">
 <span class="w-8 h-[2px] bg-red-600"></span>
 <h3 class="font-black tracking-[0.2em] uppercase text-xs opacity-90 italic">Exclusivité Communauté</h3>
 </div>
-<h2 class="text-4xl md:text-5xl font-black mb-6 leading-tight uppercase tracking-tighter">PROGRAMME <br/><span class="text-[#2a2a2a]">FIDÉLITÉ</span></h2>
-<p class="text-lg mb-8 text-[#f2ece4] font-medium leading-relaxed">Récompensez votre engagement. Cumulez des avantages exclusifs pour vos <span class="bg-red-600 px-2 py-0.5 font-black italic">commandes en main propre</span> uniquement.</p>
+<h2 class="text-4xl md:text-6xl font-black mb-6 leading-tight uppercase tracking-tighter">PROGRAMME <br/><span class="text-[#2a2a2a]">FIDÉLITÉ</span></h2>
+<p class="text-lg mb-8 text-[#f2ece4] font-medium leading-relaxed max-w-xl">Récompensez votre engagement. Cumulez des avantages exclusifs pour vos <span class="bg-red-600 px-2 py-0.5 font-black italic">commandes en main propre</span> uniquement.</p>
 <div class="flex items-center gap-6">
 <a class="bg-[#2a2a2a] text-white px-8 py-4 rounded-xl font-black text-xs uppercase tracking-widest hover:bg-white hover:text-[#2a2a2a] transition shadow-lg" href="#"> En savoir plus </a>
 </div>
 </div>
-<div class="w-full md:w-2/5 relative bg-[#2a2a2a]/10 backdrop-blur-sm border-l border-white/10 flex items-center justify-center p-8">
-<div class="relative">
-<div class="w-48 h-48 rounded-full border-4 border-dashed border-red-600/30 animate-[spin_20s_linear_infinite] absolute -inset-4"></div>
-<div class="w-40 h-40 bg-white/5 rounded-full flex items-center justify-center backdrop-blur-md">
-<span class="text-5xl">🤝</span>
+<div class="w-full md:w-2/5 relative bg-[#2a2a2a]/10 backdrop-blur-sm border-l border-white/10 flex">
+<img alt="Vendeuse au comptoir dans une boutique moderne" class="w-full h-full object-cover grayscale brightness-90 contrast-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCjs3ItO5YxrFTowpzBl811aVa9b7a0Vw02JzBbjc0UMcsv3j8Jk8lljOFctDqokbei0laKinFDzrtsUt5UW59KjEwf9MtB0Ev_FSjvIFDbl8rxsMDOvq6iL_N_2gq4ze7qiXB-S_EyKI_FuPuWGHlvp0uxHj4fByucB7FDHhhkESq5GL86ZsXmMmGI-dsP4Niy7BBDh4Ux1RKmLxFkaPXzhLWOje97iZJVQaUQmi2bePRE4tI6ry1iFYjiTvJYcJkSvtJG_U56prU"/>
+</div>
+</div>
+</section>
+<!-- COLLECTION LIFESTYLE SECTION -->
+<section class="py-24 px-6 md:px-12 max-w-7xl mx-auto" id="lifestyle">
+<div class="mb-16 text-center">
+<h2 class="text-4xl md:text-7xl font-black uppercase italic tracking-tighter leading-none mb-4">COLLECTION <span class="text-red-600">LIFESTYLE</span></h2>
+<p class="text-[#8b735b] font-black uppercase text-xs tracking-[0.3em]">Équipez-vous pour la victoire</p>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+<!-- Hoodie -->
+<div class="product-card group">
+<div class="product-card-inner bg-white rounded-[2rem] p-8 cube-shadow flex flex-col items-center transition-all duration-500 hover:shadow-2xl overflow-hidden">
+<div class="relative w-full aspect-square mb-8 overflow-hidden rounded-2xl">
+<img alt="Premium Hoodie" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBvOWXBDYi7ZCXjEhY-R_W-dN24kWDCLpFbDrHwvKLWxfZ7vDFBmObqOQNxqAm_-0AnMHQtguz9kV0cegUvxfqRnelunam_yy7k3ROkxE372_ujmPNlQmsNVE1RE1DudzQZUVNQZIm9xXPTSgZI8__9fzFTnMCUo1yCI2gwdHsMDvGern1o2KPgJYiI7Gb7R0W7fpyyNk7r13JpaIVU7fkLig4Jn4J8XT9I8S67Lfg10aPnmx7AsSUDbbOGxIQhto7UiZnKmYvfAto"/>
+<div class="absolute inset-0 flex items-center justify-center z-20">
+<div class="bg-red-600 text-white font-black text-[10px] md:text-xs uppercase tracking-[0.3em] py-2 w-[150%] -rotate-45 shadow-2xl border-y-2 border-white/20 text-center">COMING SOON</div>
+</div>
+</div>
+<h3 class="font-black uppercase italic text-sm tracking-widest mb-2">Hoodie Elite - Coton Bio 450GSM</h3>
+<span class="bg-gray-100 text-gray-500 text-[10px] font-black px-4 py-1.5 rounded-full uppercase tracking-widest">Aperçu</span>
+</div>
+</div>
+<!-- Tee -->
+<div class="product-card group">
+<div class="product-card-inner bg-[#2a2a2a] rounded-[2rem] p-8 shadow-2xl flex flex-col items-center transition-all duration-500 overflow-hidden">
+<div class="relative w-full aspect-square mb-8 overflow-hidden rounded-2xl">
+<img alt="Technical Tee" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZ9qAyKvYLB6C2qJb9J2lF7OA-pNICObic3pcxM_7urcQvXftymfSyWKie2rUpoFYvQoASqP3HuOm4XnEwsCH4Y2r_uiZJTqFvH8xo3PiaxAv1MqQeovljyCQ1z1unKf5Z-vzhS9z1PetNadGL9qn589TWPuSHuymi45VDClIPLViAplmLcmsd1QU-xeOaIbe4KJoHF-PAy0eC7FvlkhBm52RQ0TQvya0S5ziwPnw8XPRaKMRPINotz2FVXsyazZjjp7fnUUBgHKs"/>
+<div class="absolute inset-0 flex items-center justify-center z-20">
+<div class="bg-white text-black font-black text-[10px] md:text-xs uppercase tracking-[0.3em] py-2 w-[150%] -rotate-45 shadow-2xl text-center">COMING SOON</div>
+</div>
+</div>
+<h3 class="font-black uppercase italic text-sm tracking-widest mb-2 text-white">T-Shirt Performance - Coupe Athlétique</h3>
+<span class="bg-white/10 text-white/50 text-[10px] font-black px-4 py-1.5 rounded-full uppercase tracking-widest">Aperçu</span>
+</div>
+</div>
+<!-- Cap -->
+<div class="product-card group">
+<div class="product-card-inner bg-white rounded-[2rem] p-8 cube-shadow flex flex-col items-center transition-all duration-500 overflow-hidden">
+<div class="relative w-full aspect-square mb-8 overflow-hidden rounded-2xl">
+<img alt="Signature Cap" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJSd3YlaS7Z2NiE9Qql1z0GKwbAwQapftJPRFPlJgMidd1DfYVcP0fmN2z0XUDaFdmyUmBhhn0fXywds4grfC6OdhCpD_XVKtsspdXJQCRPKOuhNKNZrpJXHLxhwHzKZRi7XGlkRWjyqDxcg_YK8A2k2GIPbc3KPW4gI5xojZeF2rM7p9_RFKejIrk9Y0OYal_L6PAxscNHi0RZ-2FUapXWn5KUDJxWb5yMXySkAM8YN2sO0u48HIW8bft4ECVsCwI_hlQxdZTQcw"/>
+<div class="absolute inset-0 flex items-center justify-center z-20">
+<div class="bg-red-600 text-white font-black text-[10px] md:text-xs uppercase tracking-[0.3em] py-2 w-[150%] -rotate-45 shadow-2xl border-y-2 border-white/20 text-center">COMING SOON</div>
+</div>
+</div>
+<h3 class="font-black uppercase italic text-sm tracking-widest mb-2">Casquette FG - Tissu Respirant</h3>
+<span class="bg-gray-100 text-gray-500 text-[10px] font-black px-4 py-1.5 rounded-full uppercase tracking-widest">Aperçu</span>
+</div>
+</div>
+<!-- Shorts -->
+<div class="product-card group">
+<div class="product-card-inner bg-[#e8e1d9] rounded-[2rem] p-8 cube-shadow flex flex-col items-center transition-all duration-500 overflow-hidden">
+<div class="relative w-full aspect-square mb-8 overflow-hidden rounded-2xl">
+<img alt="Training Shorts" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTBGs0fb6un8C0y1EzpnULIg886KaoKE2CroNw9IYDt8K6AKgoZhjlLXcMRBjMaNSgX6fJ00hg9cEAOSrWs4FAyxauq5B0hNcMF504-TIJoxUq5fKYcFCnkc361xTbyXnQhcZ3zBZRegYgiWf89AceMqXE9euov1hoQvqLeE1RNGIjZWfnGIOK4ULb_V2W-VDWz9NRiu5e90Z2DwSGS-vkariAFgTB6xXH5GT3EgRsFKo2uvBz4QiDHRiLcDlBjIFjNKXwxGuKOII"/>
+<div class="absolute inset-0 flex items-center justify-center z-20">
+<div class="bg-black text-white font-black text-[10px] md:text-xs uppercase tracking-[0.3em] py-2 w-[150%] -rotate-45 shadow-2xl text-center">COMING SOON</div>
+</div>
+</div>
+<h3 class="font-black uppercase italic text-sm tracking-widest mb-2">Short Training - Liberté de Mouvement</h3>
+<span class="bg-[#2a2a2a]/10 text-[#2a2a2a]/50 text-[10px] font-black px-4 py-1.5 rounded-full uppercase tracking-widest">Aperçu</span>
 </div>
 </div>
 </div>
+</section>
+<!-- SECTION 6: QUE VENDONS-NOUS ? -->
+<section class="py-24 px-6 md:px-12 max-w-7xl mx-auto bg-white rounded-[3rem] my-12" id="about">
+<div class="text-center mb-16">
+<h2 class="text-4xl md:text-6xl font-black uppercase italic tracking-tighter leading-none mb-4 text-gray-800">
+            QUE <span class="text-red-600">VENDONS-NOUS ?</span>
+</h2>
+<div class="w-20 h-1.5 bg-red-600 mx-auto rounded-full"></div>
 </div>
-<!-- Newsletter Card -->
-<div class="bg-[#2a2a2a] rounded-[2rem] p-10 flex flex-col justify-between shadow-2xl text-white border border-gray-800">
-<div>
-<h3 class="text-2xl font-black uppercase tracking-tighter mb-4 italic">NE MANQUEZ <br/><span class="text-red-600">AUCUN DROP</span></h3>
-<p class="text-gray-400 text-sm font-medium mb-8">Recevez nos dernières sorties lifestyle et nutrition directement dans votre boîte mail.</p>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+<!-- Category 1: Nutrition Sportive -->
+<div class="space-y-6 group">
+<div class="aspect-square bg-gray-100 rounded-3xl overflow-hidden relative">
+<img alt="Nutrition Sportive - Whey and Muscle Recovery" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBPo795-9CA_D2rQLBiCoSlayNuzjtKmcRtcfL5Pgl93tGwoHJLPV0j_zljFKnoOWRqpwugrfBcXr5o6ooOZe2UxHTUsjWZOjP7ZoRqS14jOFkFLVOACz4PvNLOYnEgnXhOm0EBYxQao_zPWcciE1ic8qh6ZSlxlt0tSJ7qZs_heMjnCzqkkO3Y_FFC3RFmfX1zel8rSMKZicDVOvmu2CzLOc36WKMrV_jK6T-_qhqgGqKM6piFejTgpWXCSrbkO-1LWtnZQSUl-wQ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-8">
+<span class="text-white font-black text-2xl uppercase italic tracking-tighter">Nutrition Sportive</span>
 </div>
-<form class="space-y-4">
-<div class="relative">
-<input class="w-full bg-white/5 border-2 border-white/10 px-5 py-4 rounded-xl focus:outline-none focus:border-red-600 transition text-sm font-bold placeholder:text-gray-600" placeholder="Votre adresse email" type="email"/>
 </div>
-<button class="w-full bg-red-600 text-white py-4 rounded-xl font-black text-sm uppercase tracking-widest hover:bg-white hover:text-red-600 transition-all shadow-xl group">
-                        M'abonner maintenant 
-                        <span class="inline-block transition-transform group-hover:translate-x-1 ml-2">→</span>
-</button>
-</form>
-<div class="mt-8 pt-6 border-t border-white/5">
-<p class="text-[9px] text-gray-500 font-bold uppercase tracking-widest text-center">Rejoignez +5000 membres actifs</p>
+<p class="text-sm text-gray-600 font-medium leading-relaxed">Maximisez votre potentiel avec notre <span class="text-red-600 font-bold">boutique fitness</span>. Découvrez notre sélection de <span class="text-red-600 font-bold">Whey Isolate</span> et <span class="text-red-600 font-bold">Gainer Performance</span>, des formules conçues pour une <span class="text-red-600 font-bold">récupération musculaire</span> optimale.</p>
+<a class="flex items-center text-red-600 font-black text-[10px] uppercase tracking-widest space-x-2 cursor-pointer hover:opacity-70 transition-opacity" href="https://fitness-grams.sumupstore.com/" target="_blank">
+<span>Voir les produits</span>
+<span class="text-lg">→</span>
+</a>
 </div>
+<!-- Category 2: Nourriture Protéinée -->
+<div class="space-y-6 group">
+<div class="aspect-square bg-gray-100 rounded-3xl overflow-hidden relative">
+<img alt="Nourriture Protéinée - Snacks and Functional Drinks" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAz3IhjgU3qBxLFMeU_Rksir8L-iauJBG2CMD9EcM6kOxXRM97300eAoEerVVuf5VJq24gwitve8mOcF1dTAPzRh858vxO7CrIZwzMg_rQJp8dT3zjzwdtUgEkG32w58Kadqqseyfu9kVUeZ9J47-Va_yB_H5MlmYJBUMafjjonLdYAoPV7bgEUee8D3CXj5UcqywQJkLwOwu6ydb72sTPrRjKIqZ-DAW-Qn5B0C4FWrz0nFLJawvM1AjboqFtEG_Gd2lYlpkJAe5U"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-8">
+<span class="text-white font-black text-2xl uppercase italic tracking-tighter">Nourriture Protéinée</span>
+</div>
+</div>
+<p class="text-sm text-gray-600 font-medium leading-relaxed">Mangez intelligemment avec chaque <span class="text-red-600 font-bold">collation protéinée</span> de notre gamme. Nos snacks et energy drinks offrent une nutrition fonctionnelle pour booster votre performance quotidienne sans aucun compromis sur le goût.</p>
+<a class="flex items-center text-red-600 font-black text-[10px] uppercase tracking-widest space-x-2 cursor-pointer hover:opacity-70 transition-opacity" href="https://fitness-grams.sumupstore.com/" target="_blank">
+<span>Explorer le shop</span>
+<span class="text-lg">→</span>
+</a>
+</div>
+<!-- Category 3: Compléments Alimentaires -->
+<div class="space-y-6 group">
+<div class="aspect-square bg-gray-100 rounded-3xl overflow-hidden relative">
+<img alt="Compléments Alimentaires - Vitamins and Boosters" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAVicXcu5tsVo5vuSx7HN7YGArVGouWOqYVykbVOcxiuPvQs5-AUiGckMtYnbrR6IgivBxffxF473LJN8UYfQga352L5A1Xbm-rePvGLAGLG9cYWunMypqAhcB14ntkOUKBlNND48EUYicjBRqFymImDFBqlujTuY0jDZGlo-GQVLgJR4CVID4HChx-JYUoVkcvPc3WiZ3y2LoY_JKOYHmzf0gHuvyx_hTdviq7J5wCxXFO3ucqxLdDVxdZlHQJ5O1YuYACfNlj0kM"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-8">
+<span class="text-white font-black text-2xl uppercase italic tracking-tighter">Compléments Alimentaires</span>
+</div>
+</div>
+<p class="text-sm text-gray-600 font-medium leading-relaxed">Optimisez votre santé avec nos <span class="text-red-600 font-bold">vitamines sportives</span> et notre sélection de <span class="text-red-600 font-bold">brûleur de graisse</span>. L'essentiel des boosters de performance pour un équilibre parfait et une vitalité décuplée.</p>
+<a class="flex items-center text-red-600 font-black text-[10px] uppercase tracking-widest space-x-2 cursor-pointer hover:opacity-70 transition-opacity" href="https://fitness-grams.sumupstore.com/" target="_blank">
+<span>Optimiser ma santé</span>
+<span class="text-lg">→</span>
+</a>
 </div>
 </div>
 </section>
@@ -181,7 +367,7 @@
 <div class="flex flex-col md:flex-row md:items-center justify-between mb-12 gap-4">
 <div>
 <h2 class="text-3xl md:text-5xl font-black uppercase italic tracking-tighter leading-none text-gray-800">
-                    ILS NOUS <span class="text-red-600">FONT CONFIANCE</span>
+                ILS NOUS <span class="text-red-600">FONT CONFIANCE</span>
 </h2>
 <p class="text-[#8b735b] font-bold uppercase text-[10px] tracking-widest mt-2">La communauté Fitness-Grams s'exprime</p>
 </div>
@@ -193,170 +379,65 @@
 </div>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-<!-- Testimonial 1 -->
 <div class="bg-white rounded-3xl p-8 cube-shadow border border-gray-100 flex flex-col justify-between hover:-translate-y-2 transition-transform duration-300">
-<div>
-<div class="flex text-red-600 mb-4 text-sm">
-<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-</div>
-<p class="text-gray-700 font-medium italic mb-8 leading-relaxed">"La qualité des protéines est incroyable, digestion parfaite et le goût n'est pas trop sucré. Enfin une marque qui tient ses promesses !"</p>
-</div>
+<p class="text-gray-700 font-medium italic mb-8 leading-relaxed">"Des conseils au top, une aide professionnelle dans le choix de mes compléments ou buts sportifs."</p>
 <div class="flex items-center gap-4">
 <div class="w-10 h-10 rounded-full bg-[#e8e1d9] flex items-center justify-center font-black text-xs text-[#8b735b]">ML</div>
 <div>
-<h4 class="font-black uppercase text-xs tracking-tight text-gray-800">Marc L.</h4>
-<p class="text-[9px] text-gray-400 font-bold uppercase tracking-widest">Athlète CrossFit</p>
+<h4 class="font-black uppercase text-xs tracking-tight text-gray-800">Utilisateur Instagram</h4>
+<p class="text-[9px] text-gray-400 font-bold uppercase tracking-widest">@fitnessgrams_fan</p>
 </div>
 </div>
 </div>
-<!-- Testimonial 2 -->
-<div class="bg-[#2a2a2a] rounded-3xl p-8 shadow-2xl flex flex-col justify-between hover:-translate-y-2 transition-transform duration-300">
-<div>
-<div class="flex text-red-600 mb-4 text-sm">
-<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-</div>
-<p class="text-gray-300 font-medium italic mb-8 leading-relaxed">"Le service client est au top. Livraison ultra rapide en 24h chrono. Je recommande Fitness-Grams à tout mon entourage sportif."</p>
-</div>
+<div class="bg-[#2a2a2a] rounded-3xl p-8 shadow-2xl flex flex-col justify-between hover:-translate-y-2 transition-transform duration-300 text-white">
+<p class="text-gray-300 font-medium italic mb-8 leading-relaxed">"Service client au top, livraison au top ! Je recommande Fitness-Grams à tout mon entourage sportif."</p>
 <div class="flex items-center gap-4">
 <div class="w-10 h-10 rounded-full bg-red-600 flex items-center justify-center font-black text-xs text-white">SD</div>
 <div>
-<h4 class="font-black uppercase text-xs tracking-tight text-white">Sarah D.</h4>
-<p class="text-[9px] text-gray-500 font-bold uppercase tracking-widest">Coach Fitness</p>
+<h4 class="font-black uppercase text-xs tracking-tight">Utilisateur Facebook</h4>
+<p class="text-[9px] text-gray-500 font-bold uppercase tracking-widest">@communautefb</p>
 </div>
 </div>
 </div>
-<!-- Testimonial 3 -->
 <div class="bg-[#e8e1d9] rounded-3xl p-8 cube-shadow border border-gray-200 flex flex-col justify-between hover:-translate-y-2 transition-transform duration-300">
-<div>
-<div class="flex text-red-600 mb-4 text-sm">
-<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-</div>
 <p class="text-gray-800 font-medium italic mb-8 leading-relaxed">"Fan du concept de remise en main propre. C'est convivial et les avantages fidélité sont vraiment intéressants sur le long terme."</p>
-</div>
 <div class="flex items-center gap-4">
 <div class="w-10 h-10 rounded-full bg-[#2a2a2a] flex items-center justify-center font-black text-xs text-white">TK</div>
 <div>
-<h4 class="font-black uppercase text-xs tracking-tight text-gray-800">Thomas K.</h4>
-<p class="text-[9px] text-[#8b735b] font-bold uppercase tracking-widest">Client Fidèle</p>
+<h4 class="font-black uppercase text-xs tracking-tight text-gray-800">Utilisateur Instagram</h4>
+<p class="text-[9px] text-[#8b735b] font-bold uppercase tracking-widest">@fitness_lifestyle</p>
 </div>
 </div>
 </div>
 </div>
 </section>
-<!-- 5.5 CUBE SHELF LIFESTYLE SECTION -->
-<section class="py-24 px-6 md:px-12 max-w-7xl mx-auto overflow-hidden">
-<div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
-<div class="max-w-2xl">
-<h2 class="text-4xl md:text-6xl font-black uppercase italic tracking-tighter leading-none mb-4 text-gray-800"><span class="text-red-600">LA COLLECTION</span><br/>LIFESTYLE</h2>
-<p class="text-[#8b735b] font-bold uppercase text-xs tracking-widest">Inscrivez-vous pour être informé du drop exclusif</p>
+<!-- NEW HORIZONTAL NEWSLETTER SECTION -->
+<section class="bg-[#2a2a2a] py-20 px-6 md:px-12 border-t border-red-600/30">
+<div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+<div class="text-white">
+<div class="flex items-center gap-3 mb-6">
+<span class="w-12 h-[2px] bg-red-600"></span>
+<h3 class="font-black tracking-[0.3em] uppercase text-sm italic">Stay Connected</h3>
 </div>
-<div class="flex items-center gap-4">
-<div class="h-px w-20 bg-gray-300 hidden lg:block"></div>
-<span class="text-[10px] font-black uppercase tracking-[0.4em] text-red-600">Limited Release 2024</span>
-</div>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
-<!-- Cube 1: Hoodie -->
-<div class="group relative aspect-square bg-white rounded-3xl p-8 transition-all duration-500 hover:-translate-y-4 cube-shadow border border-gray-100 flex flex-col items-center justify-center text-center overflow-hidden">
-<img alt="Oversized Hoodie" class="w-48 h-48 object-contain mix-blend-multiply group-hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDAl_3VoSGRMJZG3bQB1Da98fAcPyOu7nW_ziOorGHapJECPWObPwMo0izdaKIuqE4Pm3ddVktsqSzBA2gWaCpTJ1PB3wxFsMKGZJ_L-GwnOfC-qXD3Xba1HYtjaDeHVReg76Y94K1AQBYO06XLD_Mj3L2zTFMIGyhBfehIn3qfaRpaJ9cahAkaEyyMp9BvgaYKRTvkX5rgv5ZWkOfY35uwqryqqHzvYbqXtQcLoVco9dgyRtRoOqYZuVqAobk2uK--W9zeTSaQpi8"/>
-<div class="mt-6">
-<h4 class="font-black uppercase text-sm tracking-tight text-gray-800">Oversized Hoodie</h4>
-<p class="text-[10px] text-gray-400 font-bold uppercase tracking-widest mt-1">Coton Bio 450GSM</p>
-</div>
-<div class="absolute top-4 right-4 bg-red-600 text-white text-[9px] font-black px-3 py-1 rounded-full uppercase tracking-tighter">New</div>
-</div>
-<!-- Cube 2: Tee (Red) -->
-<div class="group relative aspect-square bg-red-600 rounded-3xl p-8 transition-all duration-500 hover:-translate-y-4 cube-shadow-red flex flex-col items-center justify-center text-center overflow-hidden">
-<img alt="Performance Tee" class="w-48 h-48 object-contain mix-blend-multiply group-hover:rotate-6 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxq-CORVvUu8RGVA5mj0Bm5vfwOXuEWF3-STG7_vanuJ34QWGWdRjf-uqHAX05Vw3bNHmPepnw-8NNoQ-HgIkXDmXNVqYc92YrhQ6K6JaHfVVnv_rczh1Tc0iWWEUO2LTVzM463Jpn2Y43dgQ-2SwfsL-Aa8MRw26IBt4leneRIn3IQ04XF6gRYP8eFY3YTJOyrZGT6JOQvjv_rdqvuHcbMreiHjuOVTNmrGx9udwL5FisurdZT9NcXEop7AGYfqqMfC7Zf9oRX5g"/>
-<div class="mt-6 text-white">
-<h4 class="font-black uppercase text-sm tracking-tight">Essential Tee</h4>
-<p class="text-[10px] text-red-100 font-bold uppercase tracking-widest mt-1">Coupe Athlétique</p>
-</div>
-</div>
-<!-- Cube 3: Cap -->
-<div class="group relative aspect-square bg-[#e8e1d9] rounded-3xl p-8 transition-all duration-500 hover:-translate-y-4 cube-shadow border border-gray-200 flex flex-col items-center justify-center text-center overflow-hidden">
-<img alt="Trucker Cap" class="w-48 h-48 object-contain mix-blend-multiply group-hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCrdgwQ6yHVQ_8fPoHfHyDQEFMg5VNahXxSTzVLtTctpdVKkDzPaFQVqckCJ7pYJpyBwXo69T7f4YpzYZwTuvd0aJv6YV4fwZ6iLImX1akMHnzJlQcqf-f5y5AgOtpNfESmRX_naX8LpSaqol-McpUulpw-EO4f6j6n0Kt1KbDaf2MjPah1U5LTV7x1Lni1KO607zVUX0gdvYyEFp-t2d9PNQuRlLOvRh8B0SAgTFDgMvPUKQwb9ahCwCj_kLH4Y8lehQbDaRXYFg8"/>
-<div class="mt-6">
-<h4 class="font-black uppercase text-sm tracking-tight text-gray-800">Trucker Cap</h4>
-<p class="text-[10px] text-gray-500 font-bold uppercase tracking-widest mt-1">Logo Brodé 3D</p>
-</div>
-</div>
-<!-- Cube 4: Shorts (Matte Gray) -->
-<div class="group relative aspect-square bg-[#2a2a2a] rounded-3xl p-8 transition-all duration-500 hover:-translate-y-4 shadow-2xl flex flex-col items-center justify-center text-center overflow-hidden">
-<img alt="Training Shorts" class="w-48 h-48 object-contain mix-blend-multiply group-hover:-rotate-3 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3QzLuo4awW_VePxK5bVEZHHirLUa0yOmsSBiv7LwjXPRIVOhqGVIT08WPq78yeMZ7fyfNGJYd6RTgoHJ4_rH4DfWn3NRLZ3F2FxJ9KsZXTc2kzib2cuyFbFe1YJ4dV3zL0edWyMmE-wxy91NBO4nrA0ksu-tAb8S7n3tdMu8Hb11k_Z325O3E2hhTygb6sxfCt7yhZyHWHIf7PRnAcFcQQ2IInu4xG1KQJ34ejeZtVbCLdNzGSHay1lAaN0Ylffg71Es5Q_BNNbk"/>
-<div class="mt-6 text-white">
-<h4 class="font-black uppercase text-sm tracking-tight">Training Shorts</h4>
-<p class="text-[10px] text-gray-400 font-bold uppercase tracking-widest mt-1">Tissu Ultra-Stretch</p>
-</div>
-</div>
-</div>
-</section>
-<!-- 6. WHAT WE SELL SECTION (QUE VENDONS-NOUS ?) -->
-<section class="py-20 px-6 md:px-12 max-w-7xl mx-auto">
-<h2 class="text-4xl md:text-6xl font-black uppercase italic tracking-tighter leading-none mb-12 text-gray-800">
-            QUE <span class="text-red-600">VENDONS-NOUS ?</span>
+<h2 class="text-4xl md:text-6xl font-black uppercase italic tracking-tighter mb-6 leading-none">
+                NE MANQUEZ <br/><span class="text-red-600">AUCUN DROP</span>
 </h2>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-<!-- Guide 1: Brown Style -->
-<div class="bg-white rounded-[2rem] overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 flex flex-col group border border-gray-100">
-<div class="h-80 overflow-hidden relative">
-<img alt="Nutrition &amp; Alimentation" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1-Om3q6eSsZx5B8A00uC6ccb7UUWdibNlUJ1yTPEBHAWRXIxkBFD8LpF6WRvJmL5k586MTvLjRCFW_KjlQMAXausjE276UAG-1zi4XK9WSVQ3kv7iL3RcvwPhzWcPm9XvK4SzpUDYOKRCkwlZO76mLSjTIxjP9UNYpbr-LYRPWp0I7O_JUYXkCWyFdAipV_gGP7BxbLo4V07_yje5knrfO7PzXzBWl8hDMEfHxz5HFMBZG2VSl76w0v-vrrgX4ywb2zc2t9M6Lew"/>
-<div class="absolute top-6 left-6">
-<span class="bg-red-600 text-white text-[10px] font-black uppercase tracking-widest px-4 py-1.5 rounded-full shadow-lg">Guide Nutrition</span>
+<p class="text-gray-400 text-lg font-medium max-w-md">
+                Recevez nos dernières sorties lifestyle, conseils nutrition et offres exclusives directement dans votre boîte mail.
+            </p>
+<div class="mt-8 flex items-center gap-4">
+<div class="flex -space-x-3">
+<div class="w-10 h-10 rounded-full border-2 border-[#2a2a2a] bg-gray-600 overflow-hidden"><img alt="user" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBlT6a1_vxsP84RfVWjWVYQ5YTYR0RXKFourufmtIBQc3LOR7jDrop-fX3CyYNxn9dVzWYWTxCECHQjQFZYyp2AOFkOb6acToA9wca1yKI6pwydsKtAhkDjIbvbO1PKMMJ6LD6g26ZbrMNwMzy6Opxq9Uxd4IsURcQ-AQhTuLKeRYyvwmzgv_lxEr3cuq3POiNQw1y9X9wVWxnraS50-mDIuX1RnttIGR-66mp1EPVUQGNnb-vGLOyBOmj0tOHUQTHDJXjiP463Wk0"/></div>
+<div class="w-10 h-10 rounded-full border-2 border-[#2a2a2a] bg-gray-500 overflow-hidden"><img alt="user" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCaWjNwESksfeVmsN3npY8cYSCQ7BPnY0cqYmmtolw40kJqzVBAfn8HAJviY7tYJqQo9avlgGjxa51KD-RTerImddCtwgGkw-8pXc_N1fcOpwBdooXC8yfz_307fbsoHSOc7lGC2yCXMPhd91UbCz5b-MpJAfYuS0_2U9nJsMRI385SeZHS1Vihw6fdW3cu8EYANhZk2ULersEk7BYfJnkHOxKadf51KoLocJETv8BnoACUFKIGRoT-Aa__PedUgS5NrqwH07gUMLk"/></div>
+<div class="w-10 h-10 rounded-full border-2 border-[#2a2a2a] bg-gray-400 overflow-hidden"><img alt="user" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA8ZNDzlu0W1fs3j6lZQdkGLqTNpqtZYZuuW9R-rnG0fmCXX0VlGrOZLS-K9P9IEpwvL4JrpgQXhWD-hzSbZfwUQL7iWmoSnnCL8vaRHhPnjhZPGAZn66XTSRPTR1W3V8RI714jY6_MQVJ6o6WclxLWMQNyrLedoxxfmWnKvDgbo-GkZaLDAcqI4f-gY-hsyb_PPvz0a7aulxuukVbQORQvbcRo_aYxGjtNz6QxoqwyNK0JwWTf1utFn3G1RVCt2H3GWNU4yZtF02E"/></div>
+</div>
+<span class="text-[10px] text-gray-500 font-black uppercase tracking-widest">Rejoignez +5000 membres actifs</span>
 </div>
 </div>
-<div class="p-10 flex-grow flex flex-col">
-<h3 class="text-3xl font-black uppercase tracking-tighter mb-4 text-gray-800">Nutrition &amp; Alimentation</h3>
-<p class="text-gray-600 text-sm font-medium mb-8 leading-relaxed">Découvrez nos sélections d'encas sains, de protéines d'origine contrôlée et de conseils alimentaires pour optimiser votre récupération quotidienne.</p>
-<div class="mt-auto">
-<a class="inline-flex items-center text-red-600 font-black uppercase tracking-widest text-[11px] hover:text-[#2a2a2a] transition group/btn" href="#">
-                            LIRE L'ARTICLE 
-                            <span class="ml-2 transform transition-transform group-hover/btn:translate-x-1">→</span>
-</a>
-</div>
-</div>
-</div>
-<!-- Guide 2: Matte Gray Style -->
-<div class="bg-[#2a2a2a] rounded-[2rem] overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 flex flex-col group border border-gray-800">
-<div class="h-80 overflow-hidden relative">
-<img alt="Performance" class="w-full h-full object-cover grayscale opacity-60 transition-all duration-700 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB9BQKuz7_R44yDZdgyifRHz9Zirx-rZdMKhRbvofF8PXZmta-x-CZUASye4tHGDbkc9UY5Jv4LHyv1SAcXRm8RYgbGiN2_YtOCdBKZLbk7sHcS7H1WVy-dl4-PTIvcw0FuJ3eJgKCPSkFwY6gBBsZcTp3F89sCpDZiLGe4c7Nv2yFd5WXNFES9NnTXNqtU7TBJS94iXiyd6__CnMgpMuxEwfy6fsLWAuXlG8-NHYsofulWPPJfAIOvR9yhQA5MV6UGr-ssjSiVN8c"/>
-<div class="absolute top-6 left-6">
-<span class="bg-[#8b735b] text-white text-[10px] font-black uppercase tracking-widest px-4 py-1.5 rounded-full shadow-lg">Performance</span>
-</div>
-</div>
-<div class="p-10 flex-grow flex flex-col">
-<h3 class="text-3xl font-black uppercase tracking-tighter mb-4 text-white">Compléments de Performance</h3>
-<p class="text-gray-400 text-sm font-medium mb-8 leading-relaxed">Boostez vos séances avec nos pré-workouts et acides aminés de grade pharmaceutique. Une puissance pure pour vos objectifs les plus ambitieux.</p>
-<div class="mt-auto">
-<a class="inline-flex items-center text-red-600 font-black uppercase tracking-widest text-[11px] hover:text-white transition group/btn" href="#">
-                            EN SAVOIR PLUS 
-                            <span class="ml-2 transform transition-transform group-hover/btn:translate-x-1">→</span>
-</a>
-</div>
-</div>
-</div>
-<!-- Guide 3: Beige/Brown Tint -->
-<div class="bg-[#e8e1d9] rounded-[2rem] overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 flex flex-col group border border-gray-200">
-<div class="h-80 overflow-hidden relative">
-<img alt="Wellness" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3QzLuo4awW_VePxK5bVEZHHirLUa0yOmsSBiv7LwjXPRIVOhqGVIT08WPq78yeMZ7fyfNGJYd6RTgoHJ4_rH4DfWn3NRLZ3F2FxJ9KsZXTc2kzib2cuyFbFe1YJ4dV3zL0edWyMmE-wxy91NBO4nrA0ksu-tAb8S7n3tdMu8Hb11k_Z325O3E2hhTygb6sxfCt7yhZyHWHIf7PRnAcFcQQ2IInu4xG1KQJ34ejeZtVbCLdNzGSHay1lAaN0Ylffg71Es5Q_BNNbk"/>
-<div class="absolute top-6 left-6">
-<span class="bg-[#2a2a2a] text-white text-[10px] font-black uppercase tracking-widest px-4 py-1.5 rounded-full shadow-lg">Wellness</span>
-</div>
-</div>
-<div class="p-10 flex-grow flex flex-col">
-<h3 class="text-3xl font-black uppercase tracking-tighter mb-4 text-gray-800">Boissons Bien-être</h3>
-<p class="text-[#8b735b] text-sm font-bold mb-8 leading-relaxed">Hydratation ionique et boissons fonctionnelles. Apprenez comment une hydratation ciblée transforme votre clarté mentale et physique.</p>
-<div class="mt-auto">
-<a class="inline-flex items-center text-red-600 font-black uppercase tracking-widest text-[11px] hover:text-[#2a2a2a] transition group/btn" href="#">
-                            LIRE L'ARTICLE 
-                            <span class="ml-2 transform transition-transform group-hover/btn:translate-x-1">→</span>
-</a>
-</div>
-</div>
-</div>
+<div class="bg-black/20 p-8 md:p-10 rounded-[2rem] border border-white/5 backdrop-blur-sm"><script charset="utf-8" src="//js-eu1.hsforms.net/forms/embed/v2.js" type="text/javascript"></script><script>hbspt.forms.create({portalId: "147534610",formId: "4fbef543-cde5-4bf0-9ac9-5700a6d5dea4",region: "eu1"});</script></div>
 </div>
 </section>
-<!-- 7. MODULAR FOOTER -->
+<!-- FOOTER -->
 <footer class="bg-[#1a1a1a] text-white pt-20 pb-10 px-8" id="footer">
 <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
 <div class="md:col-span-1">
@@ -366,17 +447,15 @@
 <div>
 <h4 class="font-black uppercase text-xs tracking-widest mb-8 text-red-500">Navigation</h4>
 <ul class="space-y-4 text-sm font-bold text-gray-500">
-<li><a class="hover:text-white transition" href="VOTRE_LIEN_SUMUP" target="_blank">Boutique SumUp</a></li>
+<li><a class="hover:text-white transition" href="#">Boutique SumUp</a></li>
 <li><a class="hover:text-white transition" href="#">Contact</a></li>
-<li><a class="hover:text-white transition" href="#">Mentions Légales</a></li>
 </ul>
 </div>
 <div>
 <h4 class="font-black uppercase text-xs tracking-widest mb-8 text-red-500">Suivez-nous</h4>
 <div class="flex space-x-4">
-<a class="w-10 h-10 bg-white/5 rounded-full flex items-center justify-center hover:bg-red-600 transition" href="https://www.instagram.com/ecommerce_fitnessgrams?igsh=MWRwaDI2ODl6OW81cA==" target="_blank">IG</a>
-<a class="w-10 h-10 bg-white/5 rounded-full flex items-center justify-center hover:bg-red-600 transition" href="https://www.tiktok.com/@fitnessgrams?_r=1&amp;_t=ZN-95bG6MTtmIY" target="_blank">TK</a>
-<a class="w-10 h-10 bg-white/5 rounded-full flex items-center justify-center hover:bg-red-600 transition" href="https://www.facebook.com/share/1CHNUP9uif/" target="_blank">FB</a>
+<a class="w-10 h-10 bg-white/5 rounded-full flex items-center justify-center hover:bg-red-600 transition" href="https://www.instagram.com/ecommerce_fitnessgrams?igsh=MWRwaDI2ODl6OW81cA=="><svg class="w-5 h-5 fill-current" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path></svg></a>
+<a class="w-10 h-10 bg-white/5 rounded-full flex items-center justify-center hover:bg-red-600 transition" href="https://www.tiktok.com/@fitnessgrams?_r=1&amp;_t=ZN-95bG6MTtmIY"><svg class="w-5 h-5 fill-current" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1.04-.1z"></path></svg></a><a class="w-10 h-10 bg-white/5 rounded-full flex items-center justify-center hover:bg-red-600 transition" href="https://www.facebook.com/share/1CHNUP9uif/"><svg class="w-5 h-5 fill-current" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"></path></svg></a>
 </div>
 </div>
 <div>
@@ -387,8 +466,8 @@
 </form>
 </div>
 </div>
-<div class="text-center pt-8 border-t border-white/5 text-[10px] text-gray-600 font-bold uppercase tracking-[0.2em]"> © 2024 FITNESS-GRAMS. TOUS DROITS RÉSERVÉS. PAIEMENTS SÉCURISÉS PAR SUMUP. </div>
+<div class="text-center pt-8 border-t border-white/5 text-[10px] text-gray-600 font-bold uppercase tracking-[0.2em]"> © 2024 FITNESS-GRAMS. TOUS DROITS RÉSERVÉS. </div>
 </footer>
-    {{ standard_footer_includes }}
 
-</body></html>
+
+```</body></html>
