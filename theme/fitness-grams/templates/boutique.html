@@ -1,50 +1,26 @@
 <!--
   templateType: page
   isAvailableForNewContent: true
-  label: Boutique Minimal
+  label: Boutique Test
 -->
 <!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>{{ content.html_title|default("Boutique | Fitness Grams") }}</title>
+  <title>{{ content.html_title|default("Boutique Test") }}</title>
   {{ standard_header_includes }}
 </head>
 <body>
 
 {% dnd_area "main_content", label="Contenu principal boutique" %}
-
-  {% dnd_section max_width=1200 %}
-    {% dnd_row %}
-
-      {% dnd_column width=6 %}
-        {% dnd_row %}
-          {% dnd_module path='@hubspot/rich_text', label="Texte boutique" %}
-            {% module_attribute "html" %}
-              <h1>Équipement de Haute Performance</h1>
-              <p>Texte modifiable dans HubSpot.</p>
-            {% end_module_attribute %}
-          {% end_dnd_module %}
-        {% end_dnd_row %}
-      {% end_dnd_column %}
-
-      {% dnd_column width=6 %}
-        {% dnd_row %}
-          {% dnd_module path='@hubspot/linked_image',
-            label="Image boutique",
-            img={
-              "src": "https://via.placeholder.com/800x600",
-              "alt": "Image boutique"
-            }
-          %}
-          {% end_dnd_module %}
-        {% end_dnd_row %}
-      {% end_dnd_column %}
-
-    {% end_dnd_row %}
+  {% dnd_section %}
+    {% dnd_module path='@hubspot/rich_text', label="Texte test" %}
+      {% module_attribute "html" %}
+        <h1>Test boutique</h1>
+        <p>Si cette page s’upload, le problème venait bien des colonnes.</p>
+      {% end_module_attribute %}
+    {% end_dnd_module %}
   {% end_dnd_section %}
-
 {% end_dnd_area %}
 
 {{ standard_footer_includes }}
