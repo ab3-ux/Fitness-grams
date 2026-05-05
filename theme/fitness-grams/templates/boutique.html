@@ -1,15 +1,15 @@
 <!--
   templateType: page
   isAvailableForNewContent: true
-  label: Boutique Hybride
+  label: Boutique Minimal
 -->
 <!DOCTYPE html>
-<html class="light" lang="fr">
+<html lang="fr">
 <head>
   <meta charset="utf-8"/>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>{{ content.html_title|default("Boutique | Fitness Grams") }}</title>
-  <meta name="description" content="{{ content.meta_description|default("Découvrez la boutique Fitness Grams : équipement, nutrition et accessoires haute performance.") }}"/>
+  <meta name="description" content="{{ content.meta_description|default("Boutique Fitness Grams") }}"/>
 
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
   <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700;800;900&family=Inter:wght@400;500;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
@@ -17,29 +17,34 @@
   <style>
     :root {
       --primary-color: #b70011;
-      --primary-container: #dc2626;
-      --on-primary: #ffffff;
       --bg-color: #fff8f0;
       --text-main: #1d1b17;
       --text-muted: #5c403c;
-      --border-color: #000000;
-      --surface-container: #f3ede5;
+      --surface: #f3ede5;
       --font-headline: 'Lexend', sans-serif;
       --font-body: 'Inter', sans-serif;
-    }
-
-    .material-symbols-outlined {
-      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
     }
 
     body {
       background-color: var(--bg-color);
       color: var(--text-main);
       font-family: var(--font-body);
+      margin: 0;
     }
 
     h1, h2, h3, h4, .font-lexend {
       font-family: var(--font-headline);
+    }
+
+    .site-shell {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .hero-wrap {
+      padding-top: 120px;
+      padding-bottom: 80px;
     }
 
     .brands-scroll {
@@ -52,240 +57,111 @@
     }
   </style>
 
-  <script id="tailwind-config">
-    tailwind.config = {
-      darkMode: "class",
-      theme: {
-        extend: {
-          colors: {
-            primary: "#b70011",
-            "on-primary": "#ffffff",
-            background: "#fff8f0",
-            "on-background": "#1d1b17",
-            surface: "#fff8f0",
-            "surface-container": "#f3ede5",
-            "surface-container-low": "#f9f3eb",
-            "surface-container-high": "#ede7df",
-            "surface-container-lowest": "#ffffff",
-            "on-surface": "#1d1b17",
-            "on-surface-variant": "#5c403c",
-            outline: "#916f6b",
-            error: "#ba1a1a"
-          },
-          borderRadius: {
-            DEFAULT: "0.125rem",
-            lg: "0.25rem",
-            xl: "0.5rem",
-            full: "0.75rem"
-          },
-          spacing: {
-            md: "16px",
-            margin: "24px",
-            unit: "4px",
-            sm: "8px",
-            xs: "4px",
-            xl: "48px",
-            gutter: "20px",
-            lg: "24px"
-          },
-          fontFamily: {
-            "headline-xl": ["Lexend"],
-            "headline-md": ["Lexend"],
-            "headline-lg": ["Lexend"],
-            "body-lg": ["Inter"],
-            "body-md": ["Inter"]
-          }
-        }
-      }
-    }
-  </script>
-
   {{ standard_header_includes }}
 </head>
+<body>
 
-<body class="antialiased">
-
-  <!-- NAV FIXE -->
-  <nav class="fixed top-0 w-full z-50 bg-white dark:bg-zinc-950 border-b-2 border-black dark:border-zinc-800 shadow-[4px_4px_0px_0px_rgba(220,38,38,1)] h-20">
-    <div class="max-w-[1280px] mx-auto px-6 h-full flex items-center justify-between">
-      <a class="text-2xl font-black text-black dark:text-white italic tracking-tighter" href="/">
+  <!-- HEADER FIXE -->
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-white border-b-2 border-black shadow-[4px_4px_0px_0px_rgba(220,38,38,1)] h-20">
+    <div class="site-shell h-full flex items-center justify-between">
+      <a class="text-2xl font-black italic tracking-tighter text-black no-underline" href="/">
         FITNESS GRAMS
       </a>
 
-      <div class="hidden md:flex items-center space-x-8 font-lexend font-bold uppercase tracking-tight">
-        <a class="text-red-600 dark:text-red-500 border-b-4 border-red-600 pb-1" href="https://fitness-grams.sumupstore.com/" target="_blank" rel="noopener noreferrer">Équipement</a>
-        <a class="text-black dark:text-zinc-400 hover:text-red-600 transition-colors" href="https://fitness-grams.sumupstore.com/" target="_blank" rel="noopener noreferrer">Nutrition</a>
-        <a class="text-black dark:text-zinc-400 hover:text-red-600 transition-colors" href="https://fitness-grams.sumupstore.com/" target="_blank" rel="noopener noreferrer">Accessoires</a>
-        <a class="text-black dark:text-zinc-400 hover:text-red-600 transition-colors" href="https://fitness-grams.sumupstore.com/" target="_blank" rel="noopener noreferrer">Promos</a>
+      <div class="hidden md:flex items-center gap-8 font-lexend font-bold uppercase tracking-tight">
+        <a class="text-red-600 border-b-4 border-red-600 pb-1 no-underline" href="https://fitness-grams.sumupstore.com/" target="_blank" rel="noopener noreferrer">Équipement</a>
+        <a class="text-black hover:text-red-600 no-underline" href="https://fitness-grams.sumupstore.com/" target="_blank" rel="noopener noreferrer">Nutrition</a>
+        <a class="text-black hover:text-red-600 no-underline" href="https://fitness-grams.sumupstore.com/" target="_blank" rel="noopener noreferrer">Accessoires</a>
       </div>
 
-      <div class="flex items-center space-x-6">
-        <a class="text-black dark:text-white hover:text-red-600 transition-all" href="https://fitness-grams.sumupstore.com/" target="_blank" rel="noopener noreferrer" aria-label="Panier">
-          <span class="material-symbols-outlined">shopping_cart</span>
-        </a>
-        <a class="text-black dark:text-white hover:text-red-600 transition-all" href="https://fitness-grams.sumupstore.com/" target="_blank" rel="noopener noreferrer" aria-label="Compte">
-          <span class="material-symbols-outlined">account_circle</span>
-        </a>
-      </div>
+      <a class="text-black no-underline" href="https://fitness-grams.sumupstore.com/" target="_blank" rel="noopener noreferrer" aria-label="Panier">
+        🛒
+      </a>
     </div>
   </nav>
 
-  <!-- CONTENU EDITABLE -->
-  {% dnd_area "main_content", label="Contenu principal boutique" %}
+  <!-- ZONE EDITABLE -->
+  <div class="hero-wrap">
+    <div class="site-shell">
+      {% dnd_area "main_content", label="Contenu principal boutique" %}
 
-    <!-- HERO -->
-    {% dnd_section max_width=1280, vertical_alignment="MIDDLE" %}
-      {% dnd_column width=6 %}
-        {% dnd_row %}
-          {% dnd_module path='@hubspot/rich_text', label="Hero texte" %}
-            {% module_attribute "html" %}
-              <span style="display:block; margin-bottom:16px; letter-spacing:0.15em; text-transform:uppercase; font-weight:700; color:#b70011;">
-                Performance &amp; Nutrition Premium
-              </span>
-              <h1 style="font-family:Lexend, sans-serif; font-size:56px; line-height:1.1; margin:0 0 24px 0; color:#1d1b17;">
-                Équipement de Haute Performance
-              </h1>
-              <p style="font-family:Inter, sans-serif; font-size:18px; line-height:1.7; max-width:580px; margin:0 0 32px 0; color:#5c403c;">
-                Propulsez vos entraînements avec une sélection rigoureuse des meilleurs équipements et compléments du marché. FITNESS GRAMS regroupe les marques leaders pour garantir une performance sans compromis.
-              </p>
-              <p style="margin:0;">
-                <a href="https://fitness-grams.sumupstore.com/" target="_blank" rel="noopener noreferrer" style="display:inline-block; background:#b70011; color:#fff; padding:16px 32px; text-decoration:none; font-family:Lexend, sans-serif; font-weight:700; text-transform:uppercase; border-radius:4px; margin-right:12px;">
-                  Explorer le shop
-                </a>
-                <a href="https://fitness-grams.sumupstore.com/" target="_blank" rel="noopener noreferrer" style="display:inline-block; border:2px solid #000; color:#1d1b17; padding:14px 32px; text-decoration:none; font-family:Lexend, sans-serif; font-weight:700; text-transform:uppercase; border-radius:4px;">
-                  Nos catégories
-                </a>
-              </p>
-            {% end_module_attribute %}
-          {% end_dnd_module %}
-        {% end_dnd_row %}
-      {% end_dnd_column %}
+        {% dnd_section max_width=1280, vertical_alignment="MIDDLE" %}
+          {% dnd_column width=6 %}
+            {% dnd_row %}
+              {% dnd_module path='@hubspot/rich_text', label="Texte boutique" %}
+                {% module_attribute "html" %}
+                  <span style="display:block; margin-bottom:16px; letter-spacing:0.15em; text-transform:uppercase; font-weight:700; color:#b70011;">
+                    Performance &amp; Nutrition Premium
+                  </span>
+                  <h1 style="font-family:Lexend, sans-serif; font-size:56px; line-height:1.1; margin:0 0 24px 0; color:#1d1b17;">
+                    Équipement de Haute Performance
+                  </h1>
+                  <p style="font-family:Inter, sans-serif; font-size:18px; line-height:1.7; margin:0 0 32px 0; color:#5c403c;">
+                    Modifie ce texte directement dans HubSpot sans toucher au code.
+                  </p>
+                  <p style="margin:0;">
+                    <a href="https://fitness-grams.sumupstore.com/" target="_blank" rel="noopener noreferrer" style="display:inline-block; background:#b70011; color:#fff; padding:16px 32px; text-decoration:none; font-family:Lexend, sans-serif; font-weight:700; text-transform:uppercase; border-radius:4px;">
+                      Explorer le shop
+                    </a>
+                  </p>
+                {% end_module_attribute %}
+              {% end_dnd_module %}
+            {% end_dnd_row %}
+          {% end_dnd_column %}
 
-      {% dnd_column width=6 %}
-        {% dnd_row %}
-          {% dnd_module path='@hubspot/linked_image',
-            label="Hero image",
-            img={
-              "src": "https://lh3.googleusercontent.com/aida-public/AB6AXuCNLCdhcbxTgeTJL2FXC4m-JsQ2ZAO-iCXtNFbJ7fKCAYX4RZzbZbxW5qrMYiBbTmd9NImfxtntQi_fdqS1cjMuCZhWZp2TDhu0cc9RVB7wwFGy8o2nJ5WXyYyD58oejYRlsklh6rk2Xbyeh8rn3hwCk4irbf4cbQ4ySCya21rcMsNDu2T-vHGif8CMAuDZeQ3FsK7jMkY0mVmZAAnEh9XMx6m7_2kBgFlejQfLzzsZvzFHkEVmtYd7GWkn4gElZ7h9LcPtv7dRuw",
-              "alt": "High-performance fitness gear showcase"
-            },
-            link={
-              "url": {
-                "href": "https://fitness-grams.sumupstore.com/",
-                "type": "EXTERNAL"
-              },
-              "open_in_new_tab": true,
-              "no_follow": false
-            }
-          %}
-          {% end_dnd_module %}
-        {% end_dnd_row %}
-      {% end_dnd_column %}
-    {% end_dnd_section %}
+          {% dnd_column width=6 %}
+            {% dnd_row %}
+              {% dnd_module path='@hubspot/linked_image',
+                label="Image boutique",
+                img={
+                  "src": "https://lh3.googleusercontent.com/aida-public/AB6AXuCNLCdhcbxTgeTJL2FXC4m-JsQ2ZAO-iCXtNFbJ7fKCAYX4RZzbZbxW5qrMYiBbTmd9NImfxtntQi_fdqS1cjMuCZhWZp2TDhu0cc9RVB7wwFGy8o2nJ5WXyYyD58oejYRlsklh6rk2Xbyeh8rn3hwCk4irbf4cbQ4ySCya21rcMsNDu2T-vHGif8CMAuDZeQ3FsK7jMkY0mVmZAAnEh9XMx6m7_2kBgFlejQfLzzsZvzFHkEVmtYd7GWkn4gElZ7h9LcPtv7dRuw",
+                  "alt": "Image boutique"
+                },
+                link={
+                  "url": {
+                    "href": "https://fitness-grams.sumupstore.com/",
+                    "type": "EXTERNAL"
+                  },
+                  "open_in_new_tab": true
+                }
+              %}
+              {% end_dnd_module %}
+            {% end_dnd_row %}
+          {% end_dnd_column %}
+        {% end_dnd_section %}
 
-    <!-- TEXTE SEO + IMAGE -->
-    {% dnd_section max_width=1280, vertical_alignment="MIDDLE" %}
-      {% dnd_column width=7 %}
-        {% dnd_row %}
-          {% dnd_module path='@hubspot/rich_text', label="Bloc expertise texte" %}
-            {% module_attribute "html" %}
-              <h2 style="font-family:Lexend, sans-serif; font-size:38px; line-height:1.2; margin:0 0 24px 0; color:#1d1b17;">
-                Expert en Équipement et Nutrition Sportive
-              </h2>
-              <p style="font-family:Inter, sans-serif; font-size:16px; line-height:1.8; margin:0 0 18px 0; color:#5c403c;">
-                Chez <strong>Fitness Grams</strong>, nous sommes le distributeur de référence pour vos objectifs de transformation. Nous sélectionnons pour vous les <strong>meilleurs produits du marché mondial</strong>, qu'il s'agisse de matériel de musculation de pointe ou de nutrition haute performance.
-              </p>
-              <p style="font-family:Inter, sans-serif; font-size:16px; line-height:1.8; margin:0; color:#5c403c;">
-                Notre mission est d'offrir un catalogue multimarque unique. Chaque article est choisi pour sa durabilité, son efficacité et son design. Profitez de notre <strong>expertise technique</strong> et de l'assurance de vous équiper avec ce qui se fait de mieux dans l'industrie du fitness et de la performance.
-              </p>
-            {% end_module_attribute %}
-          {% end_dnd_module %}
-        {% end_dnd_row %}
-      {% end_dnd_column %}
+      {% end_dnd_area %}
+    </div>
+  </div>
 
-      {% dnd_column width=5 %}
-        {% dnd_row %}
-          {% dnd_module path='@hubspot/linked_image',
-            label="Image expertise",
-            img={
-              "src": "https://lh3.googleusercontent.com/aida-public/AB6AXuBbH_FcpOenJLvr5yNrk927fE_uOiheQxdDeRSPHoNm3B5g98OqIpWCJ9hw4GqGmcMWu6RAYtGnCrAUH6SfAyQCzhFHSQ5FWc3WrBq1l6Ps7U6u7oc0zD7Mm9uX9J1rFTvommaJoywSnR4VTzuIBiiLkqHox_MPjtcGdFbeQZIWOmmX7oRpdpXfL510WAdiPw6iWRsuOwl3Evwfz13SQpTF4qdZD-Q90hSpx552Jxuxt9gGqOT7kCL2tzuos5-nY45rpRgRZMjAXg",
-              "alt": "Nutrition and supplements"
-            },
-            link={
-              "url": {
-                "href": "https://fitness-grams.sumupstore.com/",
-                "type": "EXTERNAL"
-              },
-              "open_in_new_tab": true,
-              "no_follow": false
-            }
-          %}
-          {% end_dnd_module %}
-        {% end_dnd_row %}
-      {% end_dnd_column %}
-    {% end_dnd_section %}
-
-    <!-- BLOC IMAGE LARGE EDITABLE -->
-    {% dnd_section max_width=1280 %}
-      {% dnd_column %}
-        {% dnd_row %}
-          {% dnd_module path='@hubspot/linked_image',
-            label="Bannière editable",
-            img={
-              "src": "https://lh3.googleusercontent.com/aida-public/AB6AXuBsslNPqXuQx3jBoyG5TAUe7W1UbdagnU_6j42rmPzELC50DS9rPyHPzGJK8y1wZMJ41Grv2U8RXEdsZNVgGJ4cEzqawD2TEY6MKQYZeVZVudyYm1ecnq7gof6LiQtcaSYqwi0GDOtRZUUvn80lR9DFOzCMcbwZwJMDp6fgsTTNEEPzfStmjXq-vkqcE0zeRXIrTy-aQQ0ZupMv1_vDLLmKCd1npd4dWb3_wWX3zg3qIIZ-atC2yJ2PnfFEYy6Ys-s9PIxgrKiCQw",
-              "alt": "Musculation focus"
-            },
-            link={
-              "url": {
-                "href": "https://fitness-grams.sumupstore.com/",
-                "type": "EXTERNAL"
-              },
-              "open_in_new_tab": true,
-              "no_follow": false
-            }
-          %}
-          {% end_dnd_module %}
-        {% end_dnd_row %}
-      {% end_dnd_column %}
-    {% end_dnd_section %}
-
-  {% end_dnd_area %}
-
-  <!-- MARQUES FIXES -->
-  <section class="py-12 bg-black border-y-2 border-primary overflow-hidden">
+  <!-- BANDEAU FIXE -->
+  <section class="py-8 bg-black border-y-2 border-red-700 overflow-hidden">
     <div class="flex items-center gap-12 brands-scroll whitespace-nowrap">
       <div class="flex items-center gap-24 px-12">
         <span class="text-white/40 text-2xl font-black italic uppercase tracking-tighter">OPTIMUM NUTRITION</span>
         <span class="text-white/40 text-2xl font-black italic uppercase tracking-tighter">NIKE PERFORMANCE</span>
         <span class="text-white/40 text-2xl font-black italic uppercase tracking-tighter">DYMATIZE</span>
         <span class="text-white/40 text-2xl font-black italic uppercase tracking-tighter">ROGUE FITNESS</span>
-        <span class="text-white/40 text-2xl font-black italic uppercase tracking-tighter">MUSCLETECH</span>
-        <span class="text-white/40 text-2xl font-black italic uppercase tracking-tighter">UNDER ARMOUR</span>
       </div>
       <div class="flex items-center gap-24 px-12">
         <span class="text-white/40 text-2xl font-black italic uppercase tracking-tighter">OPTIMUM NUTRITION</span>
         <span class="text-white/40 text-2xl font-black italic uppercase tracking-tighter">NIKE PERFORMANCE</span>
         <span class="text-white/40 text-2xl font-black italic uppercase tracking-tighter">DYMATIZE</span>
         <span class="text-white/40 text-2xl font-black italic uppercase tracking-tighter">ROGUE FITNESS</span>
-        <span class="text-white/40 text-2xl font-black italic uppercase tracking-tighter">MUSCLETECH</span>
-        <span class="text-white/40 text-2xl font-black italic uppercase tracking-tighter">UNDER ARMOUR</span>
       </div>
     </div>
   </section>
 
   <!-- FOOTER FIXE -->
-  <footer class="bg-zinc-950 dark:bg-black border-t-4 border-red-600 w-full py-12 px-8 flex flex-col items-center gap-8 text-center text-white">
-    <div class="text-xl font-black italic">FITNESS GRAMS</div>
-
-    <div class="flex flex-wrap justify-center gap-6 font-lexend text-xs uppercase tracking-widest">
-      <a class="text-zinc-500 hover:text-white transition-colors" href="https://fitness-grams.sumupstore.com/" target="_blank" rel="noopener noreferrer">Nos Marques</a>
-      <a class="text-zinc-500 hover:text-white transition-colors" href="https://fitness-grams.sumupstore.com/" target="_blank" rel="noopener noreferrer">Livraison</a>
-      <a class="text-zinc-500 hover:text-white transition-colors" href="https://fitness-grams.sumupstore.com/" target="_blank" rel="noopener noreferrer">CGV</a>
-      <a class="text-zinc-500 hover:text-white transition-colors" href="https://fitness-grams.sumupstore.com/" target="_blank" rel="noopener noreferrer">Contact</a>
+  <footer class="bg-black border-t-4 border-red-600 py-12 px-8 text-center text-white">
+    <div class="text-xl font-black italic mb-6">FITNESS GRAMS</div>
+    <div class="flex flex-wrap justify-center gap-6 text-xs uppercase tracking-widest">
+      <a class="text-zinc-400 hover:text-white no-underline" href="https://fitness-grams.sumupstore.com/" target="_blank" rel="noopener noreferrer">Nos Marques</a>
+      <a class="text-zinc-400 hover:text-white no-underline" href="https://fitness-grams.sumupstore.com/" target="_blank" rel="noopener noreferrer">Livraison</a>
+      <a class="text-zinc-400 hover:text-white no-underline" href="https://fitness-grams.sumupstore.com/" target="_blank" rel="noopener noreferrer">Contact</a>
     </div>
-
-    <p class="font-lexend text-xs uppercase tracking-widest text-zinc-500">
-      © 2026 FITNESS GRAMS. DISTRIBUTEUR OFFICIEL MULTIMARQUES.
+    <p class="text-xs uppercase tracking-widest text-zinc-500 mt-6">
+      © 2026 FITNESS GRAMS
     </p>
   </footer>
 
