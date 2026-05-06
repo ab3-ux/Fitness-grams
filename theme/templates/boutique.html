@@ -1,28 +1,287 @@
 <!--
   templateType: page
   isAvailableForNewContent: true
-  label: Boutique Test
+  label: Boutique minimaliste
 -->
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8"/>
-  <title>{{ content.html_title|default("Boutique Test") }}</title>
+  <meta charset="utf-8" />
+  <title>{{ content.html_title|default("Boutique | Fitness Grams") }}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   {{ standard_header_includes }}
+
+  <style>
+    :root {
+      --bg: #f8f5ef;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --accent: #111827;
+      --line: #e5e7eb;
+      --radius: 18px;
+      --shadow: 0 10px 30px rgba(0,0,0,0.08);
+      --max: 1200px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    .boutique-page {
+      min-height: 100vh;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .hero {
+      padding: 64px 0 32px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .hero-copy {
+      background: transparent;
+    }
+
+    .hero-kicker {
+      display: inline-block;
+      margin-bottom: 14px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: #efe8dc;
+      color: #5b4a2f;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    .hero-cta {
+      margin-top: 24px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      padding: 14px 22px;
+      font-size: 15px;
+      font-weight: 700;
+      transition: 0.2s ease;
+      border: 1px solid transparent;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      opacity: 0.92;
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--accent);
+      border-color: var(--line);
+    }
+
+    .btn-secondary:hover {
+      background: #fff;
+    }
+
+    .hero-visual {
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 18px;
+    }
+
+    .hero-visual img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 14px;
+    }
+
+    .info-section {
+      padding: 24px 0 72px;
+    }
+
+    .info-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 28px;
+    }
+
+    .info-card h2,
+    .info-card h3 {
+      margin-top: 0;
+    }
+
+    .info-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .shop-link-wrap {
+      margin-top: 24px;
+    }
+
+    .footer-note {
+      padding: 0 0 56px;
+      color: var(--muted);
+      font-size: 14px;
+      text-align: center;
+    }
+
+    .hs_cos_wrapper_type_linked_image img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 40px;
+      }
+    }
+  </style>
 </head>
 <body>
+  <div class="boutique-page">
 
-{% dnd_area "main_content", label="Contenu principal boutique" %}
-  {% dnd_section %}
-    {% dnd_module path='@hubspot/rich_text', label="Texte test" %}
-      {% module_attribute "html" %}
-        <h1>Test boutique</h1>
-        <p>Si cette page s’upload, le problème venait bien des colonnes.</p>
-      {% end_module_attribute %}
-    {% end_dnd_module %}
-  {% end_dnd_section %}
-{% end_dnd_area %}
+    <section class="hero">
+      <div class="container">
+        <div class="hero-grid">
 
-{{ standard_footer_includes }}
+          <div class="hero-copy">
+            <div class="hero-kicker">Boutique Fitness Grams</div>
+
+            {% dnd_area "hero_text_area", label="Zone texte hero boutique" %}
+              {% dnd_section %}
+                {% dnd_module path="@hubspot/rich_text", label="Texte principal boutique" %}
+                  {% module_attribute "html" %}
+                    <h1>Découvrez la boutique Fitness Grams</h1>
+                    <p>
+                      Retrouvez nos produits, accessoires et essentiels fitness dans une boutique simple,
+                      claire et rapide à explorer.
+                    </p>
+                    <p>
+                      Modifiez ce texte directement dans HubSpot sans toucher au design de la page.
+                    </p>
+                  {% end_module_attribute %}
+                {% end_dnd_module %}
+              {% end_dnd_section %}
+            {% end_dnd_area %}
+
+            <div class="hero-cta">
+              <a class="btn btn-primary" href="https://fitness-grams.sumupstore.com/" target="_blank" rel="noopener">
+                Voir la boutique
+              </a>
+              <a class="btn btn-secondary" href="https://fitness-grams.sumupstore.com/" target="_blank" rel="noopener">
+                Acheter maintenant
+              </a>
+            </div>
+          </div>
+
+          <div class="hero-visual">
+            {% dnd_area "hero_image_area", label="Zone image boutique" %}
+              {% dnd_section %}
+                {% dnd_module
+                  path="@hubspot/linked_image",
+                  label="Image boutique"
+                %}
+                  {% module_attribute "img" %}
+                    {
+                      "src": "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1200&q=80",
+                      "alt": "Image boutique fitness"
+                    }
+                  {% end_module_attribute %}
+                  {% module_attribute "href" %}
+                    "https://fitness-grams.sumupstore.com/"
+                  {% end_module_attribute %}
+                  {% module_attribute "open_in_new_tab" %}
+                    true
+                  {% end_module_attribute %}
+                {% end_dnd_module %}
+              {% end_dnd_section %}
+            {% end_dnd_area %}
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="info-section">
+      <div class="container">
+        <div class="info-card">
+          {% dnd_area "secondary_text_area", label="Zone texte secondaire boutique" %}
+            {% dnd_section %}
+              {% dnd_module path="@hubspot/rich_text", label="Texte secondaire boutique" %}
+                {% module_attribute "html" %}
+                  <h2>Une présentation propre et facile à mettre à jour</h2>
+                  <p>
+                    Cette section vous permet d’ajouter une description, des précisions sur vos produits
+                    ou un message de marque, tout en gardant la mise en page verrouillée dans le template.
+                  </p>
+                  <h3>Ce que vous pouvez modifier</h3>
+                  <p>
+                    Le texte et l’image sont modifiables dans l’éditeur HubSpot. Le style visuel,
+                    l’espacement, les boutons et la structure restent définis dans le code.
+                  </p>
+                {% end_module_attribute %}
+              {% end_dnd_module %}
+            {% end_dnd_section %}
+          {% end_dnd_area %}
+
+          <div class="shop-link-wrap">
+            <a class="btn btn-primary" href="https://fitness-grams.sumupstore.com/" target="_blank" rel="noopener">
+              Accéder à la boutique SumUp
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="container">
+      <div class="footer-note">
+        Boutique reliée à votre espace de vente externe.
+      </div>
+    </div>
+
+  </div>
+
+  {{ standard_footer_includes }}
 </body>
 </html>
