@@ -119,6 +119,45 @@
       margin-top: 0.125rem !important;
     }
 
+    /* HEADER FIXE FITNESS-GRAM'S */
+    .fg-brand {
+      text-decoration: none;
+    }
+
+    .fg-nav-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 0.85rem 1.25rem;
+      border-radius: 999px;
+      background: rgba(42, 42, 42, 0.92);
+      color: #ffffff;
+      font-size: 0.72rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.14);
+      transition: all 0.25s ease;
+    }
+
+    .fg-nav-btn:hover {
+      background: #dc2626;
+      transform: translateY(-2px);
+      box-shadow: 0 14px 30px rgba(220, 38, 38, 0.28);
+    }
+
+    .fg-nav-btn-primary {
+      background: #dc2626;
+      color: white;
+    }
+
+    .fg-nav-btn-primary:hover {
+      background: #b91c1c;
+    }
+
     /* ARC CATALOG */
     .arc-catalog-section {
       position: relative;
@@ -305,6 +344,11 @@
     }
 
     @media (max-width: 768px) {
+      .fg-nav-btn {
+        width: 100%;
+        letter-spacing: 0.12em;
+      }
+
       .arc-product-card {
         flex: 0 0 200px;
         height: 285px;
@@ -328,36 +372,36 @@
 
 <body class="bg-[#f2ece4] text-gray-900 overflow-x-hidden">
 
-  <!-- 1. TOP ANNOUNCEMENT BAR -->
-  <div class="bg-[#2a2a2a] text-white py-2.5 px-4 text-center text-[10px] md:text-xs font-bold tracking-widest uppercase border-b border-red-600">
-    ✨ LIVRAISON OFFERTE DÈS 50€ SUR NOTRE <a class="text-red-500 underline underline-offset-4 hover:text-white transition" href="#" target="_blank">E-BOUTIQUE</a> ✨
-  </div>
+  <!-- HEADER FIXE -->
+  <header class="fixed top-0 left-0 w-full z-50 px-4 md:px-8 pt-4">
+    <nav class="max-w-6xl mx-auto bg-white/88 backdrop-blur-xl border border-white/40 shadow-[0_12px_40px_rgba(0,0,0,0.12)] rounded-[2rem] px-6 md:px-10 py-4">
+      <div class="flex flex-col items-center justify-center gap-4">
 
-  <!-- 2. HEADER NAVIGATION -->
-  <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md shadow-sm py-4 px-6 md:px-12 flex justify-between items-center">
-    <div class="font-black text-2xl tracking-tighter uppercase italic text-gray-800 flex items-center">
-      <svg class="inline-block mr-2 w-10 h-10 -mt-1.5" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="50" cy="50" fill="#2a2a2a" r="48"></circle>
-        <circle cx="50" cy="50" fill="none" opacity="0.2" r="42" stroke="white" stroke-width="1"></circle>
-        <circle cx="50" cy="50" fill="none" opacity="0.1" r="38" stroke="white" stroke-width="0.5"></circle>
-        <circle cx="50" cy="15" fill="#1a1a1a" r="4"></circle>
-        <circle cx="50" cy="85" fill="#1a1a1a" r="4"></circle>
-        <circle cx="15" cy="50" fill="#1a1a1a" r="4"></circle>
-        <circle cx="85" cy="50" fill="#1a1a1a" r="4"></circle>
-        <circle cx="50" cy="50" fill="white" r="32"></circle>
-        <circle cx="50" cy="50" fill="none" r="30" stroke="#dc2626" stroke-width="4"></circle>
-        <text dominant-baseline="central" fill="#2a2a2a" font-family="Inter, sans-serif" font-size="35" font-weight="900" style="font-style: italic;" text-anchor="middle" x="50%" y="50%">F</text>
-      </svg>
-      FITNESS<span class="text-red-600">-GRAMS</span>
-    </div>
-    <div class="hidden md:flex space-x-10 font-bold text-xs uppercase tracking-widest">
-      <a class="hover:text-red-600 transition" href="https://www.fitness-grams.com/boutique" target="_blank">notre univers</a>
-      <a class="hover:text-red-600 transition" href="#about">À propos</a>
-    </div>
-  </nav>
+        <a href="#" class="fg-brand text-center">
+          <span class="block text-[1.9rem] md:text-[2.6rem] font-black uppercase italic tracking-[-0.04em] text-gray-900 leading-none">
+            FITNESS<span class="text-red-600">-GRAM'S</span>
+          </span>
+        </a>
+
+        <div class="flex flex-wrap items-center justify-center gap-3 md:gap-4">
+          <a href="https://fitness-grams.sumupstore.com/" target="_blank" class="fg-nav-btn fg-nav-btn-primary">
+            E-boutique
+          </a>
+
+          <a href="https://www.fitness-grams.com/boutique" target="_blank" class="fg-nav-btn">
+            Notre univers
+          </a>
+
+          <a href="#about" class="fg-nav-btn">
+            À propos
+          </a>
+        </div>
+      </div>
+    </nav>
+  </header>
 
   <!-- 3. HERO SECTION -->
-  <section class="relative h-[90vh] flex items-center justify-center text-white overflow-hidden bg-[#0a0a0a]">
+  <section class="relative min-h-screen pt-40 md:pt-44 flex items-center justify-center text-white overflow-hidden bg-[#0a0a0a]">
     <div class="absolute inset-0 pointer-events-none select-none overflow-hidden">
       <div class="text-outline-dark text-7xl md:text-[14rem] font-black uppercase italic leading-none absolute -top-10 -left-10 -rotate-12 opacity-70">WHEY</div>
       <div class="text-outline-dark text-7xl md:text-[18rem] font-black uppercase italic leading-none absolute top-1/4 -right-20 rotate-6 opacity-70">PROTÉINE</div>
@@ -507,20 +551,20 @@
   </div>
         </div>
 
-      <div class="arc-nav">
-        <button class="arc-btn" data-track="arcTrack1" data-dir="prev">←</button>
-        <button class="arc-btn" data-track="arcTrack1" data-dir="next">→</button>
+        <div class="arc-nav">
+          <button class="arc-btn" data-track="arcTrack1" data-dir="prev">←</button>
+          <button class="arc-btn" data-track="arcTrack1" data-dir="next">→</button>
+        </div>
       </div>
-    </div>
 
-    <div class="arc-catalog-wrap">
-      <p class="arc-row-kicker">Sélection lifestyle</p>
-      <h3 class="text-2xl md:text-4xl font-black uppercase italic tracking-tighter text-gray-800 mt-2">
-        PICKS <span class="text-red-600">FITNESS-GRAMS</span>
-      </h3>
+      <div class="arc-catalog-wrap">
+        <p class="arc-row-kicker">Sélection lifestyle</p>
+        <h3 class="text-2xl md:text-4xl font-black uppercase italic tracking-tighter text-gray-800 mt-2">
+          PICKS <span class="text-red-600">FITNESS-GRAMS</span>
+        </h3>
 
-      <div class="arc-row-shell">
-        <div class="arc-track" id="arcTrack2">
+        <div class="arc-row-shell">
+          <div class="arc-track" id="arcTrack2">
   <div class="arc-product-card dark">
     <div class="arc-card-media">
       <img src="https://147534610.fs1.hubspotusercontent-eu1.net/hubfs/147534610/BARRE-PROTEINE-BAREBELLS-1.jpeg" alt="Barebells Barre Protéinée">
@@ -538,7 +582,7 @@
 
   <div class="arc-product-card red">
     <div class="arc-card-media">
-      <img src="https://147534610.fs1.hubspotusercontent-eu1.net/hubfs/147534610/Screenshot_20260512_010809_Instagram-1.jpg" alt="Barebells Milk-Shake">
+      <img src="https://147534610.fs1.hubspotusercontent-eu1.net/hubfs/147534610/images-2.jpeg" alt="Barebells Milk-Shake">
       <div class="arc-card-overlay"></div>
       <div class="arc-badge">Milk-shake</div>
     </div>
@@ -553,7 +597,7 @@
 
   <div class="arc-product-card">
     <div class="arc-card-media">
-      <img src="https://147534610.fs1.hubspotusercontent-eu1.net/hubfs/147534610/images-2.jpeg" alt="Encas Protéiné">
+      <img src="https://147534610.fs1.hubspotusercontent-eu1.net/hubfs/147534610/file_00000000b1ac720ab3fea2e82d1d686a.png" alt="Encas Protéiné">
       <div class="arc-card-overlay"></div>
       <div class="arc-badge">Snack</div>
     </div>
@@ -567,9 +611,10 @@
   </div>
         </div>
 
-      <div class="arc-nav">
-        <button class="arc-btn" data-track="arcTrack2" data-dir="prev">←</button>
-        <button class="arc-btn" data-track="arcTrack2" data-dir="next">→</button>
+        <div class="arc-nav">
+          <button class="arc-btn" data-track="arcTrack2" data-dir="prev">←</button>
+          <button class="arc-btn" data-track="arcTrack2" data-dir="next">→</button>
+        </div>
       </div>
     </div>
   </section>
@@ -933,3 +978,4 @@
   </script>
 </body>
 </html>
+```
