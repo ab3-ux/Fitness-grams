@@ -343,6 +343,277 @@
       color: #8b735b;
     }
 
+    /* PREMIUM DELIVERY TRANSITION */
+    .fg-premium-delivery-band {
+      --fg-box-1: #d8a36e;
+      --fg-box-2: #bd7d46;
+      --fg-box-3: #9e6232;
+      --fg-box-4: #f0c28f;
+      --fg-glow: rgba(255, 209, 156, 0.34);
+      --fg-text: #1f2937;
+
+      position: relative;
+      margin: 1.5rem 0 3.25rem;
+      padding: 2.5rem 1.25rem 2.75rem;
+      border-radius: 2.5rem;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 50% 35%, rgba(255,255,255,0.9) 0%, rgba(255,248,240,0.62) 24%, rgba(255,255,255,0) 58%),
+        linear-gradient(180deg, rgba(255,255,255,0.5) 0%, rgba(232,225,217,0.42) 100%);
+      border: 1px solid rgba(255,255,255,0.55);
+      box-shadow: 0 20px 50px rgba(58, 34, 14, 0.08), 0 8px 24px rgba(220, 38, 38, 0.05);
+      isolation: isolate;
+    }
+
+    .fg-premium-delivery-band::after {
+      content: "";
+      position: absolute;
+      inset: auto 12% 0 12%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(139,115,91,0.18), transparent);
+    }
+
+    .fg-premium-delivery-inner {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.75rem;
+      align-items: center;
+      justify-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
+      z-index: 2;
+    }
+
+    .fg-premium-delivery-glow {
+      position: absolute;
+      left: 50%;
+      top: 48%;
+      width: 320px;
+      height: 320px;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      background: radial-gradient(circle, var(--fg-glow) 0%, rgba(255,214,170,0.14) 34%, rgba(255,255,255,0) 72%);
+      filter: blur(14px);
+      animation: fgGlowBreath 5.5s ease-in-out infinite;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .fg-premium-delivery-copy {
+      text-align: center;
+      max-width: 640px;
+    }
+
+    .fg-premium-delivery-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin-bottom: 0.9rem;
+      padding: 0.7rem 1rem;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.7);
+      border: 1px solid rgba(191,129,70,0.18);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      color: #8b5728;
+      font-size: 0.68rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+    }
+
+    .fg-premium-delivery-kicker::before,
+    .fg-premium-delivery-kicker::after {
+      content: "";
+      width: 18px;
+      height: 1px;
+      background: rgba(139,87,40,0.35);
+    }
+
+    .fg-premium-delivery-title {
+      margin: 0;
+      font-size: clamp(1.9rem, 4vw, 3.8rem);
+      line-height: 0.95;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: -0.05em;
+      font-style: italic;
+      color: #2a2a2a;
+    }
+
+    .fg-premium-delivery-title span {
+      color: #dc2626;
+    }
+
+    .fg-premium-delivery-text {
+      margin: 1rem auto 0;
+      max-width: 520px;
+      font-size: 0.96rem;
+      line-height: 1.7;
+      font-weight: 700;
+      color: #6b7280;
+    }
+
+    .fg-premium-delivery-scene {
+      position: relative;
+      width: 320px;
+      height: 220px;
+      perspective: 1200px;
+    }
+
+    .fg-premium-delivery-box-wrap {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      transform-style: preserve-3d;
+      animation: fgPremiumFloat 5s ease-in-out infinite;
+    }
+
+    .fg-premium-delivery-box {
+      position: relative;
+      width: 132px;
+      height: 132px;
+      transform-style: preserve-3d;
+      transform: rotateX(-20deg) rotateY(-34deg) rotateZ(-1deg);
+      animation: fgPremiumRotate 8s ease-in-out infinite alternate;
+      filter: drop-shadow(0 18px 24px rgba(48, 26, 8, 0.12));
+    }
+
+    .fg-premium-delivery-box .face {
+      position: absolute;
+      width: 132px;
+      height: 132px;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow:
+        inset 0 0 0 1px rgba(255,255,255,0.08),
+        inset 0 10px 22px rgba(255,255,255,0.06),
+        inset 0 -16px 22px rgba(0,0,0,0.07);
+    }
+
+    .fg-premium-delivery-box .face::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.16), rgba(255,255,255,0) 34%, rgba(0,0,0,0.06) 100%);
+      pointer-events: none;
+    }
+
+    .fg-premium-delivery-box .front {
+      background: linear-gradient(135deg, var(--fg-box-1) 0%, var(--fg-box-2) 55%, #a96635 100%);
+      transform: translateZ(66px);
+    }
+
+    .fg-premium-delivery-box .back {
+      background: linear-gradient(135deg, #b06d39 0%, #925726 100%);
+      transform: rotateY(180deg) translateZ(66px);
+    }
+
+    .fg-premium-delivery-box .right {
+      background: linear-gradient(180deg, #cb8b55 0%, var(--fg-box-3) 100%);
+      transform: rotateY(90deg) translateZ(66px);
+    }
+
+    .fg-premium-delivery-box .left {
+      background: linear-gradient(180deg, #b67543 0%, #8d5427 100%);
+      transform: rotateY(-90deg) translateZ(66px);
+    }
+
+    .fg-premium-delivery-box .top {
+      background: linear-gradient(180deg, #efc08b 0%, var(--fg-box-1) 100%);
+      transform: rotateX(90deg) translateZ(66px);
+    }
+
+    .fg-premium-delivery-box .bottom {
+      background: linear-gradient(180deg, #986034 0%, #7b471f 100%);
+      transform: rotateX(-90deg) translateZ(66px);
+    }
+
+    .fg-premium-delivery-box .tape {
+      position: absolute;
+      border-radius: 10px;
+      background: linear-gradient(180deg, rgba(255,243,214,0.96), rgba(225,197,145,0.88));
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.2), 0 0 12px rgba(255,240,214,0.18);
+    }
+
+    .fg-premium-delivery-box .tape-v {
+      top: -1px;
+      left: 50%;
+      width: 18px;
+      height: 132px;
+      transform: translateX(-50%) translateZ(67px);
+    }
+
+    .fg-premium-delivery-box .tape-h {
+      top: 50%;
+      left: 0;
+      width: 132px;
+      height: 18px;
+      transform: translateY(-50%) translateZ(67px);
+      opacity: 0.42;
+    }
+
+    .fg-premium-delivery-specular {
+      position: absolute;
+      top: 14px;
+      left: 16px;
+      width: 42px;
+      height: 72px;
+      border-radius: 999px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.28), rgba(255,255,255,0.02));
+      transform: translateZ(68px) rotate(-8deg);
+      filter: blur(1px);
+      opacity: 0.7;
+      pointer-events: none;
+    }
+
+    .fg-premium-delivery-shadow {
+      position: absolute;
+      left: 50%;
+      bottom: 20px;
+      width: 150px;
+      height: 36px;
+      transform: translateX(-50%);
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(24,18,12,0.30) 0%, rgba(24,18,12,0.14) 42%, rgba(24,18,12,0.02) 72%, rgba(24,18,12,0) 78%);
+      filter: blur(10px);
+      animation: fgPremiumShadow 5s ease-in-out infinite;
+    }
+
+    @keyframes fgPremiumFloat {
+      0%, 100% { transform: translate(-50%, -50%) translateY(0px); }
+      50% { transform: translate(-50%, -50%) translateY(-14px); }
+    }
+
+    @keyframes fgPremiumRotate {
+      0% { transform: rotateX(-20deg) rotateY(-28deg) rotateZ(-1deg); }
+      100% { transform: rotateX(-16deg) rotateY(-40deg) rotateZ(1deg); }
+    }
+
+    @keyframes fgPremiumShadow {
+      0%, 100% {
+        transform: translateX(-50%) scale(0.95);
+        opacity: 0.28;
+      }
+      50% {
+        transform: translateX(-50%) scale(1.08);
+        opacity: 0.15;
+      }
+    }
+
+    @keyframes fgGlowBreath {
+      0%, 100% {
+        transform: translate(-50%, -50%) scale(0.96);
+        opacity: 0.88;
+      }
+      50% {
+        transform: translate(-50%, -50%) scale(1.06);
+        opacity: 1;
+      }
+    }
+
     @media (max-width: 768px) {
       .fg-nav-btn {
         width: 100%;
@@ -363,6 +634,67 @@
       .arc-btn {
         width: 46px;
         height: 46px;
+      }
+
+      .fg-premium-delivery-band {
+        margin: 0.5rem 0 2.4rem;
+        padding: 2rem 1rem 2.2rem;
+        border-radius: 2rem;
+      }
+
+      .fg-premium-delivery-glow {
+        width: 220px;
+        height: 220px;
+      }
+
+      .fg-premium-delivery-scene {
+        width: 240px;
+        height: 190px;
+      }
+
+      .fg-premium-delivery-box {
+        width: 104px;
+        height: 104px;
+      }
+
+      .fg-premium-delivery-box .face {
+        width: 104px;
+        height: 104px;
+        border-radius: 12px;
+      }
+
+      .fg-premium-delivery-box .front { transform: translateZ(52px); }
+      .fg-premium-delivery-box .back { transform: rotateY(180deg) translateZ(52px); }
+      .fg-premium-delivery-box .right { transform: rotateY(90deg) translateZ(52px); }
+      .fg-premium-delivery-box .left { transform: rotateY(-90deg) translateZ(52px); }
+      .fg-premium-delivery-box .top { transform: rotateX(90deg) translateZ(52px); }
+      .fg-premium-delivery-box .bottom { transform: rotateX(-90deg) translateZ(52px); }
+
+      .fg-premium-delivery-box .tape-v {
+        width: 14px;
+        height: 104px;
+        transform: translateX(-50%) translateZ(53px);
+      }
+
+      .fg-premium-delivery-box .tape-h {
+        width: 104px;
+        height: 14px;
+        transform: translateY(-50%) translateZ(53px);
+      }
+
+      .fg-premium-delivery-specular {
+        width: 32px;
+        height: 54px;
+        transform: translateZ(54px) rotate(-8deg);
+      }
+
+      .fg-premium-delivery-title {
+        font-size: 2rem;
+      }
+
+      .fg-premium-delivery-text {
+        font-size: 0.86rem;
+        line-height: 1.6;
       }
     }
   </style>
@@ -505,50 +837,50 @@
 
       <div class="arc-row-shell">
         <div class="arc-track" id="arcTrack1">
-  <div class="arc-product-card">
-    <div class="arc-card-media">
-      <img src="https://147534610.fs1.hubspotusercontent-eu1.net/hubfs/147534610/Picsart_26-05-16_13-30-13-843.jpg" alt="C4 Boisson Énergie">
-      <div class="arc-card-overlay"></div>
-      <div class="arc-badge">Energy</div>
-    </div>
-    <div class="arc-card-body">
-      <div>
-        <h4 class="arc-card-title text-gray-900">C4 Boisson Énergie</h4>
-        <p class="arc-card-text text-gray-500">Boost · focus · performance</p>
-      </div>
-      <a href="https://fitness-grams.sumupstore.com/" target="_blank" class="arc-card-link text-red-600"><span>Voir</span><span>→</span></a>
-    </div>
-  </div>
+          <div class="arc-product-card">
+            <div class="arc-card-media">
+              <img src="https://147534610.fs1.hubspotusercontent-eu1.net/hubfs/147534610/Picsart_26-05-16_13-30-13-843.jpg" alt="C4 Boisson Énergie">
+              <div class="arc-card-overlay"></div>
+              <div class="arc-badge">Energy</div>
+            </div>
+            <div class="arc-card-body">
+              <div>
+                <h4 class="arc-card-title text-gray-900">C4 Boisson Énergie</h4>
+                <p class="arc-card-text text-gray-500">Boost · focus · performance</p>
+              </div>
+              <a href="https://fitness-grams.sumupstore.com/" target="_blank" class="arc-card-link text-red-600"><span>Voir</span><span>→</span></a>
+            </div>
+          </div>
 
-  <div class="arc-product-card dark">
-    <div class="arc-card-media">
-      <img src="https://147534610.fs1.hubspotusercontent-eu1.net/hubfs/147534610/images-1-1.jpeg" alt="Jack3d Boisson Énergie">
-      <div class="arc-card-overlay"></div>
-      <div class="arc-badge">Jack3d</div>
-    </div>
-    <div class="arc-card-body">
-      <div>
-        <h4 class="arc-card-title">Jack3d Boisson Énergie</h4>
-        <p class="arc-card-text">Énergie intense · zéro sucre</p>
-      </div>
-      <a href="https://fitness-grams.sumupstore.com/" target="_blank" class="arc-card-link text-white"><span>Découvrir</span><span>→</span></a>
-    </div>
-  </div>
+          <div class="arc-product-card dark">
+            <div class="arc-card-media">
+              <img src="https://147534610.fs1.hubspotusercontent-eu1.net/hubfs/147534610/images-1-1.jpeg" alt="Jack3d Boisson Énergie">
+              <div class="arc-card-overlay"></div>
+              <div class="arc-badge">Jack3d</div>
+            </div>
+            <div class="arc-card-body">
+              <div>
+                <h4 class="arc-card-title">Jack3d Boisson Énergie</h4>
+                <p class="arc-card-text">Énergie intense · zéro sucre</p>
+              </div>
+              <a href="https://fitness-grams.sumupstore.com/" target="_blank" class="arc-card-link text-white"><span>Découvrir</span><span>→</span></a>
+            </div>
+          </div>
 
-  <div class="arc-product-card">
-    <div class="arc-card-media">
-      <img src="https://147534610.fs1.hubspotusercontent-eu1.net/hubfs/147534610/2020-05-13-12h55-03.png" alt="Farine d’Avoine P’tit Déj">
-      <div class="arc-card-overlay"></div>
-      <div class="arc-badge">Petit-déj</div>
-    </div>
-    <div class="arc-card-body">
-      <div>
-        <h4 class="arc-card-title text-gray-900">Farine d’Avoine P’tit Déj</h4>
-        <p class="arc-card-text text-gray-500">Rapide · pratique · gourmand</p>
-      </div>
-      <a href="https://fitness-grams.sumupstore.com/" target="_blank" class="arc-card-link text-red-600"><span>Voir</span><span>→</span></a>
-    </div>
-  </div>
+          <div class="arc-product-card">
+            <div class="arc-card-media">
+              <img src="https://147534610.fs1.hubspotusercontent-eu1.net/hubfs/147534610/2020-05-13-12h55-03.png" alt="Farine d’Avoine P’tit Déj">
+              <div class="arc-card-overlay"></div>
+              <div class="arc-badge">Petit-déj</div>
+            </div>
+            <div class="arc-card-body">
+              <div>
+                <h4 class="arc-card-title text-gray-900">Farine d’Avoine P’tit Déj</h4>
+                <p class="arc-card-text text-gray-500">Rapide · pratique · gourmand</p>
+              </div>
+              <a href="https://fitness-grams.sumupstore.com/" target="_blank" class="arc-card-link text-red-600"><span>Voir</span><span>→</span></a>
+            </div>
+          </div>
         </div>
 
         <div class="arc-nav">
@@ -556,59 +888,94 @@
           <button class="arc-btn" data-track="arcTrack1" data-dir="next">→</button>
         </div>
       </div>
-
-      <div class="arc-catalog-wrap">
-        <p class="arc-row-kicker">Sélection lifestyle</p>
-        <h3 class="text-2xl md:text-4xl font-black uppercase italic tracking-tighter text-gray-800 mt-2">
-          PICKS <span class="text-red-600">FITNESS-GRAMS</span>
-        </h3>
-
-        <div class="arc-row-shell">
-          <div class="arc-track" id="arcTrack2">
-  <div class="arc-product-card dark">
-    <div class="arc-card-media">
-      <img src="https://147534610.fs1.hubspotusercontent-eu1.net/hubfs/147534610/BARRE-PROTEINE-BAREBELLS-1.jpeg" alt="Barebells Barre Protéinée">
-      <div class="arc-card-overlay"></div>
-      <div class="arc-badge">Barre</div>
     </div>
-    <div class="arc-card-body">
-      <div>
-        <h4 class="arc-card-title">Barebells Barre Protéinée</h4>
-        <p class="arc-card-text">Snack premium · riche en protéines</p>
+
+    <section class="fg-premium-delivery-band" aria-label="Livraison à domicile Fitness-Grams">
+      <div class="fg-premium-delivery-glow"></div>
+
+      <div class="fg-premium-delivery-inner">
+        <div class="fg-premium-delivery-scene">
+          <div class="fg-premium-delivery-shadow"></div>
+
+          <div class="fg-premium-delivery-box-wrap">
+            <div class="fg-premium-delivery-box">
+              <div class="face front"></div>
+              <div class="face back"></div>
+              <div class="face right"></div>
+              <div class="face left"></div>
+              <div class="face top"></div>
+              <div class="face bottom"></div>
+              <div class="tape tape-v"></div>
+              <div class="tape tape-h"></div>
+              <div class="fg-premium-delivery-specular"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="fg-premium-delivery-copy">
+          <span class="fg-premium-delivery-kicker">Livraison à domicile</span>
+          <h3 class="fg-premium-delivery-title">
+            VOS ESSENTIELS <span>LIVRÉS CHEZ VOUS</span>
+          </h3>
+          <p class="fg-premium-delivery-text">
+            Une sélection pensée pour la performance, préparée avec soin et livrée directement chez vous dans l’univers Fitness-Grams.
+          </p>
+        </div>
       </div>
-      <a href="https://fitness-grams.sumupstore.com/" target="_blank" class="arc-card-link text-white"><span>Explorer</span><span>→</span></a>
-    </div>
-  </div>
+    </section>
 
-  <div class="arc-product-card red">
-    <div class="arc-card-media">
-      <img src="https://147534610.fs1.hubspotusercontent-eu1.net/hubfs/147534610/images-2.jpeg" alt="Barebells Milk-Shake">
-      <div class="arc-card-overlay"></div>
-      <div class="arc-badge">Milk-shake</div>
-    </div>
-    <div class="arc-card-body">
-      <div>
-        <h4 class="arc-card-title">Barebells Milk-Shake</h4>
-        <p class="arc-card-text">Onctueux · protéiné · ready to drink</p>
-      </div>
-      <a href="https://fitness-grams.sumupstore.com/" target="_blank" class="arc-card-link text-white"><span>Commander</span><span>→</span></a>
-    </div>
-  </div>
+    <div class="arc-catalog-wrap">
+      <p class="arc-row-kicker">Sélection lifestyle</p>
+      <h3 class="text-2xl md:text-4xl font-black uppercase italic tracking-tighter text-gray-800 mt-2">
+        PICKS <span class="text-red-600">FITNESS-GRAMS</span>
+      </h3>
 
-  <div class="arc-product-card">
-    <div class="arc-card-media">
-      <img src="https://147534610.fs1.hubspotusercontent-eu1.net/hubfs/147534610/file_00000000b1ac720ab3fea2e82d1d686a.png" alt="Encas Protéiné">
-      <div class="arc-card-overlay"></div>
-      <div class="arc-badge">Snack</div>
-    </div>
-    <div class="arc-card-body">
-      <div>
-        <h4 class="arc-card-title text-gray-900">Encas Protéiné</h4>
-        <p class="arc-card-text text-gray-500">Nomade · gourmand · efficace</p>
-      </div>
-      <a href="https://fitness-grams.sumupstore.com/" target="_blank" class="arc-card-link text-red-600"><span>Voir</span><span>→</span></a>
-    </div>
-  </div>
+      <div class="arc-row-shell">
+        <div class="arc-track" id="arcTrack2">
+          <div class="arc-product-card dark">
+            <div class="arc-card-media">
+              <img src="https://147534610.fs1.hubspotusercontent-eu1.net/hubfs/147534610/BARRE-PROTEINE-BAREBELLS-1.jpeg" alt="Barebells Barre Protéinée">
+              <div class="arc-card-overlay"></div>
+              <div class="arc-badge">Barre</div>
+            </div>
+            <div class="arc-card-body">
+              <div>
+                <h4 class="arc-card-title">Barebells Barre Protéinée</h4>
+                <p class="arc-card-text">Snack premium · riche en protéines</p>
+              </div>
+              <a href="https://fitness-grams.sumupstore.com/" target="_blank" class="arc-card-link text-white"><span>Explorer</span><span>→</span></a>
+            </div>
+          </div>
+
+          <div class="arc-product-card red">
+            <div class="arc-card-media">
+              <img src="https://147534610.fs1.hubspotusercontent-eu1.net/hubfs/147534610/images-2.jpeg" alt="Barebells Milk-Shake">
+              <div class="arc-card-overlay"></div>
+              <div class="arc-badge">Milk-shake</div>
+            </div>
+            <div class="arc-card-body">
+              <div>
+                <h4 class="arc-card-title">Barebells Milk-Shake</h4>
+                <p class="arc-card-text">Onctueux · protéiné · ready to drink</p>
+              </div>
+              <a href="https://fitness-grams.sumupstore.com/" target="_blank" class="arc-card-link text-white"><span>Commander</span><span>→</span></a>
+            </div>
+          </div>
+
+          <div class="arc-product-card">
+            <div class="arc-card-media">
+              <img src="https://147534610.fs1.hubspotusercontent-eu1.net/hubfs/147534610/file_00000000b1ac720ab3fea2e82d1d686a.png" alt="Encas Protéiné">
+              <div class="arc-card-overlay"></div>
+              <div class="arc-badge">Snack</div>
+            </div>
+            <div class="arc-card-body">
+              <div>
+                <h4 class="arc-card-title text-gray-900">Encas Protéiné</h4>
+                <p class="arc-card-text text-gray-500">Nomade · gourmand · efficace</p>
+              </div>
+              <a href="https://fitness-grams.sumupstore.com/" target="_blank" class="arc-card-link text-red-600"><span>Voir</span><span>→</span></a>
+            </div>
+          </div>
         </div>
 
         <div class="arc-nav">
@@ -979,3 +1346,6 @@
 </body>
 </html>
 ```
+
+## Remarque
+Cette version est prête à être recollée dans votre fichier de page pour conserver votre design tout en ajoutant le bloc livraison premium sans casser la structure existante .
