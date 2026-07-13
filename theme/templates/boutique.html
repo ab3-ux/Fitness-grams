@@ -68,6 +68,50 @@
     .hs_cos_wrapper_type_linked_image img {
       object-fit: cover;
     }
+
+    .fg-topbar {
+      backdrop-filter: blur(10px);
+      background: rgba(255, 248, 240, 0.94);
+    }
+
+    .fg-nav-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 44px;
+      padding: 0 18px;
+      border: 2px solid #000;
+      border-radius: 999px;
+      font-family: var(--font-headline);
+      font-size: 0.8rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: all 0.2s ease;
+    }
+
+    .fg-nav-pill:hover {
+      transform: translateY(-1px);
+    }
+
+    .fg-nav-pill--primary {
+      background: var(--primary-color);
+      color: #fff;
+      box-shadow: 4px 4px 0 0 rgba(0,0,0,1);
+    }
+
+    .fg-nav-pill--light {
+      background: #fff;
+      color: var(--text-main);
+      box-shadow: 4px 4px 0 0 rgba(220,38,38,0.18);
+    }
+
+    @media (max-width: 640px) {
+      .fg-nav-pill {
+        width: 100%;
+      }
+    }
   </style>
 
   <script id="tailwind-config">
@@ -122,20 +166,28 @@
 </head>
 
 <body class="antialiased">
-  <!-- NAVIGATION -->
-  <nav class="fixed top-0 w-full z-50 bg-white dark:bg-zinc-950 border-b-2 border-black dark:border-zinc-800 shadow-[4px_4px_0px_0px_rgba(220,38,38,1)] h-20">
-    <div class="max-w-[1280px] mx-auto px-6 h-full flex items-center justify-center">
-      <a class="text-2xl font-black text-black dark:text-white italic tracking-tighter" href="https://www.fitness-grams.com">
+  <!-- TOP NAVIGATION -->
+  <nav class="fg-topbar fixed top-0 w-full z-50 border-b-2 border-black shadow-[4px_4px_0px_0px_rgba(220,38,38,0.9)]">
+    <div class="max-w-[1280px] mx-auto px-4 sm:px-6 py-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <a class="text-xl sm:text-2xl font-black text-black italic tracking-tighter" href="https://www.fitness-grams.com">
         FITNESS GRAMS
       </a>
-      <a class="ml-8 font-lexend font-bold text-sm uppercase tracking-widest text-black dark:text-white hover:text-primary transition-colors hidden md:block" href="https://www.fitness-grams.com">
-        Accueil
-      </a>
+
+      <div class="w-full sm:w-auto flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+        <a class="fg-nav-pill fg-nav-pill--light" href="https://www.fitness-grams.com">
+          <span class="material-symbols-outlined text-[18px]">arrow_back</span>
+          Retour accueil
+        </a>
+        <a class="fg-nav-pill fg-nav-pill--primary" href="https://fitness-grams.sumupstore.com/" target="_blank" rel="noopener">
+          <span class="material-symbols-outlined text-[18px]">storefront</span>
+          E-boutique
+        </a>
+      </div>
     </div>
   </nav>
 
   <!-- HERO -->
-  <header class="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden bg-surface">
+  <header class="relative pt-40 pb-20 md:pt-48 md:pb-32 overflow-hidden bg-surface">
     <div class="max-w-[1280px] mx-auto px-6 grid grid-cols-1 md:grid-cols-2 items-center gap-16">
       <div class="z-10">
         {% dnd_area "hero_text_area", label="Texte hero boutique" %}
@@ -388,50 +440,14 @@
   </section>
 
   <!-- FOOTER -->
-  <footer class="bg-zinc-950 dark:bg-black border-t-4 border-red-600 w-full py-12 px-8 flex flex-col items-center gap-8 text-center text-white">
-    <div class="text-xl font-black italic">FITNESS GRAMS</div>
-
-    <div class="flex flex-wrap justify-center gap-6 font-lexend text-xs uppercase tracking-widest">
-      <a class="text-zinc-500 hover:text-white transition-colors" href="https://fitness-grams.sumupstore.com/" target="_blank" rel="noopener">Nos Marques</a>
-      <a class="text-zinc-500 hover:text-white transition-colors" href="https://fitness-grams.sumupstore.com/" target="_blank" rel="noopener">Livraison</a>
-      <a class="text-zinc-500 hover:text-white transition-colors" href="https://fitness-grams.sumupstore.com/" target="_blank" rel="noopener">CGV</a>
-      <a class="text-zinc-500 hover:text-white transition-colors" href="https://fitness-grams.sumupstore.com/" target="_blank" rel="noopener">Contact</a>
-      <a class="text-zinc-500 hover:text-white transition-colors" href="https://fitness-grams.sumupstore.com/" target="_blank" rel="noopener">Programme Fidélité</a>
+  <footer class="bg-zinc-950 dark:bg-black border-t-4 border-red-600 w-full py-10 px-8 text-center text-white">
+    <div class="max-w-[1280px] mx-auto flex flex-col items-center gap-4">
+      <div class="text-xl font-black italic">FITNESS GRAMS</div>
+      <p class="font-lexend text-xs uppercase tracking-widest text-zinc-500">
+        © 2024 FITNESS GRAMS. DISTRIBUTEUR OFFICIEL MULTIMARQUES.
+      </p>
     </div>
-
-    <div class="flex gap-4">
-      <button class="w-10 h-10 border border-zinc-800 rounded flex items-center justify-center hover:border-red-600 transition-all">
-        <span class="material-symbols-outlined text-sm">share</span>
-      </button>
-      <button class="w-10 h-10 border border-zinc-800 rounded flex items-center justify-center hover:border-red-600 transition-all">
-        <span class="material-symbols-outlined text-sm">mail</span>
-      </button>
-    </div>
-
-    <p class="font-lexend text-xs uppercase tracking-widest text-zinc-500">
-      © 2024 FITNESS GRAMS. DISTRIBUTEUR OFFICIEL MULTIMARQUES.
-    </p>
   </footer>
-
-  <!-- MOBILE NAV -->
-  <nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-16 bg-black border-t-2 border-red-600">
-    <a class="flex flex-col items-center justify-center bg-red-600 text-white px-4 py-1" href="https://www.fitness-grams.com">
-      <span class="material-symbols-outlined">home</span>
-      <span class="font-lexend text-[10px] font-bold uppercase">Accueil</span>
-    </a>
-    <a class="flex flex-col items-center justify-center text-zinc-400 px-4 py-1 hover:text-white transition-all active:scale-95" href="https://fitness-grams.sumupstore.com/" target="_blank" rel="noopener">
-      <span class="material-symbols-outlined">fitness_center</span>
-      <span class="font-lexend text-[10px] font-bold uppercase">Shop</span>
-    </a>
-    <a class="flex flex-col items-center justify-center text-zinc-400 px-4 py-1 hover:text-white transition-all active:scale-95" href="https://fitness-grams.sumupstore.com/" target="_blank" rel="noopener">
-      <span class="material-symbols-outlined">shopping_bag</span>
-      <span class="font-lexend text-[10px] font-bold uppercase">Panier</span>
-    </a>
-    <a class="flex flex-col items-center justify-center text-zinc-400 px-4 py-1 hover:text-white transition-all active:scale-95" href="https://fitness-grams.sumupstore.com/" target="_blank" rel="noopener">
-      <span class="material-symbols-outlined">person</span>
-      <span class="font-lexend text-[10px] font-bold uppercase">Profil</span>
-    </a>
-  </nav>
 
   {{ standard_footer_includes }}
 </body>
