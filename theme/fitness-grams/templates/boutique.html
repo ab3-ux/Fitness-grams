@@ -19,6 +19,7 @@
   <style>
     :root {
       --primary-color: #b70011;
+      --primary-dark: #8f000d;
       --primary-container: #dc2626;
       --on-primary: #ffffff;
       --bg-color: #fff8f0;
@@ -31,7 +32,7 @@
     }
 
     .material-symbols-outlined {
-      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      font-variation-settings: 'FILL' 0, 'wght' 500, 'GRAD' 0, 'opsz' 24;
     }
 
     body {
@@ -70,8 +71,17 @@
     }
 
     .fg-topbar {
-      backdrop-filter: blur(10px);
-      background: rgba(255, 248, 240, 0.94);
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(12px);
+    }
+
+    .fg-brand-mark {
+      font-family: var(--font-headline);
+      font-weight: 900;
+      font-style: italic;
+      letter-spacing: -0.06em;
+      text-transform: uppercase;
+      line-height: 0.95;
     }
 
     .fg-nav-pill {
@@ -79,32 +89,61 @@
       align-items: center;
       justify-content: center;
       gap: 8px;
-      min-height: 44px;
-      padding: 0 18px;
+      min-height: 48px;
+      padding: 0 20px;
       border: 2px solid #000;
       border-radius: 999px;
       font-family: var(--font-headline);
-      font-size: 0.8rem;
-      font-weight: 800;
+      font-size: 0.78rem;
+      font-weight: 900;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      transition: all 0.2s ease;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, background-color 0.18s ease, color 0.18s ease;
+      white-space: nowrap;
     }
 
     .fg-nav-pill:hover {
-      transform: translateY(-1px);
+      transform: translateY(-2px);
+    }
+
+    .fg-nav-pill:active {
+      transform: translateY(1px);
+      box-shadow: none;
+    }
+
+    .fg-nav-pill--light {
+      background: #ffffff;
+      color: #111111;
+      box-shadow: 5px 5px 0 0 rgba(0,0,0,1);
+    }
+
+    .fg-nav-pill--light:hover {
+      background: #f3ede5;
     }
 
     .fg-nav-pill--primary {
       background: var(--primary-color);
-      color: #fff;
-      box-shadow: 4px 4px 0 0 rgba(0,0,0,1);
+      color: #ffffff;
+      box-shadow: 5px 5px 0 0 rgba(0,0,0,1);
     }
 
-    .fg-nav-pill--light {
-      background: #fff;
-      color: var(--text-main);
-      box-shadow: 4px 4px 0 0 rgba(220,38,38,0.18);
+    .fg-nav-pill--primary:hover {
+      background: var(--primary-dark);
+    }
+
+    .fg-nav-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    @media (max-width: 768px) {
+      .fg-nav-wrap {
+        width: 100%;
+        justify-content: center;
+      }
     }
 
     @media (max-width: 640px) {
@@ -167,13 +206,13 @@
 
 <body class="antialiased">
   <!-- TOP NAVIGATION -->
-  <nav class="fg-topbar fixed top-0 w-full z-50 border-b-2 border-black shadow-[4px_4px_0px_0px_rgba(220,38,38,0.9)]">
-    <div class="max-w-[1280px] mx-auto px-4 sm:px-6 py-4 flex flex-col sm:flex-row items-center justify-between gap-4">
-      <a class="text-xl sm:text-2xl font-black text-black italic tracking-tighter" href="https://www.fitness-grams.com">
+  <nav class="fg-topbar fixed top-0 w-full z-50 border-b-2 border-black shadow-[6px_6px_0px_0px_rgba(183,0,17,1)]">
+    <div class="max-w-[1280px] mx-auto px-4 sm:px-6 py-4 flex flex-col md:flex-row items-center justify-between gap-4">
+      <a class="fg-brand-mark text-[1.65rem] sm:text-[2rem] text-black" href="https://www.fitness-grams.com">
         FITNESS GRAMS
       </a>
 
-      <div class="w-full sm:w-auto flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+      <div class="fg-nav-wrap">
         <a class="fg-nav-pill fg-nav-pill--light" href="https://www.fitness-grams.com">
           <span class="material-symbols-outlined text-[18px]">arrow_back</span>
           Retour accueil
@@ -444,7 +483,7 @@
     <div class="max-w-[1280px] mx-auto flex flex-col items-center gap-4">
       <div class="text-xl font-black italic">FITNESS GRAMS</div>
       <p class="font-lexend text-xs uppercase tracking-widest text-zinc-500">
-        © 2026 FITNESS GRAMS. DISTRIBUTEUR OFFICIEL MULTIMARQUES.
+        © 2024 FITNESS GRAMS. DISTRIBUTEUR OFFICIEL MULTIMARQUES.
       </p>
     </div>
   </footer>
