@@ -119,38 +119,14 @@
       z-index: 10;
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 16px;
+      justify-content: center;
+      gap: 14px;
       padding: 14px 18px;
       border-radius: 999px;
       margin-bottom: 34px;
-    }
-
-    .fg-brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      min-width: 0;
-    }
-
-    .fg-brand-badge {
-      width: 42px;
-      height: 42px;
-      border-radius: 50%;
-      display: grid;
-      place-items: center;
-      background: radial-gradient(circle at 30% 30%, #ff7684, var(--fg-accent));
-      color: #fff;
-      font-weight: 800;
-      box-shadow: 0 10px 24px rgba(225, 29, 46, 0.35);
-    }
-
-    .fg-brand-text {
-      font-size: 1.08rem;
-      font-weight: 800;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      white-space: nowrap;
+      width: fit-content;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .fg-menu {
@@ -158,11 +134,10 @@
       flex-wrap: wrap;
       align-items: center;
       justify-content: center;
-      gap: 10px;
+      gap: 12px;
     }
 
     .fg-menu a,
-    .fg-icon-btn,
     .fg-cta,
     .fg-ghost,
     .fg-cart {
@@ -170,19 +145,19 @@
     }
 
     .fg-menu a {
-      padding: 11px 18px;
+      min-width: 154px;
+      text-align: center;
+      padding: 12px 24px;
       border-radius: 999px;
       background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.14);
-      box-shadow: 0 10px 24px rgba(0,0,0,0.22);
-      font-size: 0.84rem;
+      border: 1px solid rgba(255,255,255,0.12);
+      box-shadow: 0 10px 24px rgba(0,0,0,0.18);
+      font-size: 0.95rem;
       font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
+      letter-spacing: 0.02em;
     }
 
     .fg-menu a:hover,
-    .fg-icon-btn:hover,
     .fg-cta:hover,
     .fg-ghost:hover,
     .fg-card:hover,
@@ -198,23 +173,54 @@
       border-color: transparent;
     }
 
-    .fg-actions {
-      display: flex;
-      align-items: center;
-      gap: 10px;
+    .fg-footer {
+      margin-top: 36px;
+      padding: 26px 24px;
+      border-radius: 28px;
     }
 
-    .fg-icon-btn {
-      width: 46px;
-      height: 46px;
-      border-radius: 50%;
+    .fg-footer-grid {
       display: grid;
-      place-items: center;
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.14);
-      box-shadow: 0 10px 24px rgba(0,0,0,0.22);
-      font-size: 1.1rem;
-      line-height: 1;
+      grid-template-columns: 1.2fr 0.8fr 0.8fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .fg-footer-title {
+      margin: 0 0 10px;
+      font-size: 1.2rem;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+    }
+
+    .fg-footer p,
+    .fg-footer li,
+    .fg-footer a {
+      color: var(--fg-muted);
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    .fg-footer ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .fg-footer-bottom {
+      margin-top: 20px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      color: var(--fg-soft);
+      font-size: 0.88rem;
+      text-align: center;
+    }
+
+    .fg-footer-heading {
+      margin: 0 0 10px;
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 700;
     }
 
     .fg-hero {
@@ -586,13 +592,12 @@
         padding: 16px;
         position: relative;
         top: 0;
-        flex-direction: column;
-        align-items: stretch;
+        width: 100%;
       }
 
-      .fg-brand,
-      .fg-actions {
-        justify-content: center;
+      .fg-menu a {
+        min-width: unset;
+        width: 100%;
       }
 
       .fg-hero-copy,
@@ -613,6 +618,10 @@
         flex-direction: column;
         align-items: flex-start;
       }
+
+      .fg-footer-grid {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
@@ -622,22 +631,10 @@
 
     <div class="fg-wrap">
       <header class="fg-nav fg-glass">
-        <div class="fg-brand">
-          <div class="fg-brand-badge">FG</div>
-          <div class="fg-brand-text">Fitness Grams Boutique</div>
-        </div>
-
         <nav class="fg-menu" aria-label="Navigation boutique">
           <a href="/">Accueil</a>
-          <a href="/boutique" class="is-active">Boutique</a>
-          <a href="#selection-boutique">Sélection</a>
-          <a href="#engagements-boutique">Livraison</a>
+          <a href="/boutique" class="is-active">E-boutique</a>
         </nav>
-
-        <div class="fg-actions">
-          <a class="fg-icon-btn" href="#" aria-label="Compte">👤</a>
-          <a class="fg-icon-btn" href="#" aria-label="Panier">🛒</a>
-        </div>
       </header>
 
       <section class="fg-hero">
@@ -751,6 +748,33 @@
           <span>Tu peux remplacer les textes, images, prix et liens sans casser la structure visuelle.</span>
         </div>
       </section>
+
+      <footer class="fg-footer fg-glass">
+        <div class="fg-footer-grid">
+          <div>
+            <h3 class="fg-footer-title">Fitness Grams</h3>
+            <p>
+              Une boutique pensée pour l'entraînement, la motivation et la progression, avec une présentation plus épurée et cohérente avec l'univers de ta page d'accueil.
+            </p>
+          </div>
+          <div>
+            <h4 class="fg-footer-heading">Navigation</h4>
+            <ul>
+              <li><a href="/">Accueil</a></li>
+              <li><a href="/boutique">E-boutique</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="fg-footer-heading">Univers</h4>
+            <ul>
+              <li>Fitness</li>
+              <li>Sport</li>
+              <li>Nutrition</li>
+            </ul>
+          </div>
+        </div>
+        <div class="fg-footer-bottom">© 2026 Fitness Grams — Tous droits réservés.</div>
+      </footer>
     </div>
   </main>
 
