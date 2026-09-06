@@ -168,7 +168,8 @@
     .fg-menu a,
     .fg-cta,
     .fg-ghost,
-    .fg-cart {
+    .fg-category-card:hover,
+    .fg-category-product:hover {
       transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, border-color 0.25s ease;
     }
 
@@ -188,7 +189,6 @@
     .fg-menu a:hover,
     .fg-cta:hover,
     .fg-ghost:hover,
-    .fg-cart:hover,
     .fg-category-card:hover,
     .fg-category-product:hover {
       transform: translateY(-4px);
@@ -196,8 +196,7 @@
     }
 
     .fg-menu .is-active,
-    .fg-cta,
-    .fg-cart {
+    .fg-cta {
       background: linear-gradient(135deg, var(--fg-accent), var(--fg-accent-2));
       border-color: transparent;
       color: #fff;
@@ -346,6 +345,9 @@
       text-transform: uppercase;
       border: 1px solid rgba(169,14,2,0.14);
       box-shadow: 0 10px 24px rgba(92,24,13,0.10);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .fg-ghost {
@@ -786,7 +788,7 @@
 
           <div class="fg-hero-actions">
             <a class="fg-cta" href="#selection-boutique">Explorer la sélection</a>
-            <a class="fg-ghost" href="#engagements-boutique">Voir les avantages</a>
+            <a class="fg-ghost" href="https://fitness-grams.sumupstore.com/" target="_blank" rel="noopener">Acheter à la boutique</a>
           </div>
         </div>
 
@@ -825,7 +827,7 @@
             <h2>Sélection boutique</h2>
             <p>Trois grands univers avec plusieurs articles visibles dans chaque catégorie.</p>
           </div>
-          <a class="fg-ghost" href="/boutique">Voir toute la boutique</a>
+          <a class="fg-ghost" href="https://fitness-grams.sumupstore.com/" target="_blank" rel="noopener">Acheter à la boutique</a>
         </div>
 
         <div class="fg-showcase-grid">
@@ -840,8 +842,7 @@
               </p>
 
               <div class="fg-category-actions">
-                <a class="fg-cta" href="/boutique?categorie=dejeuner">Voir les produits</a>
-                <a class="fg-ghost" href="/boutique">Découvrir</a>
+                <a class="fg-cta" href="https://fitness-grams.sumupstore.com/" target="_blank" rel="noopener">Acheter à la boutique</a>
               </div>
             </div>
 
@@ -875,8 +876,7 @@
               </p>
 
               <div class="fg-category-actions">
-                <a class="fg-cta" href="/boutique?categorie=alimentation-sportive">Découvrir l’univers</a>
-                <a class="fg-ghost" href="/boutique">Explorer</a>
+                <a class="fg-cta" href="https://fitness-grams.sumupstore.com/" target="_blank" rel="noopener">Acheter à la boutique</a>
               </div>
             </div>
 
@@ -910,8 +910,7 @@
               </p>
 
               <div class="fg-category-actions">
-                <a class="fg-cta" href="/boutique?categorie=encas">Acheter maintenant</a>
-                <a class="fg-ghost" href="/boutique">Voir la sélection</a>
+                <a class="fg-cta" href="https://fitness-grams.sumupstore.com/" target="_blank" rel="noopener">Acheter à la boutique</a>
               </div>
             </div>
 
@@ -966,7 +965,7 @@
             <h4 class="fg-footer-heading">Navigation</h4>
             <ul>
               <li><a href="/">Accueil</a></li>
-              <li><a href="/boutique">E-boutique</a></li>
+              <li><a href="https://fitness-grams.sumupstore.com/" target="_blank" rel="noopener">E-boutique</a></li>
             </ul>
           </div>
           <div>
