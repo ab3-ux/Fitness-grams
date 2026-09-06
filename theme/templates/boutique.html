@@ -218,7 +218,6 @@
       justify-content: center;
     }
 
-    /* Logo flottant */
     .fg-logo-card {
       position: fixed;
       top: 110px;
@@ -267,7 +266,6 @@
       100% { transform: translateY(0); }
     }
 
-    /* Hero pleine largeur */
     .fg-hero {
       position: relative;
       left: 50%;
@@ -276,31 +274,30 @@
       margin-left: -50vw;
       margin-right: -50vw;
       overflow: hidden;
-      min-height: 680px;
+      min-height: 700px;
       margin-bottom: 0;
       background:
-        linear-gradient(180deg, rgba(8,8,8,0.24), rgba(8,8,8,0.66)),
-        radial-gradient(circle at 18% 18%, rgba(169,14,2,0.42), transparent 24%),
-        radial-gradient(circle at 82% 20%, rgba(255,251,212,0.10), transparent 20%),
-        linear-gradient(145deg, #111112 0%, #0b0b0c 42%, #070707 100%);
+        linear-gradient(180deg, rgba(0,0,0,0.42), rgba(0,0,0,0.70)),
+        radial-gradient(circle at 18% 18%, rgba(169,14,2,0.26), transparent 24%),
+        url("https://147534610.fs1.hubspotusercontent-eu1.net/hubfs/147534610/file_000000001af0820a89b321909ed18f96.png") center center / cover no-repeat;
       box-shadow: 0 18px 60px rgba(0, 0, 0, 0.42);
       display: flex;
       align-items: flex-end;
-      padding: 140px max(24px, calc((100vw - var(--fg-max)) / 2)) 54px;
+      padding: 150px max(24px, calc((100vw - var(--fg-max)) / 2)) 70px;
       border-radius: 0 0 34px 34px;
     }
 
     .fg-hero::before {
       content: "FITNESS GRAMS";
       position: absolute;
-      top: 36px;
+      top: 42px;
       left: 50%;
       transform: translateX(-50%);
       text-align: center;
       font-size: clamp(4rem, 14vw, 12rem);
       font-weight: 900;
       letter-spacing: 0.16em;
-      color: rgba(255,255,255,0.04);
+      color: rgba(255,255,255,0.05);
       text-transform: uppercase;
       pointer-events: none;
       white-space: nowrap;
@@ -311,11 +308,12 @@
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(circle at 16% 18%, transparent 48%, rgba(255,255,255,0.07) 49%, rgba(255,255,255,0.07) 52%, transparent 53%),
-        radial-gradient(circle at 86% 22%, transparent 42%, rgba(255,255,255,0.05) 43%, rgba(255,255,255,0.05) 47%, transparent 48%);
-      background-size: 180px 180px, 120px 120px;
+        linear-gradient(180deg, rgba(0,0,0,0.08), rgba(0,0,0,0.22)),
+        radial-gradient(circle at 16% 18%, transparent 48%, rgba(255,255,255,0.06) 49%, rgba(255,255,255,0.06) 52%, transparent 53%),
+        radial-gradient(circle at 86% 22%, transparent 42%, rgba(255,255,255,0.04) 43%, rgba(255,255,255,0.04) 47%, transparent 48%);
+      background-size: auto, 180px 180px, 120px 120px;
       background-repeat: no-repeat;
-      opacity: 0.55;
+      opacity: 1;
       pointer-events: none;
     }
 
@@ -352,40 +350,45 @@
 
     .fg-title {
       margin: 0 0 18px;
-      font-size: clamp(2.8rem, 6vw, 5.5rem);
-      line-height: 0.92;
+      font-size: clamp(3rem, 7vw, 6.2rem);
+      line-height: 0.9;
       font-weight: 900;
       text-transform: uppercase;
-      letter-spacing: -0.05em;
-      color: #fff;
+      letter-spacing: -0.06em;
+      color: #ffffff;
+      font-family: "Arial Black", Inter, Arial, sans-serif;
     }
 
     .fg-title .accent {
-      color: var(--fg-accent-2);
-      text-shadow: 0 0 24px rgba(255,251,212,0.10);
+      display: inline-block;
+      color: #FFFBD4;
+      font-family: "Brush Script MT", "Segoe Script", cursive;
+      font-weight: 700;
+      text-transform: none;
+      letter-spacing: 0;
+      margin-left: 8px;
+      text-shadow: 0 0 18px rgba(255,251,212,0.14);
     }
 
     .fg-subtitle {
-      max-width: 680px;
+      max-width: 760px;
       margin: 0 0 14px;
-      color: var(--fg-muted);
-      font-size: 1.02rem;
-      line-height: 1.8;
+      color: rgba(255,255,255,0.82);
+      font-size: 1.05rem;
+      line-height: 1.85;
     }
 
     .fg-subtitle-2 {
-      max-width: 680px;
-      margin: 0 0 28px;
-      color: rgba(255,251,212,0.86);
-      font-size: 1rem;
+      max-width: 760px;
+      margin: 0;
+      color: rgba(255,251,212,0.92);
+      font-size: 1.02rem;
       line-height: 1.8;
-      font-weight: 600;
+      font-weight: 700;
     }
 
     .fg-hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
+      display: none;
     }
 
     .fg-hero-side {
@@ -446,7 +449,6 @@
       letter-spacing: 0.08em;
     }
 
-    /* Barre défilante */
     .fg-marquee-wrap {
       position: relative;
       left: 50%;
@@ -780,9 +782,13 @@
       }
 
       .fg-hero {
-        min-height: auto;
-        padding: 150px 24px 34px;
+        min-height: 620px;
+        padding: 150px 24px 40px;
         border-radius: 0 0 26px 26px;
+        background:
+          linear-gradient(180deg, rgba(0,0,0,0.46), rgba(0,0,0,0.74)),
+          radial-gradient(circle at 18% 18%, rgba(169,14,2,0.20), transparent 24%),
+          url("https://147534610.fs1.hubspotusercontent-eu1.net/hubfs/147534610/file_000000001af0820a89b321909ed18f96.png") center center / cover no-repeat;
       }
 
       .fg-hero-side {
@@ -849,11 +855,12 @@
       }
 
       .fg-hero {
-        padding: 150px 20px 28px;
+        min-height: 560px;
+        padding: 150px 20px 30px;
       }
 
       .fg-title {
-        font-size: clamp(2.2rem, 10vw, 3.8rem);
+        font-size: clamp(2.5rem, 11vw, 4.2rem);
       }
 
       .fg-subtitle,
@@ -881,19 +888,21 @@
     }
 
     @media (max-width: 640px) {
-      .fg-hero-actions {
-        display: grid;
-      }
-
       .fg-btn,
       .fg-menu a {
         width: 100%;
       }
 
       .fg-hero::before {
-        font-size: clamp(3rem, 18vw, 5.5rem);
-        top: 82px;
+        font-size: clamp(3rem, 18vw, 5.2rem);
+        top: 88px;
         letter-spacing: 0.08em;
+      }
+
+      .fg-title .accent {
+        display: block;
+        margin-left: 0;
+        margin-top: 8px;
       }
 
       .fg-marquee-track {
@@ -940,11 +949,6 @@
             <p class="fg-subtitle-2">
               Fitness-Gram's-La nutrition qui accompagne chaque gramme de tes efforts.
             </p>
-
-            <div class="fg-hero-actions">
-              <a class="fg-btn fg-btn-primary" href="#univers-boutique">Explorer la boutique</a>
-              <a class="fg-btn fg-btn-secondary" href="https://fitness-grams.sumupstore.com/" target="_blank" rel="noopener">Acheter à la boutique</a>
-            </div>
           </div>
 
           <div class="fg-hero-side">
