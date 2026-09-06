@@ -7,17 +7,19 @@
   {{ standard_header_includes }}
   <style>
     :root {
-      --fg-bg: #050505;
-      --fg-surface: rgba(255, 255, 255, 0.08);
-      --fg-surface-strong: rgba(255, 255, 255, 0.14);
-      --fg-border: rgba(255, 255, 255, 0.16);
-      --fg-text: #ffffff;
-      --fg-muted: rgba(255, 255, 255, 0.72);
-      --fg-soft: rgba(255, 255, 255, 0.52);
-      --fg-accent: #e11d2e;
-      --fg-accent-2: #ff5a6a;
-      --fg-shadow: 0 18px 60px rgba(0, 0, 0, 0.45);
-      --fg-glass-shadow: 0 12px 36px rgba(0, 0, 0, 0.28);
+      --fg-bg: #FFFBD4;
+      --fg-surface: rgba(255, 255, 255, 0.68);
+      --fg-surface-strong: rgba(255, 255, 255, 0.84);
+      --fg-border: rgba(169, 14, 2, 0.16);
+      --fg-text: #2a120d;
+      --fg-muted: rgba(42, 18, 13, 0.74);
+      --fg-soft: rgba(42, 18, 13, 0.54);
+      --fg-accent: #A90E02;
+      --fg-accent-2: #d61d10;
+      --fg-accent-soft: rgba(169, 14, 2, 0.10);
+      --fg-lemon-deep: #f5efb7;
+      --fg-shadow: 0 18px 60px rgba(92, 24, 13, 0.16);
+      --fg-glass-shadow: 0 12px 36px rgba(92, 24, 13, 0.12);
       --fg-radius-xl: 32px;
       --fg-radius-lg: 24px;
       --fg-radius-md: 18px;
@@ -37,9 +39,9 @@
       font-family: Inter, Arial, sans-serif;
       color: var(--fg-text);
       background:
-        radial-gradient(circle at top left, rgba(225, 29, 46, 0.22), transparent 28%),
-        radial-gradient(circle at top right, rgba(255, 90, 106, 0.12), transparent 24%),
-        linear-gradient(180deg, #0b0b0d 0%, #070708 42%, #030303 100%);
+        radial-gradient(circle at top left, rgba(169, 14, 2, 0.10), transparent 26%),
+        radial-gradient(circle at top right, rgba(255, 251, 212, 0.55), transparent 20%),
+        linear-gradient(180deg, #fffdf0 0%, #FFFBD4 48%, #f7f1c3 100%);
       overflow-x: hidden;
     }
 
@@ -71,31 +73,31 @@
     .fg-bg {
       z-index: 0;
       background-image:
-        radial-gradient(circle at 12% 18%, rgba(255,255,255,0.08) 0 2px, transparent 3px),
-        radial-gradient(circle at 84% 14%, rgba(255,255,255,0.07) 0 2px, transparent 3px),
-        radial-gradient(circle at 18% 74%, rgba(255,255,255,0.06) 0 2px, transparent 3px),
-        radial-gradient(circle at 72% 70%, rgba(255,255,255,0.07) 0 2px, transparent 3px);
+        radial-gradient(circle at 12% 18%, rgba(169,14,2,0.10) 0 2px, transparent 3px),
+        radial-gradient(circle at 84% 14%, rgba(169,14,2,0.08) 0 2px, transparent 3px),
+        radial-gradient(circle at 18% 74%, rgba(169,14,2,0.08) 0 2px, transparent 3px),
+        radial-gradient(circle at 72% 70%, rgba(169,14,2,0.08) 0 2px, transparent 3px);
     }
 
     .fg-bg::before {
       content: "";
       background:
-        radial-gradient(circle at 10% 20%, rgba(225, 29, 46, 0.18) 0, transparent 18%),
-        radial-gradient(circle at 80% 12%, rgba(255, 90, 106, 0.16) 0, transparent 20%),
-        radial-gradient(circle at 70% 76%, rgba(225, 29, 46, 0.10) 0, transparent 20%);
+        radial-gradient(circle at 10% 20%, rgba(169, 14, 2, 0.08) 0, transparent 18%),
+        radial-gradient(circle at 80% 12%, rgba(169, 14, 2, 0.05) 0, transparent 20%),
+        radial-gradient(circle at 70% 76%, rgba(169, 14, 2, 0.06) 0, transparent 20%);
     }
 
     .fg-bg::after {
       content: "";
       background-image:
-        radial-gradient(circle, transparent 48%, rgba(255,255,255,0.08) 49%, rgba(255,255,255,0.08) 52%, transparent 53%),
-        radial-gradient(circle, transparent 38%, rgba(255,255,255,0.06) 39%, rgba(255,255,255,0.06) 43%, transparent 44%),
-        radial-gradient(circle, transparent 48%, rgba(255,255,255,0.08) 49%, rgba(255,255,255,0.08) 52%, transparent 53%),
-        radial-gradient(circle, transparent 42%, rgba(255,255,255,0.05) 43%, rgba(255,255,255,0.05) 47%, transparent 48%);
+        radial-gradient(circle, transparent 48%, rgba(169,14,2,0.09) 49%, rgba(169,14,2,0.09) 52%, transparent 53%),
+        radial-gradient(circle, transparent 38%, rgba(169,14,2,0.06) 39%, rgba(169,14,2,0.06) 43%, transparent 44%),
+        radial-gradient(circle, transparent 48%, rgba(169,14,2,0.08) 49%, rgba(169,14,2,0.08) 52%, transparent 53%),
+        radial-gradient(circle, transparent 42%, rgba(169,14,2,0.05) 43%, rgba(169,14,2,0.05) 47%, transparent 48%);
       background-size: 140px 140px, 92px 92px, 126px 126px, 110px 110px;
       background-position: 7% 18%, 88% 22%, 16% 84%, 74% 72%;
       background-repeat: no-repeat;
-      opacity: 0.65;
+      opacity: 0.55;
     }
 
     .fg-wrap {
@@ -106,7 +108,7 @@
     }
 
     .fg-glass {
-      background: linear-gradient(180deg, rgba(255,255,255,0.13) 0%, rgba(255,255,255,0.07) 100%);
+      background: linear-gradient(180deg, rgba(255,255,255,0.78) 0%, rgba(255,255,255,0.60) 100%);
       border: 1px solid var(--fg-border);
       box-shadow: var(--fg-glass-shadow);
       backdrop-filter: blur(18px);
@@ -132,7 +134,7 @@
     .fg-nav.is-scrolled {
       top: 32px;
       transform: translateX(-50%) scale(0.985);
-      box-shadow: 0 18px 38px rgba(0,0,0,0.34);
+      box-shadow: 0 18px 38px rgba(92,24,13,0.18);
     }
 
     .fg-menu {
@@ -149,18 +151,18 @@
       align-items: center;
       justify-content: center;
       padding: 0 6px 0 0;
-      color: rgba(255,255,255,0.92);
+      color: var(--fg-accent);
       font-size: clamp(1.05rem, 2vw, 1.55rem);
       font-weight: 900;
       letter-spacing: 0.18em;
       text-transform: uppercase;
       white-space: nowrap;
       line-height: 1;
-      text-shadow: 0 1px 0 rgba(255,255,255,0.08);
+      text-shadow: 0 1px 0 rgba(255,255,255,0.28);
     }
 
     .fg-wordmark .fg-wordmark-soft {
-      color: rgba(255,255,255,0.62);
+      color: rgba(42,18,13,0.58);
     }
 
     .fg-menu a,
@@ -175,9 +177,9 @@
       text-align: center;
       padding: 12px 24px;
       border-radius: 999px;
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.12);
-      box-shadow: 0 10px 24px rgba(0,0,0,0.18);
+      background: rgba(255,255,255,0.58);
+      border: 1px solid rgba(169,14,2,0.14);
+      box-shadow: 0 10px 24px rgba(92,24,13,0.10);
       font-size: 0.95rem;
       font-weight: 700;
       letter-spacing: 0.02em;
@@ -187,9 +189,10 @@
     .fg-cta:hover,
     .fg-ghost:hover,
     .fg-card:hover,
-    .fg-cart:hover {
+    .fg-cart:hover,
+    .fg-category-card:hover {
       transform: translateY(-4px);
-      box-shadow: 0 14px 28px rgba(0,0,0,0.28);
+      box-shadow: 0 14px 28px rgba(92,24,13,0.16);
     }
 
     .fg-menu .is-active,
@@ -197,6 +200,7 @@
     .fg-cart {
       background: linear-gradient(135deg, var(--fg-accent), var(--fg-accent-2));
       border-color: transparent;
+      color: #fff;
     }
 
     .fg-footer {
@@ -217,6 +221,7 @@
       font-size: 1.2rem;
       font-weight: 800;
       letter-spacing: 0.02em;
+      color: var(--fg-accent);
     }
 
     .fg-footer p,
@@ -236,7 +241,7 @@
     .fg-footer-bottom {
       margin-top: 20px;
       padding-top: 18px;
-      border-top: 1px solid rgba(255,255,255,0.08);
+      border-top: 1px solid rgba(169,14,2,0.10);
       color: var(--fg-soft);
       font-size: 0.88rem;
       text-align: center;
@@ -244,7 +249,7 @@
 
     .fg-footer-heading {
       margin: 0 0 10px;
-      color: #fff;
+      color: var(--fg-text);
       font-size: 1rem;
       font-weight: 700;
     }
@@ -270,7 +275,7 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      box-shadow: 0 18px 40px rgba(0,0,0,0.28);
+      box-shadow: 0 18px 40px rgba(92,24,13,0.12);
     }
 
     .fg-hero-copy::before {
@@ -280,7 +285,7 @@
       width: 300px;
       height: 300px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(225,29,46,0.28), transparent 65%);
+      background: radial-gradient(circle, rgba(169,14,2,0.16), transparent 65%);
       filter: blur(12px);
     }
 
@@ -291,9 +296,9 @@
       gap: 8px;
       padding: 8px 14px;
       border-radius: 999px;
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.12);
-      color: var(--fg-muted);
+      background: rgba(169,14,2,0.08);
+      border: 1px solid rgba(169,14,2,0.10);
+      color: var(--fg-accent);
       font-size: 0.78rem;
       font-weight: 700;
       letter-spacing: 0.12em;
@@ -308,11 +313,12 @@
       font-weight: 900;
       text-transform: uppercase;
       letter-spacing: -0.04em;
+      color: var(--fg-text);
     }
 
     .fg-title .accent {
-      color: var(--fg-accent-2);
-      text-shadow: 0 0 24px rgba(255, 90, 106, 0.36);
+      color: var(--fg-accent);
+      text-shadow: 0 0 18px rgba(169,14,2,0.14);
     }
 
     .fg-subtitle {
@@ -338,12 +344,13 @@
       font-weight: 800;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      border: 1px solid rgba(255,255,255,0.14);
-      box-shadow: 0 10px 24px rgba(0,0,0,0.22);
+      border: 1px solid rgba(169,14,2,0.14);
+      box-shadow: 0 10px 24px rgba(92,24,13,0.10);
     }
 
     .fg-ghost {
-      background: rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.58);
+      color: var(--fg-accent);
     }
 
     .fg-hero-visual {
@@ -351,8 +358,8 @@
       place-items: center;
       min-height: 420px;
       background:
-        linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03)),
-        radial-gradient(circle at center, rgba(225,29,46,0.12), transparent 60%);
+        linear-gradient(180deg, rgba(255,255,255,0.62), rgba(255,255,255,0.38)),
+        radial-gradient(circle at center, rgba(169,14,2,0.08), transparent 60%);
     }
 
     .fg-plate-stack {
@@ -361,7 +368,7 @@
       aspect-ratio: 1 / 1;
       display: grid;
       place-items: center;
-      filter: drop-shadow(0 30px 34px rgba(0,0,0,0.48));
+      filter: drop-shadow(0 30px 34px rgba(92,24,13,0.20));
     }
 
     .fg-plate,
@@ -376,23 +383,23 @@
       margin: auto;
       width: 100%;
       height: 100%;
-      background: radial-gradient(circle at 35% 30%, #232326, #0c0c0d 58%, #060607 100%);
-      border: 1px solid rgba(255,255,255,0.08);
+      background: radial-gradient(circle at 35% 30%, #fffef9, #f5efc7 58%, #ece2a5 100%);
+      border: 1px solid rgba(169,14,2,0.10);
     }
 
     .fg-plate::before {
       content: "";
       inset: 15%;
-      background: radial-gradient(circle, #0b0b0c 0%, #18181b 70%, #09090a 100%);
-      border: 16px solid rgba(255,255,255,0.06);
-      box-shadow: inset 0 0 30px rgba(255,255,255,0.04);
+      background: radial-gradient(circle, #fffef7 0%, #fff7db 70%, #f4e9ae 100%);
+      border: 16px solid rgba(169,14,2,0.08);
+      box-shadow: inset 0 0 30px rgba(169,14,2,0.04);
     }
 
     .fg-plate::after {
       content: "";
       inset: 36%;
-      background: radial-gradient(circle, rgba(225,29,46,0.86), rgba(122,8,17,0.98));
-      box-shadow: 0 0 30px rgba(225,29,46,0.38);
+      background: radial-gradient(circle, rgba(169,14,2,0.88), rgba(119,7,0,0.98));
+      box-shadow: 0 0 26px rgba(169,14,2,0.22);
     }
 
     .plate-back {
@@ -424,6 +431,7 @@
       display: block;
       margin-bottom: 4px;
       font-size: 0.95rem;
+      color: var(--fg-accent);
     }
 
     .fg-floating-label span {
@@ -451,6 +459,7 @@
       font-weight: 900;
       letter-spacing: -0.03em;
       margin-bottom: 6px;
+      color: var(--fg-accent);
     }
 
     .fg-stat-label {
@@ -476,11 +485,186 @@
       font-weight: 900;
       text-transform: uppercase;
       letter-spacing: -0.03em;
+      color: var(--fg-accent);
     }
 
     .fg-section-head p {
       margin: 0;
       color: var(--fg-muted);
+    }
+
+    /* Nouvelle section vitrine */
+    .fg-showcase-grid {
+      display: grid;
+      gap: 22px;
+    }
+
+    .fg-category-card {
+      position: relative;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 24px;
+      min-height: 340px;
+      padding: 30px;
+      border-radius: 30px;
+      border: 1px solid rgba(169,14,2,0.14);
+      box-shadow: 0 18px 40px rgba(92,24,13,0.10);
+      transition: transform 0.28s ease, box-shadow 0.28s ease;
+    }
+
+    .fg-category-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.12), rgba(255,255,255,0.02));
+      pointer-events: none;
+    }
+
+    .fg-category-content,
+    .fg-category-visual {
+      position: relative;
+      z-index: 2;
+    }
+
+    .fg-category-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .fg-category-badge {
+      display: inline-flex;
+      width: fit-content;
+      padding: 8px 14px;
+      margin-bottom: 18px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.46);
+      border: 1px solid rgba(169,14,2,0.12);
+      color: var(--fg-accent);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .fg-category-content h3 {
+      margin: 0 0 14px;
+      font-size: clamp(2rem, 3vw, 3rem);
+      line-height: 1.05;
+      font-weight: 900;
+      color: var(--fg-text);
+    }
+
+    .fg-category-content p {
+      margin: 0 0 20px;
+      max-width: 580px;
+      color: var(--fg-muted);
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+    .fg-category-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+
+    .fg-category-tags span {
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.48);
+      border: 1px solid rgba(169,14,2,0.10);
+      color: var(--fg-text);
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+
+    .fg-category-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .fg-category-visual {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .fg-product-hero {
+      min-height: 230px;
+      border-radius: 26px;
+      padding: 22px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-start;
+      background: linear-gradient(180deg, rgba(255,255,255,0.74), rgba(255,255,255,0.38));
+      border: 1px solid rgba(169,14,2,0.12);
+      box-shadow: 0 18px 30px rgba(92,24,13,0.08);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .fg-product-hero::before {
+      content: "";
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      right: -20px;
+      top: -20px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(169,14,2,0.14), transparent 68%);
+    }
+
+    .fg-product-hero strong {
+      position: relative;
+      z-index: 2;
+      font-size: 1.1rem;
+      color: var(--fg-accent);
+      line-height: 1.4;
+      max-width: 180px;
+    }
+
+    .fg-product-mini-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .fg-product-mini {
+      min-height: 68px;
+      border-radius: 18px;
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      background: rgba(255,255,255,0.62);
+      border: 1px solid rgba(169,14,2,0.10);
+      box-shadow: 0 10px 22px rgba(92,24,13,0.06);
+      color: var(--fg-text);
+      font-weight: 700;
+      line-height: 1.4;
+    }
+
+    .fg-category-card.breakfast {
+      background:
+        radial-gradient(circle at 90% 20%, rgba(255, 205, 128, 0.28), transparent 28%),
+        linear-gradient(135deg, #fff9e8 0%, #fff6d5 52%, #f6ebba 100%);
+    }
+
+    .fg-category-card.sport {
+      background:
+        radial-gradient(circle at 88% 16%, rgba(169, 14, 2, 0.18), transparent 26%),
+        linear-gradient(135deg, #fff8e7 0%, #fff4cc 46%, #f4e7b2 100%);
+    }
+
+    .fg-category-card.snacks {
+      background:
+        radial-gradient(circle at 86% 18%, rgba(196, 128, 54, 0.18), transparent 26%),
+        linear-gradient(135deg, #fffaf0 0%, #fff5d7 48%, #f5e7bd 100%);
     }
 
     .fg-products {
@@ -503,8 +687,8 @@
       border-radius: 22px;
       overflow: hidden;
       margin-bottom: 18px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
-      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.05);
+      background: linear-gradient(180deg, rgba(255,255,255,0.72), rgba(255,255,255,0.44));
+      box-shadow: inset 0 0 0 1px rgba(169,14,2,0.05);
     }
 
     .fg-card-media img {
@@ -527,8 +711,8 @@
       align-items: center;
       padding: 8px 12px;
       border-radius: 999px;
-      background: rgba(0,0,0,0.46);
-      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(169,14,2,0.92);
+      border: 1px solid rgba(255,255,255,0.14);
       color: #fff;
       font-size: 0.74rem;
       font-weight: 700;
@@ -540,6 +724,7 @@
       margin: 0 0 4px;
       font-size: 1.15rem;
       font-weight: 800;
+      color: var(--fg-text);
     }
 
     .fg-card p {
@@ -559,7 +744,7 @@
     .fg-price {
       font-size: 1.5rem;
       font-weight: 900;
-      color: #fff;
+      color: var(--fg-accent);
     }
 
     .fg-cart {
@@ -571,7 +756,7 @@
       color: #fff;
       font-size: 0.96rem;
       font-weight: 800;
-      box-shadow: 0 12px 24px rgba(225, 29, 46, 0.28);
+      box-shadow: 0 12px 24px rgba(169, 14, 2, 0.18);
       cursor: pointer;
     }
 
@@ -591,6 +776,7 @@
       display: block;
       margin-bottom: 6px;
       font-size: 1rem;
+      color: var(--fg-accent);
     }
 
     .fg-info-band span {
@@ -601,14 +787,23 @@
 
     @media (max-width: 1080px) {
       .fg-hero,
-      .fg-products,
       .fg-info-band,
-      .fg-stats {
+      .fg-stats,
+      .fg-products,
+      .fg-category-card {
         grid-template-columns: 1fr;
       }
 
       .fg-hero-visual {
         min-height: 360px;
+      }
+
+      .fg-category-visual {
+        grid-template-columns: 1fr;
+      }
+
+      .fg-product-hero {
+        min-height: 180px;
       }
     }
 
@@ -662,7 +857,8 @@
       }
 
       .fg-hero-copy,
-      .fg-hero-visual {
+      .fg-hero-visual,
+      .fg-category-card {
         padding: 24px 18px;
         border-radius: 24px;
       }
@@ -682,6 +878,20 @@
 
       .fg-footer-grid {
         grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .fg-category-actions {
+        flex-direction: column;
+      }
+
+      .fg-category-actions a,
+      .fg-cta,
+      .fg-ghost {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
       }
     }
   </style>
@@ -706,10 +916,11 @@
           <div class="fg-eyebrow">Fitness • Sport • Nutrition</div>
           <h1 class="fg-title">
             La boutique <span class="accent">Fitness Grams</span><br />
-            qui pousse plus loin vos objectifs
+            au service de vos objectifs
           </h1>
           <p class="fg-subtitle">
-            Retrouvez une sélection pensée pour la performance, la récupération et le quotidien : accessoires, nutrition sportive et essentiels fitness dans une ambiance noire glassmorphism fidèle à l’univers Fitness Grams.
+            Découvrez une sélection pensée pour le quotidien, la performance et les encas intelligents,
+            dans un univers plus lumineux, premium et cohérent avec l’identité de la marque.
           </p>
 
           <div class="fg-hero-actions">
@@ -726,8 +937,8 @@
           </div>
 
           <div class="fg-floating-label fg-glass">
-            <strong>Ambiance performance</strong>
-            <span>Disques, contraste noir, relief centré et ombres glass pour refléter l’énergie Fitness Grams.</span>
+            <strong>Ambiance vitrine</strong>
+            <span>Palette rouge et lemon, relief doux et composition premium pour mettre les produits en avant.</span>
           </div>
         </div>
       </section>
@@ -739,7 +950,7 @@
         </div>
         <div class="fg-stat fg-glass">
           <span class="fg-stat-value">3 univers</span>
-          <span class="fg-stat-label">Fitness, sport, nutrition</span>
+          <span class="fg-stat-label">Déjeuner, sport, encas</span>
         </div>
         <div class="fg-stat fg-glass">
           <span class="fg-stat-value">100%</span>
@@ -751,65 +962,127 @@
         <div class="fg-section-head">
           <div>
             <h2>Sélection boutique</h2>
-            <p>Trois cartes produits premium à personnaliser avec tes vraies références.</p>
+            <p>Trois grands formats paysage pour présenter tes univers produit comme une vraie vitrine.</p>
           </div>
           <a class="fg-ghost" href="/boutique">Voir toute la boutique</a>
         </div>
 
-        <div class="fg-products">
-          <article class="fg-card fg-glass">
-            <div class="fg-card-media">
-              <span class="fg-pill">Nutrition</span>
-              <img src="https://images.unsplash.com/photo-1593095948071-474c5cc2989d?auto=format&fit=crop&w=900&q=80" alt="Pot de protéines et accessoires fitness sur fond noir" />
+        <div class="fg-showcase-grid">
+
+          <article class="fg-category-card breakfast fg-glass">
+            <div class="fg-category-content">
+              <span class="fg-category-badge">Déjeuner</span>
+              <h3>Bien commencer la journée</h3>
+              <p>
+                Un univers pensé pour les matins actifs, avec une présentation douce, gourmande et claire.
+                Idéal pour valoriser les produits breakfast, les routines saines et les formats pratiques.
+              </p>
+
+              <div class="fg-category-tags">
+                <span>Porridge fitness</span>
+                <span>Granola protéiné</span>
+                <span>MegaRawBar 40G</span>
+              </div>
+
+              <div class="fg-category-actions">
+                <a class="fg-cta" href="/boutique?categorie=dejeuner">Voir les produits</a>
+                <a class="fg-ghost" href="/boutique">Découvrir</a>
+              </div>
             </div>
-            <h3>Pack Recovery Pro</h3>
-            <p>Une base idéale pour la récupération après séance avec un visuel premium et une mise en avant claire.</p>
-            <div class="fg-price-row">
-              <span class="fg-price">39€</span>
-              <button class="fg-cart" type="button">Ajouter</button>
+
+            <div class="fg-category-visual">
+              <div class="fg-product-hero">
+                <strong>Produit star<br />MegaRawBar 40G</strong>
+              </div>
+              <div class="fg-product-mini-stack">
+                <div class="fg-product-mini">Petit-déjeuner équilibré</div>
+                <div class="fg-product-mini">Énergie progressive</div>
+                <div class="fg-product-mini">Format pratique</div>
+              </div>
             </div>
           </article>
 
-          <article class="fg-card fg-glass">
-            <div class="fg-card-media">
-              <span class="fg-pill">Fitness</span>
-              <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=900&q=80" alt="Accessoires d'entraînement fitness sur surface sombre" />
+          <article class="fg-category-card sport fg-glass">
+            <div class="fg-category-content">
+              <span class="fg-category-badge">Alimentation sportive</span>
+              <h3>Performance, énergie, récupération</h3>
+              <p>
+                Une mise en scène plus dynamique pour les références sportives, les compléments et
+                les produits pensés pour accompagner l’entraînement.
+              </p>
+
+              <div class="fg-category-tags">
+                <span>Pack Performance Complet</span>
+                <span>Whey 450g</span>
+                <span>Boisson C4 500ml</span>
+              </div>
+
+              <div class="fg-category-actions">
+                <a class="fg-cta" href="/boutique?categorie=alimentation-sportive">Découvrir l’univers</a>
+                <a class="fg-ghost" href="/boutique">Explorer</a>
+              </div>
             </div>
-            <h3>Kit Training Focus</h3>
-            <p>Un bloc produit pensé pour tes essentiels sport avec image immersive, ombres douces et lecture rapide.</p>
-            <div class="fg-price-row">
-              <span class="fg-price">49€</span>
-              <button class="fg-cart" type="button">Ajouter</button>
+
+            <div class="fg-category-visual">
+              <div class="fg-product-hero">
+                <strong>Best seller<br />Pack Performance Complet</strong>
+              </div>
+              <div class="fg-product-mini-stack">
+                <div class="fg-product-mini">Whey et récupération</div>
+                <div class="fg-product-mini">Énergie avant séance</div>
+                <div class="fg-product-mini">Routine complète</div>
+              </div>
             </div>
           </article>
 
-          <article class="fg-card fg-glass">
-            <div class="fg-card-media">
-              <span class="fg-pill">Sport</span>
-              <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=900&q=80" alt="Équipement sportif premium dans un décor noir et rouge" />
+          <article class="fg-category-card snacks fg-glass">
+            <div class="fg-category-content">
+              <span class="fg-category-badge">Encas</span>
+              <h3>Des pauses saines à emporter</h3>
+              <p>
+                Un bloc dédié aux encas intelligents, avec une lecture simple et une vraie place
+                pour les produits nomades, gourmands et protéinés.
+              </p>
+
+              <div class="fg-category-tags">
+                <span>Barre au bœuf nourri à l’herbe</span>
+                <span>Snack protéiné</span>
+                <span>Barre naturelle</span>
+              </div>
+
+              <div class="fg-category-actions">
+                <a class="fg-cta" href="/boutique?categorie=encas">Acheter maintenant</a>
+                <a class="fg-ghost" href="/boutique">Voir la sélection</a>
+              </div>
             </div>
-            <h3>Édition Performance</h3>
-            <p>Une troisième carte pour compléter ta vitrine boutique avec une présentation cohérente et plus haut de gamme.</p>
-            <div class="fg-price-row">
-              <span class="fg-price">59€</span>
-              <button class="fg-cart" type="button">Ajouter</button>
+
+            <div class="fg-category-visual">
+              <div class="fg-product-hero">
+                <strong>À emporter<br />Encas protéinés</strong>
+              </div>
+              <div class="fg-product-mini-stack">
+                <div class="fg-product-mini">Pause saine</div>
+                <div class="fg-product-mini">Texture gourmande</div>
+                <div class="fg-product-mini">Format nomade</div>
+              </div>
             </div>
           </article>
+
         </div>
       </section>
 
       <section id="engagements-boutique" class="fg-info-band">
         <div class="fg-glass">
           <strong>Design réutilisable</strong>
-          <span>Le fichier est autonome et peut être envoyé directement dans GitHub comme page HTML.</span>
+          <span>Le fichier reste autonome et peut être envoyé directement dans GitHub comme page HTML complète.</span>
         </div>
         <div class="fg-glass">
-          <strong>Effet glassmorphism noir</strong>
-          <span>Le menu, les cartes et le hero reprennent le fond sombre, les bulles et les ombres centrées que tu voulais.</span>
+          <strong>Nouvelle palette visuelle</strong>
+          <span>Le rouge #A90E02 structure les accents et le lemon #FFFBD4 apporte un rendu plus lumineux et premium.</span>
         </div>
         <div class="fg-glass">
           <strong>Prêt à personnaliser</strong>
-          <span>Tu peux remplacer les textes, images, prix et liens sans casser la structure visuelle.</span>
+          <span>Tu peux remplacer facilement les textes, les liens, les images et les vrais produits sans casser la mise en page.</span>
         </div>
       </section>
 
@@ -818,7 +1091,8 @@
           <div>
             <h3 class="fg-footer-title">Fitness Grams</h3>
             <p>
-              Une boutique pensée pour l'entraînement, la motivation et la progression, avec une présentation plus épurée et cohérente avec l'univers de ta page d'accueil.
+              Une boutique pensée pour l'entraînement, la nutrition et la progression,
+              avec une présentation plus claire, plus premium et mieux structurée.
             </p>
           </div>
           <div>
@@ -831,9 +1105,9 @@
           <div>
             <h4 class="fg-footer-heading">Univers</h4>
             <ul>
-              <li>Fitness</li>
-              <li>Sport</li>
-              <li>Nutrition</li>
+              <li>Déjeuner</li>
+              <li>Alimentation sportive</li>
+              <li>Encas</li>
             </ul>
           </div>
         </div>
@@ -844,7 +1118,7 @@
 
   <script>
     (function () {
-      const cards = document.querySelectorAll('.fg-card');
+      const cards = document.querySelectorAll('.fg-card, .fg-category-card');
       const nav = document.querySelector('.fg-nav');
 
       if (nav) {
@@ -865,9 +1139,9 @@
           const rect = card.getBoundingClientRect();
           const x = event.clientX - rect.left;
           const y = event.clientY - rect.top;
-          const rotateY = ((x / rect.width) - 0.5) * 8;
-          const rotateX = (((y / rect.height) - 0.5) * -8);
-          card.style.transform = 'perspective(1000px) rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg) translateY(-6px)';
+          const rotateY = ((x / rect.width) - 0.5) * 5;
+          const rotateX = (((y / rect.height) - 0.5) * -5);
+          card.style.transform = 'perspective(1000px) rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg) translateY(-4px)';
         });
 
         card.addEventListener('mouseleave', () => {
