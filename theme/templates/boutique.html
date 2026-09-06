@@ -10,14 +10,13 @@
       --fg-bg: #070707;
       --fg-bg-soft: #111111;
       --fg-surface: rgba(255, 255, 255, 0.08);
-      --fg-surface-strong: rgba(255, 255, 255, 0.13);
+      --fg-surface-strong: rgba(255, 255, 255, 0.14);
       --fg-border: rgba(255, 255, 255, 0.12);
       --fg-text: #ffffff;
       --fg-muted: rgba(255, 255, 255, 0.74);
       --fg-soft: rgba(255, 255, 255, 0.52);
       --fg-accent: #A90E02;
       --fg-accent-2: #FFFBD4;
-      --fg-accent-3: rgba(255, 251, 212, 0.18);
       --fg-shadow: 0 18px 60px rgba(0, 0, 0, 0.42);
       --fg-glass-shadow: 0 12px 36px rgba(0, 0, 0, 0.25);
       --fg-radius-xl: 32px;
@@ -40,7 +39,7 @@
       color: var(--fg-text);
       background:
         radial-gradient(circle at top left, rgba(169, 14, 2, 0.22), transparent 24%),
-        radial-gradient(circle at top right, rgba(255, 251, 212, 0.10), transparent 18%),
+        radial-gradient(circle at top right, rgba(255, 251, 212, 0.08), transparent 18%),
         linear-gradient(180deg, #0b0b0c 0%, #070707 45%, #030303 100%);
       overflow-x: hidden;
     }
@@ -83,7 +82,7 @@
       content: "";
       background:
         radial-gradient(circle at 10% 20%, rgba(169, 14, 2, 0.18) 0, transparent 18%),
-        radial-gradient(circle at 80% 12%, rgba(255, 251, 212, 0.08) 0, transparent 20%),
+        radial-gradient(circle at 80% 12%, rgba(255, 251, 212, 0.06) 0, transparent 20%),
         radial-gradient(circle at 70% 76%, rgba(169, 14, 2, 0.12) 0, transparent 20%);
     }
 
@@ -164,7 +163,8 @@
     .fg-menu a,
     .fg-btn,
     .fg-universe-card,
-    .fg-mini-card {
+    .fg-widget-card,
+    .fg-product-tile {
       transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, border-color 0.25s ease;
     }
 
@@ -196,37 +196,66 @@
     .fg-menu a:hover,
     .fg-btn:hover,
     .fg-universe-card:hover,
-    .fg-mini-card:hover {
+    .fg-widget-card:hover,
+    .fg-product-tile:hover {
       transform: translateY(-4px);
       box-shadow: 0 14px 28px rgba(0,0,0,0.28);
     }
 
+    .fg-btn {
+      padding: 14px 24px;
+      border-radius: 999px;
+      font-size: 0.88rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border: 1px solid rgba(255,255,255,0.14);
+      box-shadow: 0 10px 24px rgba(0,0,0,0.22);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* HERO */
     .fg-hero {
       position: relative;
       overflow: hidden;
       border-radius: 34px;
-      padding: 54px 42px 42px;
-      margin-bottom: 30px;
-      min-height: 560px;
-      display: grid;
-      align-items: end;
+      min-height: 620px;
+      margin-bottom: 34px;
       background:
-        linear-gradient(180deg, rgba(8,8,8,0.34), rgba(8,8,8,0.60)),
+        linear-gradient(180deg, rgba(8,8,8,0.30), rgba(8,8,8,0.62)),
         radial-gradient(circle at 18% 18%, rgba(169,14,2,0.42), transparent 24%),
         radial-gradient(circle at 82% 20%, rgba(255,251,212,0.10), transparent 20%),
         linear-gradient(145deg, #111112 0%, #0b0b0c 42%, #070707 100%);
       box-shadow: var(--fg-shadow);
+      display: flex;
+      align-items: flex-end;
+      padding: 54px 42px 42px;
     }
 
     .fg-hero::before {
+      content: "FITNESS GRAMS";
+      position: absolute;
+      inset: 40px 0 auto 0;
+      text-align: center;
+      font-size: clamp(4rem, 14vw, 12rem);
+      font-weight: 900;
+      letter-spacing: 0.16em;
+      color: rgba(255,255,255,0.04);
+      text-transform: uppercase;
+      pointer-events: none;
+      white-space: nowrap;
+    }
+
+    .fg-hero::after {
       content: "";
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(circle at 12% 20%, transparent 48%, rgba(255,255,255,0.07) 49%, rgba(255,255,255,0.07) 52%, transparent 53%),
-        radial-gradient(circle at 87% 18%, transparent 42%, rgba(255,255,255,0.05) 43%, rgba(255,255,255,0.05) 47%, transparent 48%),
-        radial-gradient(circle at 78% 78%, transparent 48%, rgba(255,255,255,0.05) 49%, rgba(255,255,255,0.05) 52%, transparent 53%);
-      background-size: 180px 180px, 120px 120px, 140px 140px;
+        radial-gradient(circle at 16% 18%, transparent 48%, rgba(255,255,255,0.07) 49%, rgba(255,255,255,0.07) 52%, transparent 53%),
+        radial-gradient(circle at 86% 22%, transparent 42%, rgba(255,255,255,0.05) 43%, rgba(255,255,255,0.05) 47%, transparent 48%);
+      background-size: 180px 180px, 120px 120px;
       background-repeat: no-repeat;
       opacity: 0.55;
       pointer-events: none;
@@ -235,8 +264,9 @@
     .fg-hero-grid {
       position: relative;
       z-index: 2;
+      width: 100%;
       display: grid;
-      grid-template-columns: 1.05fr 0.95fr;
+      grid-template-columns: 1.1fr 0.9fr;
       gap: 28px;
       align-items: end;
     }
@@ -278,10 +308,19 @@
 
     .fg-subtitle {
       max-width: 680px;
-      margin: 0 0 28px;
+      margin: 0 0 14px;
       color: var(--fg-muted);
       font-size: 1.02rem;
       line-height: 1.8;
+    }
+
+    .fg-subtitle-2 {
+      max-width: 680px;
+      margin: 0 0 28px;
+      color: rgba(255,251,212,0.86);
+      font-size: 1rem;
+      line-height: 1.8;
+      font-weight: 600;
     }
 
     .fg-hero-actions {
@@ -290,31 +329,52 @@
       gap: 14px;
     }
 
-    .fg-btn {
-      padding: 14px 24px;
-      border-radius: 999px;
-      font-size: 0.88rem;
-      font-weight: 800;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      border: 1px solid rgba(255,255,255,0.14);
-      box-shadow: 0 10px 24px rgba(0,0,0,0.22);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-    }
-
     .fg-hero-side {
       display: grid;
       gap: 16px;
+      justify-items: end;
     }
 
-    .fg-hero-panel {
-      border-radius: 24px;
+    .fg-logo-card {
+      width: min(100%, 300px);
+      border-radius: 28px;
       padding: 20px;
+      display: grid;
+      place-items: center;
+      min-height: 300px;
+      position: relative;
+      overflow: hidden;
     }
 
-    .fg-hero-panel strong {
+    .fg-logo-card::before {
+      content: "";
+      position: absolute;
+      inset: auto -60px -60px auto;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(169,14,2,0.30), transparent 65%);
+      filter: blur(8px);
+    }
+
+    .fg-logo-card img {
+      position: relative;
+      z-index: 2;
+      max-width: 220px;
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 16px 24px rgba(0,0,0,0.34));
+      border-radius: 50%;
+    }
+
+    .fg-hero-note {
+      width: min(100%, 300px);
+      border-radius: 22px;
+      padding: 18px 20px;
+    }
+
+    .fg-hero-note strong {
       display: block;
       margin-bottom: 8px;
       color: #fff;
@@ -322,16 +382,17 @@
       font-weight: 800;
     }
 
-    .fg-hero-panel span {
+    .fg-hero-note span {
       color: var(--fg-muted);
-      line-height: 1.6;
       font-size: 0.92rem;
+      line-height: 1.6;
     }
 
     .fg-hero-metrics {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 12px;
+      margin-top: 8px;
     }
 
     .fg-metric {
@@ -356,6 +417,7 @@
       letter-spacing: 0.08em;
     }
 
+    /* Sections */
     .fg-section {
       margin-top: 34px;
     }
@@ -383,6 +445,7 @@
       line-height: 1.7;
     }
 
+    /* Univers boutique */
     .fg-universes {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -495,84 +558,61 @@
         linear-gradient(145deg, #161312 0%, #090909 100%);
     }
 
-    .fg-products-band {
+    /* Widgets produits après univers */
+    .fg-widgets {
       display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 18px;
-      align-items: stretch;
     }
 
-    .fg-products-main,
-    .fg-products-side {
-      border-radius: 28px;
-      padding: 26px;
+    .fg-widget-card {
+      border-radius: 26px;
+      padding: 22px;
+      overflow: hidden;
     }
 
-    .fg-products-main h3,
-    .fg-products-side h3 {
+    .fg-widget-card h3 {
       margin: 0 0 10px;
-      font-size: 1.35rem;
+      font-size: 1.2rem;
       font-weight: 800;
       color: #fff;
     }
 
-    .fg-products-main p,
-    .fg-products-side p {
+    .fg-widget-card p {
       margin: 0 0 18px;
       color: var(--fg-muted);
-      line-height: 1.7;
+      line-height: 1.65;
+      font-size: 0.94rem;
     }
 
-    .fg-mini-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 14px;
-    }
-
-    .fg-mini-card {
-      border-radius: 20px;
-      padding: 18px;
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.10);
-    }
-
-    .fg-mini-card strong {
-      display: block;
-      color: #fff7cf;
-      font-size: 1rem;
-      margin-bottom: 8px;
-    }
-
-    .fg-mini-card span {
-      display: block;
-      color: var(--fg-muted);
-      font-size: 0.9rem;
-      line-height: 1.6;
-    }
-
-    .fg-products-side-list {
+    .fg-product-grid {
       display: grid;
       gap: 12px;
     }
 
-    .fg-products-side-item {
+    .fg-product-tile {
       padding: 16px 18px;
       border-radius: 18px;
       background: rgba(255,255,255,0.06);
       border: 1px solid rgba(255,255,255,0.10);
     }
 
-    .fg-products-side-item strong {
+    .fg-product-tile strong {
       display: block;
-      color: #fff;
+      color: #fff7cf;
       margin-bottom: 6px;
       font-size: 0.98rem;
     }
 
-    .fg-products-side-item span {
+    .fg-product-tile span {
+      display: block;
       color: var(--fg-muted);
       font-size: 0.9rem;
       line-height: 1.55;
+    }
+
+    .fg-widget-footer {
+      margin-top: 18px;
     }
 
     .fg-info-band {
@@ -654,14 +694,24 @@
     @media (max-width: 1080px) {
       .fg-hero-grid,
       .fg-universes,
-      .fg-products-band,
+      .fg-widgets,
       .fg-info-band,
-      .fg-footer-grid {
+      .fg-footer-grid,
+      .fg-hero-metrics {
         grid-template-columns: 1fr;
       }
 
       .fg-hero {
         min-height: auto;
+      }
+
+      .fg-hero-side {
+        justify-items: start;
+      }
+
+      .fg-logo-card,
+      .fg-hero-note {
+        width: 100%;
       }
     }
 
@@ -715,7 +765,8 @@
         font-size: clamp(2.2rem, 10vw, 3.8rem);
       }
 
-      .fg-subtitle {
+      .fg-subtitle,
+      .fg-subtitle-2 {
         font-size: 0.95rem;
       }
 
@@ -726,12 +777,6 @@
     }
 
     @media (max-width: 640px) {
-      .fg-hero-actions,
-      .fg-mini-grid,
-      .fg-hero-metrics {
-        grid-template-columns: 1fr;
-      }
-
       .fg-hero-actions {
         display: grid;
       }
@@ -741,8 +786,10 @@
         width: 100%;
       }
 
-      .fg-mini-grid {
-        display: grid;
+      .fg-hero::before {
+        font-size: clamp(3rem, 18vw, 5.5rem);
+        top: 70px;
+        letter-spacing: 0.08em;
       }
     }
   </style>
@@ -767,12 +814,13 @@
           <div class="fg-hero-copy">
             <div class="fg-eyebrow">Fitness • Sport • Nutrition</div>
             <h1 class="fg-title">
-              La boutique <span class="accent">Fitness Grams</span><br />
+              La boutique <span class="accent">Fitness Grams</span>
             </h1>
             <p class="fg-subtitle">
-              FITNESS-GRAM'S-FITNESS & NUTRITION découvrez notre sélection d'article sans sucre,alimentation saine 
-              complément alimentaires,snacks protéinés et produit dédiés a la perfomance.
-
+              FITNESS-GRAM'S-FITNESS &amp; NUTRITION découvrez notre sélection d'article sans sucre,
+              alimentation saine, complément alimentaires, snacks protéinés et produit dédiés a la perfomance.
+            </p>
+            <p class="fg-subtitle-2">
               Fitness-Gram's-La nutrition qui accompagne chaque gramme de tes efforts.
             </p>
 
@@ -783,9 +831,13 @@
           </div>
 
           <div class="fg-hero-side">
-            <div class="fg-hero-panel fg-glass">
-              <strong>une boutique E-commerce </strong>
-              <span>déjeuner,encas,zero sucre,confiture,protéines,boisson energie </span>
+            <div class="fg-logo-card fg-glass">
+              <img src="images/logo-fitness-grams.png" alt="Logo Fitness Grams" />
+            </div>
+
+            <div class="fg-hero-note fg-glass">
+              <strong>Une boutique E-commerce</strong>
+              <span>Déjeuner, encas, zero sucre, confiture, protéines, boisson energie.</span>
             </div>
 
             <div class="fg-hero-metrics">
@@ -795,7 +847,7 @@
               </div>
               <div class="fg-metric">
                 <strong>1</strong>
-                <span>boutique</span>
+                <span>Boutique</span>
               </div>
               <div class="fg-metric">
                 <strong>100%</strong>
@@ -810,7 +862,7 @@
         <div class="fg-section-head">
           <div>
             <h2>Les univers boutique</h2>
-            <p>la nourriture , les complement , la perfomance </p>
+            <p>La nourriture, les complement, la perfomance.</p>
           </div>
           <a class="fg-btn fg-btn-secondary" href="https://fitness-grams.sumupstore.com/" target="_blank" rel="noopener">Acheter à la boutique</a>
         </div>
@@ -876,54 +928,79 @@
       </section>
 
       <section class="fg-section">
-        <div class="fg-products-band">
-          <div class="fg-products-main fg-glass">
-            <h3>Produits à mettre en avant</h3>
-            <p>
-              Cette zone peut ensuite accueillir tes vraies images produit. Pour l’instant,
-              elle sert de structure plus propre que les anciens widgets répétés.
-            </p>
+        <div class="fg-section-head">
+          <div>
+            <h2>Produits à mettre en avant</h2>
+            <p>Les widgets commencent ici, après les univers boutique.</p>
+          </div>
+        </div>
 
-            <div class="fg-mini-grid">
-              <div class="fg-mini-card">
-                <strong>Produit vedette</strong>
-                <span>Grand visuel principal à intégrer ici avec nom, mini descriptif et lien direct.</span>
+        <div class="fg-widgets">
+          <article class="fg-widget-card fg-glass">
+            <h3>Déjeuner</h3>
+            <p>Bloc produits pour intégrer ensuite tes vraies images et références du matin.</p>
+            <div class="fg-product-grid">
+              <div class="fg-product-tile">
+                <strong>Porridge fitness</strong>
+                <span>Petit-déjeuner équilibré</span>
               </div>
-              <div class="fg-mini-card">
-                <strong>Sélection performance</strong>
-                <span>Bloc secondaire pour un best-seller ou une mise en avant saisonnière.</span>
+              <div class="fg-product-tile">
+                <strong>Granola protéiné</strong>
+                <span>Routine du matin</span>
               </div>
-              <div class="fg-mini-card">
-                <strong>Encas du moment</strong>
-                <span>Emplacement utile pour une offre, une nouveauté ou un produit coup de cœur.</span>
-              </div>
-              <div class="fg-mini-card">
-                <strong>Routine complète</strong>
-                <span>Idéal pour présenter un pack ou une combinaison de produits complémentaires.</span>
+              <div class="fg-product-tile">
+                <strong>MegaRawBar 40G</strong>
+                <span>Format pratique</span>
               </div>
             </div>
-          </div>
-
-          <aside class="fg-products-side fg-glass">
-            <h3>Accès rapide</h3>
-            <p>Une colonne courte pour garder une page plus structurée et moins dispersée.</p>
-
-            <div class="fg-products-side-list">
-              <div class="fg-products-side-item">
-                <strong>Boutique SumUp</strong>
-                <span>Tous les achats peuvent être redirigés vers ta boutique principale.</span>
-              </div>
-              <div class="fg-products-side-item">
-                <strong>Univers sport & nutrition</strong>
-                <span>Lecture plus simple avec moins de cartes concurrentes à l’écran.</span>
-              </div>
-              <div class="fg-products-side-item">
-                <strong>Insertion futures images</strong>
-                <span>Les blocs sont prêts à recevoir de vrais visuels produits plus tard.</span>
-              </div>
+            <div class="fg-widget-footer">
               <a class="fg-btn fg-btn-primary" href="https://fitness-grams.sumupstore.com/" target="_blank" rel="noopener">Acheter à la boutique</a>
             </div>
-          </aside>
+          </article>
+
+          <article class="fg-widget-card fg-glass">
+            <h3>Alimentation sportive</h3>
+            <p>Zone idéale pour les best-sellers liés à l’effort, la récupération et la performance.</p>
+            <div class="fg-product-grid">
+              <div class="fg-product-tile">
+                <strong>Pack Performance Complet</strong>
+                <span>Routine complète</span>
+              </div>
+              <div class="fg-product-tile">
+                <strong>Whey 450g</strong>
+                <span>Récupération</span>
+              </div>
+              <div class="fg-product-tile">
+                <strong>Boisson C4 500ml</strong>
+                <span>Énergie ciblée</span>
+              </div>
+            </div>
+            <div class="fg-widget-footer">
+              <a class="fg-btn fg-btn-primary" href="https://fitness-grams.sumupstore.com/" target="_blank" rel="noopener">Acheter à la boutique</a>
+            </div>
+          </article>
+
+          <article class="fg-widget-card fg-glass">
+            <h3>Encas</h3>
+            <p>Bloc plus simple pour les produits nomades, les pauses saines et les encas du quotidien.</p>
+            <div class="fg-product-grid">
+              <div class="fg-product-tile">
+                <strong>Barre au bœuf nourri à l’herbe</strong>
+                <span>Snack protéiné</span>
+              </div>
+              <div class="fg-product-tile">
+                <strong>Barre naturelle</strong>
+                <span>Pause saine</span>
+              </div>
+              <div class="fg-product-tile">
+                <strong>Snack énergie</strong>
+                <span>Format nomade</span>
+              </div>
+            </div>
+            <div class="fg-widget-footer">
+              <a class="fg-btn fg-btn-primary" href="https://fitness-grams.sumupstore.com/" target="_blank" rel="noopener">Acheter à la boutique</a>
+            </div>
+          </article>
         </div>
       </section>
 
@@ -938,7 +1015,7 @@
         </div>
         <div class="fg-glass">
           <strong>Base prête à enrichir</strong>
-          <span>Tu pourras maintenant intégrer de vraies images produit sans casser la nouvelle structure.</span>
+          <span>Tu pourras intégrer de vraies images produit sans casser la nouvelle structure.</span>
         </div>
       </section>
 
@@ -975,7 +1052,7 @@
   <script>
     (function () {
       const nav = document.querySelector('.fg-nav');
-      const cards = document.querySelectorAll('.fg-universe-card, .fg-mini-card');
+      const cards = document.querySelectorAll('.fg-universe-card, .fg-widget-card, .fg-product-tile');
 
       if (nav) {
         const handleScroll = () => {
