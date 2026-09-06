@@ -7,19 +7,19 @@
   {{ standard_header_includes }}
   <style>
     :root {
-      --fg-bg: #FFFBD4;
-      --fg-surface: rgba(255, 255, 255, 0.68);
-      --fg-surface-strong: rgba(255, 255, 255, 0.84);
-      --fg-border: rgba(169, 14, 2, 0.16);
-      --fg-text: #2a120d;
-      --fg-muted: rgba(42, 18, 13, 0.74);
-      --fg-soft: rgba(42, 18, 13, 0.54);
+      --fg-bg: #070707;
+      --fg-bg-soft: #111111;
+      --fg-surface: rgba(255, 255, 255, 0.08);
+      --fg-surface-strong: rgba(255, 255, 255, 0.13);
+      --fg-border: rgba(255, 255, 255, 0.12);
+      --fg-text: #ffffff;
+      --fg-muted: rgba(255, 255, 255, 0.74);
+      --fg-soft: rgba(255, 255, 255, 0.52);
       --fg-accent: #A90E02;
-      --fg-accent-2: #d61d10;
-      --fg-accent-soft: rgba(169, 14, 2, 0.10);
-      --fg-lemon-deep: #f5efb7;
-      --fg-shadow: 0 18px 60px rgba(92, 24, 13, 0.16);
-      --fg-glass-shadow: 0 12px 36px rgba(92, 24, 13, 0.12);
+      --fg-accent-2: #FFFBD4;
+      --fg-accent-3: rgba(255, 251, 212, 0.18);
+      --fg-shadow: 0 18px 60px rgba(0, 0, 0, 0.42);
+      --fg-glass-shadow: 0 12px 36px rgba(0, 0, 0, 0.25);
       --fg-radius-xl: 32px;
       --fg-radius-lg: 24px;
       --fg-radius-md: 18px;
@@ -39,9 +39,9 @@
       font-family: Inter, Arial, sans-serif;
       color: var(--fg-text);
       background:
-        radial-gradient(circle at top left, rgba(169, 14, 2, 0.10), transparent 26%),
-        radial-gradient(circle at top right, rgba(255, 251, 212, 0.55), transparent 20%),
-        linear-gradient(180deg, #fffdf0 0%, #FFFBD4 48%, #f7f1c3 100%);
+        radial-gradient(circle at top left, rgba(169, 14, 2, 0.22), transparent 24%),
+        radial-gradient(circle at top right, rgba(255, 251, 212, 0.10), transparent 18%),
+        linear-gradient(180deg, #0b0b0c 0%, #070707 45%, #030303 100%);
       overflow-x: hidden;
     }
 
@@ -73,31 +73,30 @@
     .fg-bg {
       z-index: 0;
       background-image:
-        radial-gradient(circle at 12% 18%, rgba(169,14,2,0.10) 0 2px, transparent 3px),
-        radial-gradient(circle at 84% 14%, rgba(169,14,2,0.08) 0 2px, transparent 3px),
-        radial-gradient(circle at 18% 74%, rgba(169,14,2,0.08) 0 2px, transparent 3px),
-        radial-gradient(circle at 72% 70%, rgba(169,14,2,0.08) 0 2px, transparent 3px);
+        radial-gradient(circle at 12% 18%, rgba(255,255,255,0.08) 0 2px, transparent 3px),
+        radial-gradient(circle at 84% 14%, rgba(255,255,255,0.07) 0 2px, transparent 3px),
+        radial-gradient(circle at 18% 74%, rgba(255,255,255,0.06) 0 2px, transparent 3px),
+        radial-gradient(circle at 72% 70%, rgba(255,255,255,0.07) 0 2px, transparent 3px);
     }
 
     .fg-bg::before {
       content: "";
       background:
-        radial-gradient(circle at 10% 20%, rgba(169, 14, 2, 0.08) 0, transparent 18%),
-        radial-gradient(circle at 80% 12%, rgba(169, 14, 2, 0.05) 0, transparent 20%),
-        radial-gradient(circle at 70% 76%, rgba(169, 14, 2, 0.06) 0, transparent 20%);
+        radial-gradient(circle at 10% 20%, rgba(169, 14, 2, 0.18) 0, transparent 18%),
+        radial-gradient(circle at 80% 12%, rgba(255, 251, 212, 0.08) 0, transparent 20%),
+        radial-gradient(circle at 70% 76%, rgba(169, 14, 2, 0.12) 0, transparent 20%);
     }
 
     .fg-bg::after {
       content: "";
       background-image:
-        radial-gradient(circle, transparent 48%, rgba(169,14,2,0.09) 49%, rgba(169,14,2,0.09) 52%, transparent 53%),
-        radial-gradient(circle, transparent 38%, rgba(169,14,2,0.06) 39%, rgba(169,14,2,0.06) 43%, transparent 44%),
-        radial-gradient(circle, transparent 48%, rgba(169,14,2,0.08) 49%, rgba(169,14,2,0.08) 52%, transparent 53%),
-        radial-gradient(circle, transparent 42%, rgba(169,14,2,0.05) 43%, rgba(169,14,2,0.05) 47%, transparent 48%);
-      background-size: 140px 140px, 92px 92px, 126px 126px, 110px 110px;
-      background-position: 7% 18%, 88% 22%, 16% 84%, 74% 72%;
+        radial-gradient(circle, transparent 48%, rgba(255,255,255,0.08) 49%, rgba(255,255,255,0.08) 52%, transparent 53%),
+        radial-gradient(circle, transparent 38%, rgba(255,255,255,0.06) 39%, rgba(255,255,255,0.06) 43%, transparent 44%),
+        radial-gradient(circle, transparent 48%, rgba(255,255,255,0.08) 49%, rgba(255,255,255,0.08) 52%, transparent 53%);
+      background-size: 140px 140px, 92px 92px, 126px 126px;
+      background-position: 7% 18%, 88% 22%, 16% 84%;
       background-repeat: no-repeat;
-      opacity: 0.55;
+      opacity: 0.35;
     }
 
     .fg-wrap {
@@ -108,7 +107,7 @@
     }
 
     .fg-glass {
-      background: linear-gradient(180deg, rgba(255,255,255,0.78) 0%, rgba(255,255,255,0.60) 100%);
+      background: linear-gradient(180deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.06) 100%);
       border: 1px solid var(--fg-border);
       box-shadow: var(--fg-glass-shadow);
       backdrop-filter: blur(18px);
@@ -128,13 +127,30 @@
       padding: 12px 18px;
       border-radius: 999px;
       width: min(92%, 820px);
-      transition: top 0.35s ease, transform 0.35s ease, box-shadow 0.35s ease, background 0.35s ease;
+      transition: top 0.35s ease, transform 0.35s ease, box-shadow 0.35s ease;
     }
 
     .fg-nav.is-scrolled {
-      top: 32px;
+      top: 28px;
       transform: translateX(-50%) scale(0.985);
-      box-shadow: 0 18px 38px rgba(92,24,13,0.18);
+      box-shadow: 0 18px 38px rgba(0,0,0,0.34);
+    }
+
+    .fg-wordmark {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255,255,255,0.95);
+      font-size: clamp(1.05rem, 2vw, 1.55rem);
+      font-weight: 900;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      line-height: 1;
+    }
+
+    .fg-wordmark .fg-wordmark-soft {
+      color: rgba(255,251,212,0.75);
     }
 
     .fg-menu {
@@ -143,33 +159,12 @@
       align-items: center;
       justify-content: center;
       gap: 12px;
-      flex: 0 0 auto;
-    }
-
-    .fg-wordmark {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0 6px 0 0;
-      color: var(--fg-accent);
-      font-size: clamp(1.05rem, 2vw, 1.55rem);
-      font-weight: 900;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      white-space: nowrap;
-      line-height: 1;
-      text-shadow: 0 1px 0 rgba(255,255,255,0.28);
-    }
-
-    .fg-wordmark .fg-wordmark-soft {
-      color: rgba(42,18,13,0.58);
     }
 
     .fg-menu a,
-    .fg-cta,
-    .fg-ghost,
-    .fg-category-card:hover,
-    .fg-category-product:hover {
+    .fg-btn,
+    .fg-universe-card,
+    .fg-mini-card {
       transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, border-color 0.25s ease;
     }
 
@@ -178,33 +173,436 @@
       text-align: center;
       padding: 12px 24px;
       border-radius: 999px;
-      background: rgba(255,255,255,0.58);
-      border: 1px solid rgba(169,14,2,0.14);
-      box-shadow: 0 10px 24px rgba(92,24,13,0.10);
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      box-shadow: 0 10px 24px rgba(0,0,0,0.18);
       font-size: 0.95rem;
       font-weight: 700;
-      letter-spacing: 0.02em;
-    }
-
-    .fg-menu a:hover,
-    .fg-cta:hover,
-    .fg-ghost:hover,
-    .fg-category-card:hover,
-    .fg-category-product:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 14px 28px rgba(92,24,13,0.16);
     }
 
     .fg-menu .is-active,
-    .fg-cta {
-      background: linear-gradient(135deg, var(--fg-accent), var(--fg-accent-2));
+    .fg-btn-primary {
+      background: linear-gradient(135deg, var(--fg-accent), #c71d10);
       border-color: transparent;
       color: #fff;
     }
 
+    .fg-btn-secondary {
+      background: rgba(255,251,212,0.10);
+      border: 1px solid rgba(255,251,212,0.18);
+      color: #fff7cf;
+    }
+
+    .fg-menu a:hover,
+    .fg-btn:hover,
+    .fg-universe-card:hover,
+    .fg-mini-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 28px rgba(0,0,0,0.28);
+    }
+
+    .fg-hero {
+      position: relative;
+      overflow: hidden;
+      border-radius: 34px;
+      padding: 54px 42px 42px;
+      margin-bottom: 30px;
+      min-height: 560px;
+      display: grid;
+      align-items: end;
+      background:
+        linear-gradient(180deg, rgba(8,8,8,0.34), rgba(8,8,8,0.60)),
+        radial-gradient(circle at 18% 18%, rgba(169,14,2,0.42), transparent 24%),
+        radial-gradient(circle at 82% 20%, rgba(255,251,212,0.10), transparent 20%),
+        linear-gradient(145deg, #111112 0%, #0b0b0c 42%, #070707 100%);
+      box-shadow: var(--fg-shadow);
+    }
+
+    .fg-hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 12% 20%, transparent 48%, rgba(255,255,255,0.07) 49%, rgba(255,255,255,0.07) 52%, transparent 53%),
+        radial-gradient(circle at 87% 18%, transparent 42%, rgba(255,255,255,0.05) 43%, rgba(255,255,255,0.05) 47%, transparent 48%),
+        radial-gradient(circle at 78% 78%, transparent 48%, rgba(255,255,255,0.05) 49%, rgba(255,255,255,0.05) 52%, transparent 53%);
+      background-size: 180px 180px, 120px 120px, 140px 140px;
+      background-repeat: no-repeat;
+      opacity: 0.55;
+      pointer-events: none;
+    }
+
+    .fg-hero-grid {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 28px;
+      align-items: end;
+    }
+
+    .fg-hero-copy {
+      max-width: 760px;
+    }
+
+    .fg-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 9px 16px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      color: rgba(255,251,212,0.88);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin: 0 0 18px;
+    }
+
+    .fg-title {
+      margin: 0 0 18px;
+      font-size: clamp(2.8rem, 6vw, 5.5rem);
+      line-height: 0.92;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: -0.05em;
+      color: #fff;
+    }
+
+    .fg-title .accent {
+      color: var(--fg-accent-2);
+      text-shadow: 0 0 24px rgba(255,251,212,0.10);
+    }
+
+    .fg-subtitle {
+      max-width: 680px;
+      margin: 0 0 28px;
+      color: var(--fg-muted);
+      font-size: 1.02rem;
+      line-height: 1.8;
+    }
+
+    .fg-hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .fg-btn {
+      padding: 14px 24px;
+      border-radius: 999px;
+      font-size: 0.88rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border: 1px solid rgba(255,255,255,0.14);
+      box-shadow: 0 10px 24px rgba(0,0,0,0.22);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .fg-hero-side {
+      display: grid;
+      gap: 16px;
+    }
+
+    .fg-hero-panel {
+      border-radius: 24px;
+      padding: 20px;
+    }
+
+    .fg-hero-panel strong {
+      display: block;
+      margin-bottom: 8px;
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 800;
+    }
+
+    .fg-hero-panel span {
+      color: var(--fg-muted);
+      line-height: 1.6;
+      font-size: 0.92rem;
+    }
+
+    .fg-hero-metrics {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .fg-metric {
+      border-radius: 20px;
+      padding: 18px 14px;
+      text-align: center;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.10);
+    }
+
+    .fg-metric strong {
+      display: block;
+      font-size: 1.5rem;
+      color: var(--fg-accent-2);
+      margin-bottom: 6px;
+    }
+
+    .fg-metric span {
+      color: var(--fg-soft);
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .fg-section {
+      margin-top: 34px;
+    }
+
+    .fg-section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 20px;
+    }
+
+    .fg-section-head h2 {
+      margin: 0 0 6px;
+      font-size: clamp(1.6rem, 3vw, 2.5rem);
+      line-height: 1;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: -0.03em;
+    }
+
+    .fg-section-head p {
+      margin: 0;
+      color: var(--fg-muted);
+      line-height: 1.7;
+    }
+
+    .fg-universes {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .fg-universe-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 28px;
+      min-height: 360px;
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: var(--fg-shadow);
+    }
+
+    .fg-universe-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.06), rgba(0,0,0,0.30));
+      pointer-events: none;
+    }
+
+    .fg-universe-content,
+    .fg-universe-footer {
+      position: relative;
+      z-index: 2;
+    }
+
+    .fg-universe-badge {
+      display: inline-flex;
+      width: fit-content;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,255,255,0.14);
+      color: #fff7cf;
+      font-size: 0.76rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .fg-universe-card h3 {
+      margin: 0 0 12px;
+      font-size: 2rem;
+      line-height: 1.02;
+      font-weight: 900;
+      color: #fff;
+    }
+
+    .fg-universe-card p {
+      margin: 0;
+      color: rgba(255,255,255,0.80);
+      line-height: 1.7;
+      font-size: 0.96rem;
+      max-width: 320px;
+    }
+
+    .fg-universe-list {
+      margin: 18px 0 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 10px;
+    }
+
+    .fg-universe-list li {
+      color: rgba(255,255,255,0.82);
+      font-size: 0.92rem;
+      padding-left: 16px;
+      position: relative;
+    }
+
+    .fg-universe-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.62em;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--fg-accent-2);
+      box-shadow: 0 0 14px rgba(255,251,212,0.22);
+    }
+
+    .fg-universe-footer {
+      margin-top: 22px;
+    }
+
+    .fg-universe-breakfast {
+      background:
+        radial-gradient(circle at 86% 20%, rgba(255, 215, 140, 0.20), transparent 26%),
+        linear-gradient(145deg, #1a1510 0%, #0e0d0d 100%);
+    }
+
+    .fg-universe-sport {
+      background:
+        radial-gradient(circle at 82% 18%, rgba(169, 14, 2, 0.28), transparent 24%),
+        linear-gradient(145deg, #181112 0%, #09090a 100%);
+    }
+
+    .fg-universe-snacks {
+      background:
+        radial-gradient(circle at 85% 18%, rgba(255, 251, 212, 0.10), transparent 20%),
+        linear-gradient(145deg, #161312 0%, #090909 100%);
+    }
+
+    .fg-products-band {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .fg-products-main,
+    .fg-products-side {
+      border-radius: 28px;
+      padding: 26px;
+    }
+
+    .fg-products-main h3,
+    .fg-products-side h3 {
+      margin: 0 0 10px;
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: #fff;
+    }
+
+    .fg-products-main p,
+    .fg-products-side p {
+      margin: 0 0 18px;
+      color: var(--fg-muted);
+      line-height: 1.7;
+    }
+
+    .fg-mini-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .fg-mini-card {
+      border-radius: 20px;
+      padding: 18px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.10);
+    }
+
+    .fg-mini-card strong {
+      display: block;
+      color: #fff7cf;
+      font-size: 1rem;
+      margin-bottom: 8px;
+    }
+
+    .fg-mini-card span {
+      display: block;
+      color: var(--fg-muted);
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    .fg-products-side-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .fg-products-side-item {
+      padding: 16px 18px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.10);
+    }
+
+    .fg-products-side-item strong {
+      display: block;
+      color: #fff;
+      margin-bottom: 6px;
+      font-size: 0.98rem;
+    }
+
+    .fg-products-side-item span {
+      color: var(--fg-muted);
+      font-size: 0.9rem;
+      line-height: 1.55;
+    }
+
+    .fg-info-band {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 28px;
+    }
+
+    .fg-info-band > div {
+      padding: 22px;
+      border-radius: 24px;
+    }
+
+    .fg-info-band strong {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 1rem;
+      color: #fff7cf;
+    }
+
+    .fg-info-band span {
+      color: var(--fg-muted);
+      line-height: 1.6;
+      font-size: 0.92rem;
+    }
+
     .fg-footer {
       margin-top: 36px;
-      padding: 26px 24px;
+      padding: 28px 24px;
       border-radius: 28px;
     }
 
@@ -220,7 +618,7 @@
       font-size: 1.2rem;
       font-weight: 800;
       letter-spacing: 0.02em;
-      color: var(--fg-accent);
+      color: #fff7cf;
     }
 
     .fg-footer p,
@@ -237,432 +635,33 @@
       margin: 0;
     }
 
+    .fg-footer-heading {
+      margin: 0 0 10px;
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 700;
+    }
+
     .fg-footer-bottom {
       margin-top: 20px;
       padding-top: 18px;
-      border-top: 1px solid rgba(169,14,2,0.10);
+      border-top: 1px solid rgba(255,255,255,0.08);
       color: var(--fg-soft);
       font-size: 0.88rem;
       text-align: center;
-    }
-
-    .fg-footer-heading {
-      margin: 0 0 10px;
-      color: var(--fg-text);
-      font-size: 1rem;
-      font-weight: 700;
-    }
-
-    .fg-hero {
-      display: grid;
-      grid-template-columns: 1.08fr 0.92fr;
-      gap: 26px;
-      align-items: stretch;
-      margin-bottom: 30px;
-    }
-
-    .fg-hero-copy,
-    .fg-hero-visual {
-      border-radius: 30px;
-      padding: 32px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .fg-hero-copy {
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      box-shadow: 0 18px 40px rgba(92,24,13,0.12);
-    }
-
-    .fg-hero-copy::before {
-      content: "";
-      position: absolute;
-      inset: auto -10% -36% auto;
-      width: 300px;
-      height: 300px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(169,14,2,0.16), transparent 65%);
-      filter: blur(12px);
-    }
-
-    .fg-eyebrow {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      padding: 8px 14px;
-      border-radius: 999px;
-      background: rgba(169,14,2,0.08);
-      border: 1px solid rgba(169,14,2,0.10);
-      color: var(--fg-accent);
-      font-size: 0.78rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      margin: 0 auto 18px;
-    }
-
-    .fg-title {
-      margin: 0 0 14px;
-      font-size: clamp(2.4rem, 5vw, 5rem);
-      line-height: 0.95;
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: -0.04em;
-      color: var(--fg-text);
-    }
-
-    .fg-title .accent {
-      color: var(--fg-accent);
-      text-shadow: 0 0 18px rgba(169,14,2,0.14);
-    }
-
-    .fg-subtitle {
-      max-width: 690px;
-      margin: 0 auto 24px;
-      color: var(--fg-muted);
-      font-size: 1.02rem;
-      line-height: 1.7;
-    }
-
-    .fg-hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 14px;
-    }
-
-    .fg-cta,
-    .fg-ghost {
-      padding: 14px 24px;
-      border-radius: 999px;
-      font-size: 0.88rem;
-      font-weight: 800;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      border: 1px solid rgba(169,14,2,0.14);
-      box-shadow: 0 10px 24px rgba(92,24,13,0.10);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .fg-ghost {
-      background: rgba(255,255,255,0.58);
-      color: var(--fg-accent);
-    }
-
-    .fg-hero-visual {
-      display: grid;
-      place-items: center;
-      min-height: 420px;
-      background:
-        linear-gradient(180deg, rgba(255,255,255,0.62), rgba(255,255,255,0.38)),
-        radial-gradient(circle at center, rgba(169,14,2,0.08), transparent 60%);
-    }
-
-    .fg-plate-stack {
-      position: relative;
-      width: min(100%, 360px);
-      aspect-ratio: 1 / 1;
-      display: grid;
-      place-items: center;
-      filter: drop-shadow(0 30px 34px rgba(92,24,13,0.20));
-    }
-
-    .fg-plate,
-    .fg-plate::before,
-    .fg-plate::after {
-      border-radius: 50%;
-      position: absolute;
-    }
-
-    .fg-plate {
-      inset: 0;
-      margin: auto;
-      width: 100%;
-      height: 100%;
-      background: radial-gradient(circle at 35% 30%, #fffef9, #f5efc7 58%, #ece2a5 100%);
-      border: 1px solid rgba(169,14,2,0.10);
-    }
-
-    .fg-plate::before {
-      content: "";
-      inset: 15%;
-      background: radial-gradient(circle, #fffef7 0%, #fff7db 70%, #f4e9ae 100%);
-      border: 16px solid rgba(169,14,2,0.08);
-      box-shadow: inset 0 0 30px rgba(169,14,2,0.04);
-    }
-
-    .fg-plate::after {
-      content: "";
-      inset: 36%;
-      background: radial-gradient(circle, rgba(169,14,2,0.88), rgba(119,7,0,0.98));
-      box-shadow: 0 0 26px rgba(169,14,2,0.22);
-    }
-
-    .plate-back {
-      transform: translate(-54px, 18px) scale(0.72);
-      opacity: 0.64;
-    }
-
-    .plate-center {
-      width: 82%;
-      height: 82%;
-      transform: scale(0.92);
-    }
-
-    .plate-front {
-      transform: translate(48px, -18px) scale(0.88);
-    }
-
-    .fg-floating-label {
-      position: absolute;
-      right: 18px;
-      bottom: 18px;
-      padding: 14px 18px;
-      border-radius: 20px;
-      max-width: 220px;
-      text-align: left;
-    }
-
-    .fg-floating-label strong {
-      display: block;
-      margin-bottom: 4px;
-      font-size: 0.95rem;
-      color: var(--fg-accent);
-    }
-
-    .fg-floating-label span {
-      color: var(--fg-muted);
-      font-size: 0.88rem;
-      line-height: 1.5;
-    }
-
-    .fg-stats {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
-      margin: 0 0 32px;
-    }
-
-    .fg-stat {
-      border-radius: var(--fg-radius-lg);
-      padding: 22px;
-      text-align: center;
-    }
-
-    .fg-stat-value {
-      display: block;
-      font-size: clamp(1.8rem, 4vw, 2.8rem);
-      font-weight: 900;
-      letter-spacing: -0.03em;
-      margin-bottom: 6px;
-      color: var(--fg-accent);
-    }
-
-    .fg-stat-label {
-      display: block;
-      color: var(--fg-soft);
-      font-size: 0.88rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    .fg-section-head {
-      display: flex;
-      align-items: end;
-      justify-content: space-between;
-      gap: 20px;
-      margin-bottom: 20px;
-    }
-
-    .fg-section-head h2 {
-      margin: 0 0 6px;
-      font-size: clamp(1.6rem, 3vw, 2.6rem);
-      line-height: 1;
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: -0.03em;
-      color: var(--fg-accent);
-    }
-
-    .fg-section-head p {
-      margin: 0;
-      color: var(--fg-muted);
-    }
-
-    .fg-showcase-grid {
-      display: grid;
-      gap: 22px;
-    }
-
-    .fg-category-card {
-      position: relative;
-      overflow: hidden;
-      display: grid;
-      grid-template-columns: 0.95fr 1.05fr;
-      gap: 24px;
-      min-height: 320px;
-      padding: 30px;
-      border-radius: 30px;
-      border: 1px solid rgba(169,14,2,0.14);
-      box-shadow: 0 18px 40px rgba(92,24,13,0.10);
-      transition: transform 0.28s ease, box-shadow 0.28s ease;
-    }
-
-    .fg-category-card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, rgba(255,255,255,0.12), rgba(255,255,255,0.02));
-      pointer-events: none;
-    }
-
-    .fg-category-content,
-    .fg-category-products-grid {
-      position: relative;
-      z-index: 2;
-    }
-
-    .fg-category-content {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    .fg-category-badge {
-      display: inline-flex;
-      width: fit-content;
-      padding: 8px 14px;
-      margin-bottom: 18px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.46);
-      border: 1px solid rgba(169,14,2,0.12);
-      color: var(--fg-accent);
-      font-size: 13px;
-      font-weight: 800;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-    }
-
-    .fg-category-content h3 {
-      margin: 0 0 14px;
-      font-size: clamp(2rem, 3vw, 3rem);
-      line-height: 1.05;
-      font-weight: 900;
-      color: var(--fg-text);
-    }
-
-    .fg-category-content p {
-      margin: 0 0 20px;
-      max-width: 580px;
-      color: var(--fg-muted);
-      font-size: 1rem;
-      line-height: 1.7;
-    }
-
-    .fg-category-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .fg-category-products-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 14px;
-      align-content: center;
-    }
-
-    .fg-category-product {
-      min-height: 110px;
-      border-radius: 22px;
-      padding: 18px;
-      background: rgba(255,255,255,0.62);
-      border: 1px solid rgba(169,14,2,0.10);
-      box-shadow: 0 10px 22px rgba(92,24,13,0.06);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-    }
-
-    .fg-category-product strong {
-      display: block;
-      color: var(--fg-accent);
-      font-size: 1rem;
-      line-height: 1.35;
-    }
-
-    .fg-category-product span {
-      display: block;
-      margin-top: 8px;
-      color: var(--fg-muted);
-      font-size: 0.9rem;
-      line-height: 1.5;
-    }
-
-    .fg-category-card.breakfast {
-      background:
-        radial-gradient(circle at 90% 20%, rgba(255, 205, 128, 0.28), transparent 28%),
-        linear-gradient(135deg, #fff9e8 0%, #fff6d5 52%, #f6ebba 100%);
-    }
-
-    .fg-category-card.sport {
-      background:
-        radial-gradient(circle at 88% 16%, rgba(169, 14, 2, 0.18), transparent 26%),
-        linear-gradient(135deg, #fff8e7 0%, #fff4cc 46%, #f4e7b2 100%);
-    }
-
-    .fg-category-card.snacks {
-      background:
-        radial-gradient(circle at 86% 18%, rgba(196, 128, 54, 0.18), transparent 26%),
-        linear-gradient(135deg, #fffaf0 0%, #fff5d7 48%, #f5e7bd 100%);
-    }
-
-    .fg-info-band {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 18px;
-      margin-top: 28px;
-    }
-
-    .fg-info-band > div {
-      padding: 20px;
-      border-radius: var(--fg-radius-lg);
-    }
-
-    .fg-info-band strong {
-      display: block;
-      margin-bottom: 6px;
-      font-size: 1rem;
-      color: var(--fg-accent);
-    }
-
-    .fg-info-band span {
-      color: var(--fg-muted);
-      line-height: 1.6;
-      font-size: 0.92rem;
     }
 
     @media (max-width: 1080px) {
-      .fg-hero,
+      .fg-hero-grid,
+      .fg-universes,
+      .fg-products-band,
       .fg-info-band,
-      .fg-stats,
-      .fg-category-card {
+      .fg-footer-grid {
         grid-template-columns: 1fr;
       }
 
-      .fg-hero-visual {
-        min-height: 360px;
-      }
-
-      .fg-category-products-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+      .fg-hero {
+        min-height: auto;
       }
     }
 
@@ -681,12 +680,10 @@
         transform: none;
         flex-direction: column;
         gap: 14px;
-        align-items: center;
-        justify-content: center;
       }
 
       .fg-nav.is-scrolled {
-        top: 20px;
+        top: 18px;
         transform: none;
       }
 
@@ -694,36 +691,28 @@
         width: 100%;
         justify-content: center;
         text-align: center;
-        padding: 0;
         font-size: 1rem;
         letter-spacing: 0.14em;
       }
 
       .fg-menu {
         width: 100%;
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        gap: 10px;
       }
 
       .fg-menu a {
         min-width: 0;
-        width: calc(50% - 5px);
+        width: calc(50% - 6px);
         padding: 11px 10px;
         font-size: 0.88rem;
       }
 
-      .fg-hero-copy,
-      .fg-hero-visual,
-      .fg-category-card {
-        padding: 24px 18px;
-        border-radius: 24px;
+      .fg-hero {
+        padding: 34px 22px 24px;
+        border-radius: 26px;
       }
 
       .fg-title {
-        font-size: clamp(2rem, 10vw, 3.4rem);
+        font-size: clamp(2.2rem, 10vw, 3.8rem);
       }
 
       .fg-subtitle {
@@ -734,27 +723,26 @@
         flex-direction: column;
         align-items: flex-start;
       }
-
-      .fg-footer-grid {
-        grid-template-columns: 1fr;
-      }
     }
 
     @media (max-width: 640px) {
-      .fg-category-products-grid {
+      .fg-hero-actions,
+      .fg-mini-grid,
+      .fg-hero-metrics {
         grid-template-columns: 1fr;
       }
 
-      .fg-category-actions {
-        flex-direction: column;
+      .fg-hero-actions {
+        display: grid;
       }
 
-      .fg-category-actions a,
-      .fg-cta,
-      .fg-ghost {
+      .fg-btn,
+      .fg-menu a {
         width: 100%;
-        text-align: center;
-        justify-content: center;
+      }
+
+      .fg-mini-grid {
+        display: grid;
       }
     }
   </style>
@@ -775,180 +763,181 @@
       </header>
 
       <section class="fg-hero">
-        <div class="fg-hero-copy fg-glass">
-          <div class="fg-eyebrow">Fitness • Sport • Nutrition</div>
-          <h1 class="fg-title">
-            La boutique <span class="accent">Fitness Grams</span><br />
-            au service de vos objectifs
-          </h1>
-          <p class="fg-subtitle">
-            Découvrez une sélection pensée pour le quotidien, la performance et les encas intelligents,
-            dans un univers plus lumineux, premium et cohérent avec l’identité de la marque.
-          </p>
+        <div class="fg-hero-grid">
+          <div class="fg-hero-copy">
+            <div class="fg-eyebrow">Fitness • Sport • Nutrition</div>
+            <h1 class="fg-title">
+              La boutique <span class="accent">Fitness Grams</span><br />
+              pensée comme une vitrine
+            </h1>
+            <p class="fg-subtitle">
+              Une page plus proche de l’accueil, avec une ambiance sombre, plus de présence visuelle
+              et une lecture plus directe pour mettre en avant vos univers produits sans surcharger l’écran.
+            </p>
 
-          <div class="fg-hero-actions">
-            <a class="fg-cta" href="#selection-boutique">Explorer la sélection</a>
-            <a class="fg-ghost" href="https://fitness-grams.sumupstore.com/" target="_blank" rel="noopener">Acheter à la boutique</a>
-          </div>
-        </div>
-
-        <div class="fg-hero-visual fg-glass">
-          <div class="fg-plate-stack" aria-hidden="true">
-            <div class="fg-plate plate-back"></div>
-            <div class="fg-plate plate-center"></div>
-            <div class="fg-plate plate-front"></div>
+            <div class="fg-hero-actions">
+              <a class="fg-btn fg-btn-primary" href="#univers-boutique">Explorer la boutique</a>
+              <a class="fg-btn fg-btn-secondary" href="https://fitness-grams.sumupstore.com/" target="_blank" rel="noopener">Acheter à la boutique</a>
+            </div>
           </div>
 
-          <div class="fg-floating-label fg-glass">
-            <strong>Ambiance vitrine</strong>
-            <span>Palette rouge et lemon, relief doux et composition premium pour mettre les produits en avant.</span>
+          <div class="fg-hero-side">
+            <div class="fg-hero-panel fg-glass">
+              <strong>Ambiance plus proche de l’accueil</strong>
+              <span>Fond sombre, contraste premium, effets glassmorphism et structure visuelle plus respirante.</span>
+            </div>
+
+            <div class="fg-hero-metrics">
+              <div class="fg-metric">
+                <strong>3</strong>
+                <span>Univers</span>
+              </div>
+              <div class="fg-metric">
+                <strong>1</strong>
+                <span>Direction claire</span>
+              </div>
+              <div class="fg-metric">
+                <strong>100%</strong>
+                <span>Fitness Grams</span>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      <section class="fg-stats">
-        <div class="fg-stat fg-glass">
-          <span class="fg-stat-value">24h</span>
-          <span class="fg-stat-label">Préparation rapide</span>
-        </div>
-        <div class="fg-stat fg-glass">
-          <span class="fg-stat-value">3 univers</span>
-          <span class="fg-stat-label">Déjeuner, sport, encas</span>
-        </div>
-        <div class="fg-stat fg-glass">
-          <span class="fg-stat-value">100%</span>
-          <span class="fg-stat-label">Style Fitness Grams</span>
-        </div>
-      </section>
-
-      <section id="selection-boutique">
+      <section id="univers-boutique" class="fg-section">
         <div class="fg-section-head">
           <div>
-            <h2>Sélection boutique</h2>
-            <p>Trois grands univers avec plusieurs articles visibles dans chaque catégorie.</p>
+            <h2>Les univers boutique</h2>
+            <p>Trois blocs forts, plus lisibles, pour structurer la page sans multiplier les widgets.</p>
           </div>
-          <a class="fg-ghost" href="https://fitness-grams.sumupstore.com/" target="_blank" rel="noopener">Acheter à la boutique</a>
+          <a class="fg-btn fg-btn-secondary" href="https://fitness-grams.sumupstore.com/" target="_blank" rel="noopener">Acheter à la boutique</a>
         </div>
 
-        <div class="fg-showcase-grid">
-
-          <article class="fg-category-card breakfast fg-glass">
-            <div class="fg-category-content">
-              <span class="fg-category-badge">Déjeuner</span>
-              <h3>Bien commencer la journée</h3>
+        <div class="fg-universes">
+          <article class="fg-universe-card fg-universe-breakfast fg-glass">
+            <div class="fg-universe-content">
+              <span class="fg-universe-badge">Déjeuner</span>
+              <h3>Bien démarrer</h3>
               <p>
-                Une sélection pensée pour les matins actifs avec plusieurs références
-                visibles directement dans le même univers.
+                Un univers dédié aux routines du matin, aux produits pratiques et aux formats
+                pensés pour une énergie plus régulière.
               </p>
-
-              <div class="fg-category-actions">
-                <a class="fg-cta" href="https://fitness-grams.sumupstore.com/" target="_blank" rel="noopener">Acheter à la boutique</a>
-              </div>
+              <ul class="fg-universe-list">
+                <li>Porridge fitness</li>
+                <li>Granola protéiné</li>
+                <li>MegaRawBar 40G</li>
+              </ul>
             </div>
-
-            <div class="fg-category-products-grid">
-              <div class="fg-category-product">
-                <strong>Porridge fitness</strong>
-                <span>Petit-déjeuner équilibré</span>
-              </div>
-              <div class="fg-category-product">
-                <strong>Granola protéiné</strong>
-                <span>Énergie progressive</span>
-              </div>
-              <div class="fg-category-product">
-                <strong>MegaRawBar 40G</strong>
-                <span>Format pratique</span>
-              </div>
-              <div class="fg-category-product">
-                <strong>Mix déjeuner</strong>
-                <span>Routine du matin</span>
-              </div>
+            <div class="fg-universe-footer">
+              <a class="fg-btn fg-btn-primary" href="https://fitness-grams.sumupstore.com/" target="_blank" rel="noopener">Acheter à la boutique</a>
             </div>
           </article>
 
-          <article class="fg-category-card sport fg-glass">
-            <div class="fg-category-content">
-              <span class="fg-category-badge">Alimentation sportive</span>
-              <h3>Performance, énergie, récupération</h3>
+          <article class="fg-universe-card fg-universe-sport fg-glass">
+            <div class="fg-universe-content">
+              <span class="fg-universe-badge">Alimentation sportive</span>
+              <h3>Performance</h3>
               <p>
-                Un univers plus dynamique pour présenter plusieurs produits sport
-                dans une vraie composition vitrine.
+                Une composition plus directe pour les produits orientés effort, récupération,
+                énergie et progression.
               </p>
-
-              <div class="fg-category-actions">
-                <a class="fg-cta" href="https://fitness-grams.sumupstore.com/" target="_blank" rel="noopener">Acheter à la boutique</a>
-              </div>
+              <ul class="fg-universe-list">
+                <li>Pack Performance Complet</li>
+                <li>Whey 450g</li>
+                <li>Boisson C4 500ml</li>
+              </ul>
             </div>
-
-            <div class="fg-category-products-grid">
-              <div class="fg-category-product">
-                <strong>Pack Performance Complet</strong>
-                <span>Routine complète</span>
-              </div>
-              <div class="fg-category-product">
-                <strong>Whey 450g</strong>
-                <span>Récupération</span>
-              </div>
-              <div class="fg-category-product">
-                <strong>BCAA</strong>
-                <span>Avant ou après séance</span>
-              </div>
-              <div class="fg-category-product">
-                <strong>Boisson C4 500ml</strong>
-                <span>Énergie ciblée</span>
-              </div>
+            <div class="fg-universe-footer">
+              <a class="fg-btn fg-btn-primary" href="https://fitness-grams.sumupstore.com/" target="_blank" rel="noopener">Acheter à la boutique</a>
             </div>
           </article>
 
-          <article class="fg-category-card snacks fg-glass">
-            <div class="fg-category-content">
-              <span class="fg-category-badge">Encas</span>
-              <h3>Des pauses saines à emporter</h3>
+          <article class="fg-universe-card fg-universe-snacks fg-glass">
+            <div class="fg-universe-content">
+              <span class="fg-universe-badge">Encas</span>
+              <h3>À emporter</h3>
               <p>
-                Un bloc plus simple et gourmand pour montrer plusieurs encas
-                directement sans surcharger la page.
+                Un espace simple et premium pour mettre en avant les articles nomades,
+                pratiques et gourmands.
               </p>
-
-              <div class="fg-category-actions">
-                <a class="fg-cta" href="https://fitness-grams.sumupstore.com/" target="_blank" rel="noopener">Acheter à la boutique</a>
-              </div>
+              <ul class="fg-universe-list">
+                <li>Barre au bœuf nourri à l’herbe</li>
+                <li>Barre naturelle</li>
+                <li>Snack énergie</li>
+              </ul>
             </div>
-
-            <div class="fg-category-products-grid">
-              <div class="fg-category-product">
-                <strong>Barre au bœuf nourri à l’herbe</strong>
-                <span>Snack protéiné</span>
-              </div>
-              <div class="fg-category-product">
-                <strong>Barre naturelle</strong>
-                <span>Pause saine</span>
-              </div>
-              <div class="fg-category-product">
-                <strong>Mini pack encas</strong>
-                <span>Format nomade</span>
-              </div>
-              <div class="fg-category-product">
-                <strong>Snack énergie</strong>
-                <span>Texture gourmande</span>
-              </div>
+            <div class="fg-universe-footer">
+              <a class="fg-btn fg-btn-primary" href="https://fitness-grams.sumupstore.com/" target="_blank" rel="noopener">Acheter à la boutique</a>
             </div>
           </article>
-
         </div>
       </section>
 
-      <section id="engagements-boutique" class="fg-info-band">
+      <section class="fg-section">
+        <div class="fg-products-band">
+          <div class="fg-products-main fg-glass">
+            <h3>Produits à mettre en avant</h3>
+            <p>
+              Cette zone peut ensuite accueillir tes vraies images produit. Pour l’instant,
+              elle sert de structure plus propre que les anciens widgets répétés.
+            </p>
+
+            <div class="fg-mini-grid">
+              <div class="fg-mini-card">
+                <strong>Produit vedette</strong>
+                <span>Grand visuel principal à intégrer ici avec nom, mini descriptif et lien direct.</span>
+              </div>
+              <div class="fg-mini-card">
+                <strong>Sélection performance</strong>
+                <span>Bloc secondaire pour un best-seller ou une mise en avant saisonnière.</span>
+              </div>
+              <div class="fg-mini-card">
+                <strong>Encas du moment</strong>
+                <span>Emplacement utile pour une offre, une nouveauté ou un produit coup de cœur.</span>
+              </div>
+              <div class="fg-mini-card">
+                <strong>Routine complète</strong>
+                <span>Idéal pour présenter un pack ou une combinaison de produits complémentaires.</span>
+              </div>
+            </div>
+          </div>
+
+          <aside class="fg-products-side fg-glass">
+            <h3>Accès rapide</h3>
+            <p>Une colonne courte pour garder une page plus structurée et moins dispersée.</p>
+
+            <div class="fg-products-side-list">
+              <div class="fg-products-side-item">
+                <strong>Boutique SumUp</strong>
+                <span>Tous les achats peuvent être redirigés vers ta boutique principale.</span>
+              </div>
+              <div class="fg-products-side-item">
+                <strong>Univers sport & nutrition</strong>
+                <span>Lecture plus simple avec moins de cartes concurrentes à l’écran.</span>
+              </div>
+              <div class="fg-products-side-item">
+                <strong>Insertion futures images</strong>
+                <span>Les blocs sont prêts à recevoir de vrais visuels produits plus tard.</span>
+              </div>
+              <a class="fg-btn fg-btn-primary" href="https://fitness-grams.sumupstore.com/" target="_blank" rel="noopener">Acheter à la boutique</a>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="fg-info-band">
         <div class="fg-glass">
-          <strong>Design réutilisable</strong>
-          <span>Le fichier reste autonome et peut être envoyé directement dans GitHub comme page HTML complète.</span>
+          <strong>Moins de widgets</strong>
+          <span>La page est réorganisée avec moins d’éléments concurrents pour retrouver une lecture plus premium.</span>
         </div>
         <div class="fg-glass">
-          <strong>Nouvelle palette visuelle</strong>
-          <span>Le rouge #A90E02 structure les accents et le lemon #FFFBD4 apporte un rendu plus lumineux et premium.</span>
+          <strong>Fond titre plus fort</strong>
+          <span>Le hero reprend une présence visuelle plus proche de l’accueil avec une ambiance sport et contraste sombre.</span>
         </div>
         <div class="fg-glass">
-          <strong>Prêt à personnaliser</strong>
-          <span>Tu peux remplacer facilement les textes, les liens, les images et les vrais produits sans casser la mise en page.</span>
+          <strong>Base prête à enrichir</strong>
+          <span>Tu pourras maintenant intégrer de vraies images produit sans casser la nouvelle structure.</span>
         </div>
       </section>
 
@@ -957,8 +946,8 @@
           <div>
             <h3 class="fg-footer-title">Fitness Grams</h3>
             <p>
-              Une boutique pensée pour l'entraînement, la nutrition et la progression,
-              avec une présentation plus claire, plus premium et mieux structurée.
+              Une boutique repensée pour mieux refléter l’univers de la marque, avec une structure
+              plus claire, plus impactante et plus cohérente avec la page d’accueil.
             </p>
           </div>
           <div>
@@ -984,8 +973,8 @@
 
   <script>
     (function () {
-      const cards = document.querySelectorAll('.fg-category-card, .fg-category-product');
       const nav = document.querySelector('.fg-nav');
+      const cards = document.querySelectorAll('.fg-universe-card, .fg-mini-card');
 
       if (nav) {
         const handleScroll = () => {
@@ -1007,11 +996,13 @@
           const y = event.clientY - rect.top;
           const rotateY = ((x / rect.width) - 0.5) * 4;
           const rotateX = (((y / rect.height) - 0.5) * -4);
-          card.style.transform = 'perspective(1000px) rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg) translateY(-3px)';
+          card.style.transform =
+            'perspective(1000px) rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg) translateY(-4px)';
         });
 
         card.addEventListener('mouseleave', () => {
-          card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)';
+          card.style.transform =
+            'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)';
         });
       });
     })();
