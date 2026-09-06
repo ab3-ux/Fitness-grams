@@ -164,7 +164,8 @@
     .fg-btn,
     .fg-universe-card,
     .fg-widget-card,
-    .fg-product-tile {
+    .fg-product-tile,
+    .fg-logo-card {
       transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, border-color 0.25s ease;
     }
 
@@ -197,7 +198,8 @@
     .fg-btn:hover,
     .fg-universe-card:hover,
     .fg-widget-card:hover,
-    .fg-product-tile:hover {
+    .fg-product-tile:hover,
+    .fg-logo-card:hover {
       transform: translateY(-4px);
       box-shadow: 0 14px 28px rgba(0,0,0,0.28);
     }
@@ -216,27 +218,84 @@
       justify-content: center;
     }
 
+    /* Logo flottant */
+    .fg-logo-card {
+      position: fixed;
+      top: 110px;
+      right: 24px;
+      z-index: 28;
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      padding: 14px;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      background: linear-gradient(180deg, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0.06) 100%);
+      border: 1px solid rgba(255,255,255,0.12);
+      box-shadow: 0 14px 34px rgba(0,0,0,0.28);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      animation: fg-float-logo 4s ease-in-out infinite;
+    }
+
+    .fg-logo-card::before {
+      content: "";
+      position: absolute;
+      inset: auto -30px -30px auto;
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(169,14,2,0.30), transparent 65%);
+      filter: blur(8px);
+    }
+
+    .fg-logo-card img {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 120px;
+      height: auto;
+      object-fit: contain;
+      border-radius: 50%;
+      filter: drop-shadow(0 10px 18px rgba(0,0,0,0.28));
+    }
+
+    @keyframes fg-float-logo {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+      100% { transform: translateY(0); }
+    }
+
+    /* Hero pleine largeur */
     .fg-hero {
       position: relative;
+      left: 50%;
+      right: 50%;
+      width: 100vw;
+      margin-left: -50vw;
+      margin-right: -50vw;
       overflow: hidden;
-      border-radius: 34px;
-      min-height: 620px;
-      margin-bottom: 34px;
+      min-height: 680px;
+      margin-bottom: 0;
       background:
-        linear-gradient(180deg, rgba(8,8,8,0.30), rgba(8,8,8,0.62)),
+        linear-gradient(180deg, rgba(8,8,8,0.24), rgba(8,8,8,0.66)),
         radial-gradient(circle at 18% 18%, rgba(169,14,2,0.42), transparent 24%),
         radial-gradient(circle at 82% 20%, rgba(255,251,212,0.10), transparent 20%),
         linear-gradient(145deg, #111112 0%, #0b0b0c 42%, #070707 100%);
-      box-shadow: var(--fg-shadow);
+      box-shadow: 0 18px 60px rgba(0, 0, 0, 0.42);
       display: flex;
       align-items: flex-end;
-      padding: 54px 42px 42px;
+      padding: 140px max(24px, calc((100vw - var(--fg-max)) / 2)) 54px;
+      border-radius: 0 0 34px 34px;
     }
 
     .fg-hero::before {
       content: "FITNESS GRAMS";
       position: absolute;
-      inset: 40px 0 auto 0;
+      top: 36px;
+      left: 50%;
+      transform: translateX(-50%);
       text-align: center;
       font-size: clamp(4rem, 14vw, 12rem);
       font-weight: 900;
@@ -263,7 +322,8 @@
     .fg-hero-grid {
       position: relative;
       z-index: 2;
-      width: 100%;
+      width: min(var(--fg-max), 100%);
+      margin: 0 auto;
       display: grid;
       grid-template-columns: 1.1fr 0.9fr;
       gap: 28px;
@@ -332,39 +392,7 @@
       display: grid;
       gap: 16px;
       justify-items: end;
-    }
-
-    .fg-logo-card {
-      width: min(100%, 300px);
-      border-radius: 28px;
-      padding: 20px;
-      display: grid;
-      place-items: center;
-      min-height: 300px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .fg-logo-card::before {
-      content: "";
-      position: absolute;
-      inset: auto -60px -60px auto;
-      width: 180px;
-      height: 180px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(169,14,2,0.30), transparent 65%);
-      filter: blur(8px);
-    }
-
-    .fg-logo-card img {
-      position: relative;
-      z-index: 2;
-      max-width: 220px;
-      width: 100%;
-      height: auto;
-      object-fit: contain;
-      filter: drop-shadow(0 16px 24px rgba(0,0,0,0.34));
-      border-radius: 50%;
+      padding-right: 180px;
     }
 
     .fg-hero-note {
@@ -392,6 +420,8 @@
       grid-template-columns: repeat(3, 1fr);
       gap: 12px;
       margin-top: 8px;
+      width: 100%;
+      max-width: 420px;
     }
 
     .fg-metric {
@@ -414,6 +444,58 @@
       font-size: 0.82rem;
       text-transform: uppercase;
       letter-spacing: 0.08em;
+    }
+
+    /* Barre défilante */
+    .fg-marquee-wrap {
+      position: relative;
+      left: 50%;
+      right: 50%;
+      width: 100vw;
+      margin-left: -50vw;
+      margin-right: -50vw;
+      background: linear-gradient(90deg, #A90E02 0%, #7f0a01 100%);
+      border-top: 1px solid rgba(255,255,255,0.08);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      overflow: hidden;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.22);
+    }
+
+    .fg-marquee {
+      display: flex;
+      width: max-content;
+      min-width: 100%;
+      animation: fg-marquee-scroll 28s linear infinite;
+    }
+
+    .fg-marquee-track {
+      display: flex;
+      align-items: center;
+      gap: 34px;
+      padding: 14px 24px;
+      white-space: nowrap;
+    }
+
+    .fg-marquee-track span {
+      color: #FFFBD4;
+      font-size: 0.92rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .fg-marquee-track .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #FFFBD4;
+      opacity: 0.95;
+      flex: 0 0 auto;
+    }
+
+    @keyframes fg-marquee-scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
     }
 
     .fg-section {
@@ -699,15 +781,29 @@
 
       .fg-hero {
         min-height: auto;
+        padding: 150px 24px 34px;
+        border-radius: 0 0 26px 26px;
       }
 
       .fg-hero-side {
         justify-items: start;
+        padding-right: 0;
       }
 
-      .fg-logo-card,
       .fg-hero-note {
         width: 100%;
+        max-width: 320px;
+      }
+
+      .fg-logo-card {
+        width: 132px;
+        height: 132px;
+        top: 118px;
+        right: 18px;
+      }
+
+      .fg-logo-card img {
+        max-width: 96px;
       }
     }
 
@@ -753,8 +849,7 @@
       }
 
       .fg-hero {
-        padding: 34px 22px 24px;
-        border-radius: 26px;
+        padding: 150px 20px 28px;
       }
 
       .fg-title {
@@ -770,6 +865,19 @@
         flex-direction: column;
         align-items: flex-start;
       }
+
+      .fg-logo-card {
+        top: auto;
+        bottom: 18px;
+        right: 14px;
+        width: 92px;
+        height: 92px;
+        padding: 10px;
+      }
+
+      .fg-logo-card img {
+        max-width: 68px;
+      }
     }
 
     @media (max-width: 640px) {
@@ -784,13 +892,26 @@
 
       .fg-hero::before {
         font-size: clamp(3rem, 18vw, 5.5rem);
-        top: 70px;
+        top: 82px;
         letter-spacing: 0.08em;
+      }
+
+      .fg-marquee-track {
+        padding: 12px 18px;
+        gap: 22px;
+      }
+
+      .fg-marquee-track span {
+        font-size: 0.78rem;
       }
     }
   </style>
 </head>
 <body>
+  <div class="fg-logo-card">
+    <img src="https://147534610.fs1.hubspotusercontent-eu1.net/hubfs/147534610/file_000000003d788210a8047e43950ee4f9-1.png" alt="Logo Fitness Grams" />
+  </div>
+
   <main class="fg-shell">
     <div class="fg-bg"></div>
 
@@ -827,10 +948,6 @@
           </div>
 
           <div class="fg-hero-side">
-            <div class="fg-logo-card fg-glass">
-              <img src="https://147534610.fs1.hubspotusercontent-eu1.net/hubfs/147534610/file_000000003d788210a8047e43950ee4f9-1.png" alt="Logo Fitness Grams" />
-            </div>
-
             <div class="fg-hero-note fg-glass">
               <strong>Une boutique E-commerce</strong>
               <span>Déjeuner, encas, zero sucre, confiture, protéines, boisson energie.</span>
@@ -853,6 +970,39 @@
           </div>
         </div>
       </section>
+
+      <div class="fg-marquee-wrap" aria-label="Messages boutique">
+        <div class="fg-marquee">
+          <div class="fg-marquee-track">
+            <span>Sans sucre</span>
+            <span class="dot"></span>
+            <span>Alimentation saine</span>
+            <span class="dot"></span>
+            <span>Compléments alimentaires</span>
+            <span class="dot"></span>
+            <span>Snacks protéinés</span>
+            <span class="dot"></span>
+            <span>Boissons énergie</span>
+            <span class="dot"></span>
+            <span>Fitness Grams</span>
+            <span class="dot"></span>
+          </div>
+          <div class="fg-marquee-track" aria-hidden="true">
+            <span>Sans sucre</span>
+            <span class="dot"></span>
+            <span>Alimentation saine</span>
+            <span class="dot"></span>
+            <span>Compléments alimentaires</span>
+            <span class="dot"></span>
+            <span>Snacks protéinés</span>
+            <span class="dot"></span>
+            <span>Boissons énergie</span>
+            <span class="dot"></span>
+            <span>Fitness Grams</span>
+            <span class="dot"></span>
+          </div>
+        </div>
+      </div>
 
       <section id="univers-boutique" class="fg-section">
         <div class="fg-section-head">
