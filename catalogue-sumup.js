@@ -1,4 +1,3 @@
-
 const catalogueJsonUrl = new URL(
   "./fitness-grams-produits-sumup.json",
   document.currentScript.src
@@ -13,7 +12,6 @@ const formatPrice = value => new Intl.NumberFormat("fr-FR", {
 function renderCatalogueCategories() {
   const nav = document.getElementById("categories");
   nav.replaceChildren();
-
   categoryLabels.forEach((label, key) => {
     const button = document.createElement("button");
     button.type = "button";
@@ -36,7 +34,6 @@ function renderCatalogueProducts() {
     const searchable = [product.name, product.category, product.description, product.sku].filter(Boolean).join(" ");
     return matchesCategory && normalizeText(searchable).includes(query);
   });
-
   if (sort !== "featured") {
     list.sort((first, second) => {
       if (first.price === null) return second.price === null ? 0 : 1;
@@ -44,18 +41,15 @@ function renderCatalogueProducts() {
       return sort === "asc" ? first.price - second.price : second.price - first.price;
     });
   }
-
   const grid = document.getElementById("products");
   grid.replaceChildren();
   document.getElementById("result-count").textContent = `${list.length} produit${list.length > 1 ? "s" : ""}`;
   document.getElementById("empty").hidden = list.length > 0;
-
   list.forEach(product => {
     const card = document.createElement("article");
     card.className = "product";
     const picture = document.createElement("div");
     picture.className = "picture";
-
     if (product.image) {
       const image = document.createElement("img");
       image.src = product.image;
@@ -66,7 +60,6 @@ function renderCatalogueProducts() {
     } else {
       picture.append(document.createTextNode("Image indisponible"));
     }
-
     const info = document.createElement("div");
     info.className = "info";
     if (product.category) {
@@ -75,24 +68,20 @@ function renderCatalogueProducts() {
       category.textContent = product.category;
       info.append(category);
     }
-
     const title = document.createElement("h3");
     title.textContent = product.name;
     info.append(title);
-
     if (product.description) {
       const description = document.createElement("p");
       description.textContent = product.description;
       info.append(description);
     }
-
     if (product.sku) {
       const reference = document.createElement("p");
       reference.className = "small";
       reference.textContent = `Référence : ${product.sku}`;
       info.append(reference);
     }
-
     const bottom = document.createElement("div");
     bottom.className = "product-bottom";
     const price = document.createElement("span");
@@ -116,7 +105,6 @@ function renderCatalogueProducts() {
       toast("Article ajouté à ta sélection");
     });
     bottom.append(price, add);
-
     const detail = document.createElement("button");
     detail.type = "button";
     detail.className = "detail";
@@ -138,7 +126,6 @@ function renderCatalogueCart() {
   items.replaceChildren();
   let total = 0;
   let count = 0;
-
   cart.forEach(row => {
     const product = products.find(item => item.id === row.id);
     total += product.price * row.qty;
@@ -159,7 +146,6 @@ function renderCatalogueCart() {
       price.textContent = formatPrice(product.price);
       line.append(price);
     }
-
     const controls = document.createElement("div");
     [-1, 1].forEach(delta => {
       const button = document.createElement("button");
@@ -179,7 +165,6 @@ function renderCatalogueCart() {
         controls.append(quantity);
       }
     });
-
     const remove = document.createElement("button");
     remove.type = "button";
     remove.className = "btn";
@@ -192,13 +177,11 @@ function renderCatalogueCart() {
     line.append(controls);
     items.append(line);
   });
-
   if (cart.length === 0) {
     const empty = document.createElement("p");
     empty.textContent = "Ta sélection est vide.";
     items.append(empty);
   }
-
   document.getElementById("cart-count").textContent = String(count);
   document.getElementById("cart-total").textContent = `Total indicatif : ${formatPrice(total)}`;
 }
@@ -209,11 +192,9 @@ async function loadSumUpCatalogue() {
     if (!response.ok) throw new Error("Catalogue indisponible");
     const source = await response.json();
     if (!Array.isArray(source)) throw new Error("Format du catalogue invalide");
-
     const seen = new Set();
     products = source.reduce((result, item, index) => {
       if (!item || item.visibleOnline !== true || typeof item.name !== "string" || !item.name.trim()) return result;
-
       const name = item.name.trim();
       const category = typeof item.category === "string" ? item.category.trim() : "";
       const sku = typeof item.sku === "string" && item.sku.trim() ? item.sku.trim() : "";
@@ -221,7 +202,6 @@ async function loadSumUpCatalogue() {
       const identity = item.sumupVariantId || item.sumupItemId || sku || `${normalizeText(name)}|${normalizeText(category)}|${price}`;
       if (seen.has(identity)) return result;
       seen.add(identity);
-
       let image = "";
       if (typeof item.image === "string" && item.image.trim()) {
         try {
@@ -229,7 +209,6 @@ async function loadSumUpCatalogue() {
           if (imageUrl.protocol === "https:" || imageUrl.protocol === "http:") image = imageUrl.href;
         } catch {}
       }
-
       result.push({
         id: `sumup-${identity || index}`,
         name,
@@ -241,7 +220,6 @@ async function loadSumUpCatalogue() {
       });
       return result;
     }, []);
-
     categoryLabels.clear();
     categoryLabels.set("all", "Tout le catalogue");
     [...new Set(products.map(product => product.category).filter(Boolean))].forEach(value => {
@@ -275,4 +253,9 @@ async function loadSumUpCatalogue() {
   }
 }
 
-document.addEventListener("DOMContentLoaded", loadSumUpCatalogue);
+// Fonctionne aussi si le script arrive après DOMContentLoaded.
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", loadSumUpCatalogue, { once: true });
+} else {
+  loadSumUpCatalogue();
+}
