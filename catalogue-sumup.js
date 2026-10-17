@@ -8,6 +8,44 @@ const formatPrice = value => new Intl.NumberFormat("fr-FR", {
   style: "currency",
   currency: "EUR"
 }).format(value);
+const validImageUrl = value => {
+  if (typeof value !== "string" || !value.trim()) return "";
+  try {
+    const url = new URL(value, document.baseURI);
+    return url.protocol === "https:" || url.protocol === "http:" ? url.href : "";
+  } catch {
+    return "";
+  }
+};
+const optionLabel = options => options
+  .filter(option => option.value)
+  .map(option => option.name ? `${option.name} : ${option.value}` : option.value)
+  .join(" · ");
+
+function selectedVariant(product, key) {
+  return product.variants.find(variant => variant.key === key) || product.variants[0];
+}
+
+function quantityInCart(product, variant) {
+  return cart
+    .filter(row => row.id === product.id && row.variant === variant.key)
+    .reduce((total, row) => total + row.qty, 0);
+}
+
+function variantAvailability(variant) {
+  if (!variant.trackInventory) return { available: true, remaining: Infinity, label: "" };
+  if (!Number.isInteger(variant.quantity) || variant.quantity < 0) {
+    return { available: false, remaining: 0, label: "Stock indisponible" };
+  }
+  if (variant.quantity === 0) {
+    return { available: false, remaining: 0, label: "Épuisé" };
+  }
+  return {
+    available: true,
+    remaining: variant.quantity,
+    label: `En stock : ${variant.quantity}`
+  };
+}
 
 function renderCatalogueCategories() {
   const nav = document.getElementById("categories");
@@ -31,7 +69,16 @@ function renderCatalogueProducts() {
   const sort = document.getElementById("sort").value;
   const list = products.filter(product => {
     const matchesCategory = category === "all" || product.category === category;
-    const searchable = [product.name, product.category, product.description, product.sku].filter(Boolean).join(" ");
+    const searchable = [
+      product.name,
+      product.category,
+      product.description,
+      ...product.variants.flatMap(variant => [
+        variant.sku,
+        variant.label,
+        ...variant.options.map(option => option.value)
+      ])
+    ].filter(Boolean).join(" ");
     return matchesCategory && normalizeText(searchable).includes(query);
   });
   if (sort !== "featured") {
@@ -60,13 +107,14 @@ function renderCatalogueProducts() {
     } else {
       picture.append(document.createTextNode("Image indisponible"));
     }
+
     const info = document.createElement("div");
     info.className = "info";
     if (product.category) {
-      const category = document.createElement("div");
-      category.className = "eyebrow";
-      category.textContent = product.category;
-      info.append(category);
+      const categoryElement = document.createElement("div");
+      categoryElement.className = "eyebrow";
+      categoryElement.textContent = product.category;
+      info.append(categoryElement);
     }
     const title = document.createElement("h3");
     title.textContent = product.name;
@@ -76,42 +124,105 @@ function renderCatalogueProducts() {
       description.textContent = product.description;
       info.append(description);
     }
-    if (product.sku) {
-      const reference = document.createElement("p");
-      reference.className = "small";
-      reference.textContent = `Référence : ${product.sku}`;
-      info.append(reference);
+
+    let variantSelect;
+    if (product.variants.length > 1) {
+      variantSelect = document.createElement("select");
+      variantSelect.className = "variant-select";
+      variantSelect.setAttribute("aria-label", `Choisir une déclinaison de ${product.name}`);
+      product.variants.forEach(variant => {
+        const option = document.createElement("option");
+        option.value = variant.key;
+        option.textContent = variant.label;
+        if (!variantAvailability(variant).available) {
+          option.disabled = true;
+          option.textContent += ` — ${variantAvailability(variant).label}`;
+        }
+        variantSelect.append(option);
+      });
+      const availableVariant = product.variants.find(variant => (
+        variant.price !== null && variantAvailability(variant).available
+      ));
+      if (availableVariant) variantSelect.value = availableVariant.key;
+      info.append(variantSelect);
     }
+
+    const reference = document.createElement("p");
+    reference.className = "small";
+    info.append(reference);
+    const availabilityElement = document.createElement("p");
+    availabilityElement.className = "small";
+    info.append(availabilityElement);
+
     const bottom = document.createElement("div");
     bottom.className = "product-bottom";
+    const priceGroup = document.createElement("div");
     const price = document.createElement("span");
     price.className = "price";
-    price.textContent = product.price === null ? "Prix indisponible" : formatPrice(product.price);
+    const regularPrice = document.createElement("del");
+    regularPrice.className = "price-old";
+    regularPrice.hidden = true;
+    priceGroup.append(price, regularPrice);
     const add = document.createElement("button");
     add.type = "button";
     add.className = "btn primary";
-    add.textContent = product.price === null ? "Indisponible" : "Ajouter +";
-    add.disabled = product.price === null;
+    bottom.append(priceGroup, add);
+
+    const updateVariantDisplay = () => {
+      const variant = selectedVariant(product, variantSelect?.value);
+      if (!variant) return;
+      if (variantSelect) variantSelect.value = variant.key;
+      price.textContent = variant.price === null ? "Prix indisponible" : formatPrice(variant.price);
+      const hasDiscount = variant.price !== null
+        && variant.regularPrice !== null
+        && variant.regularPrice > variant.price;
+      regularPrice.hidden = !hasDiscount;
+      regularPrice.textContent = hasDiscount ? formatPrice(variant.regularPrice) : "";
+      reference.textContent = [
+        variant.sku ? `Référence : ${variant.sku}` : ""
+      ].filter(Boolean).join(" · ");
+      const availability = variantAvailability(variant);
+      const inCart = quantityInCart(product, variant);
+      availabilityElement.textContent = availability.label;
+      const canAdd = variant.price !== null && availability.available && inCart < availability.remaining && inCart < 99;
+      add.disabled = !canAdd;
+      if (variant.price === null) add.textContent = "Prix indisponible";
+      else if (!availability.available) add.textContent = availability.label;
+      else if (inCart >= availability.remaining) add.textContent = "Limite de stock atteinte";
+      else if (inCart >= 99) add.textContent = "Quantité maximale";
+      else add.textContent = "Ajouter +";
+    };
+
+    variantSelect?.addEventListener("change", updateVariantDisplay);
     add.addEventListener("click", () => {
-      if (product.price === null) return;
-      const row = cart.find(item => item.id === product.id);
-      if (row) {
-        if (row.qty >= 99) return;
-        row.qty++;
-      } else {
-        cart.push({ id: product.id, variant: product.sku || "", qty: 1 });
+      const variant = selectedVariant(product, variantSelect?.value);
+      if (!variant || variant.price === null) return;
+      const availability = variantAvailability(variant);
+      const inCart = quantityInCart(product, variant);
+      if (!availability.available || inCart >= availability.remaining || inCart >= 99) {
+        updateVariantDisplay();
+        return;
       }
-      save();
+      const row = cart.find(item => item.id === product.id && item.variant === variant.key);
+      if (row) row.qty++;
+      else cart.push({ id: product.id, variant: variant.key, qty: 1 });
+      saveCatalogueCart();
+      updateVariantDisplay();
       toast("Article ajouté à ta sélection");
     });
-    bottom.append(price, add);
+    updateVariantDisplay();
+
     const detail = document.createElement("button");
     detail.type = "button";
     detail.className = "detail";
     detail.textContent = "Voir le détail";
     detail.addEventListener("click", () => {
+      const variant = selectedVariant(product, variantSelect?.value);
       document.getElementById("detail-title").textContent = product.name;
       document.getElementById("detail-copy").textContent = product.description || "Aucune description disponible.";
+      if (variant?.label) {
+        document.getElementById("detail-copy").textContent += `\n\nDéclinaison : ${variant.label}`;
+      }
       document.getElementById("detail-dialog").showModal();
     });
     info.append(bottom, detail);
@@ -120,32 +231,64 @@ function renderCatalogueProducts() {
   });
 }
 
+function findCartVariant(row) {
+  const product = products.find(item => item.id === row.id);
+  if (product) {
+    const variant = product.variants.find(item => (
+      item.key === row.variant || item.sku === row.variant || item.sumupVariantId === row.variant
+    ));
+    if (variant) return { product, variant };
+  }
+
+  return products.reduce((match, item) => {
+    if (match) return match;
+    const variant = item.variants.find(candidate => (
+      candidate.legacyId === row.id
+      && (candidate.sku === row.variant || candidate.key === row.variant || row.variant === "")
+    ));
+    return variant ? { product: item, variant } : null;
+  }, null);
+}
+
 function renderCatalogueCart() {
-  cart = cart.filter(row => products.some(product => product.id === row.id && product.price !== null));
+  const validRows = [];
+  cart.forEach(row => {
+    const match = findCartVariant(row);
+    if (!match) return;
+    const { product, variant } = match;
+    const availability = variantAvailability(variant);
+    if (variant.price === null || !availability.available) return;
+    row.id = product.id;
+    row.variant = variant.key;
+    row.qty = Math.min(row.qty, availability.remaining, 99);
+    if (row.qty > 0) validRows.push(row);
+  });
+  cart = validRows;
+
   const items = document.getElementById("cart-items");
   items.replaceChildren();
   let total = 0;
   let count = 0;
   cart.forEach(row => {
     const product = products.find(item => item.id === row.id);
-    total += product.price * row.qty;
+    const variant = selectedVariant(product, row.variant);
+    total += variant.price * row.qty;
     count += row.qty;
     const line = document.createElement("div");
     line.className = "cart-line";
     const name = document.createElement("strong");
     name.textContent = product.name;
     line.append(name);
-    if (product.sku) {
-      const reference = document.createElement("div");
-      reference.className = "small";
-      reference.textContent = `Réf. ${product.sku} · ${formatPrice(product.price)}`;
-      line.append(reference);
-    } else {
-      const price = document.createElement("div");
-      price.className = "small";
-      price.textContent = formatPrice(product.price);
-      line.append(price);
-    }
+    const details = [
+      variant.label,
+      variant.sku ? `Réf. ${variant.sku}` : "",
+      formatPrice(variant.price)
+    ].filter(Boolean);
+    const reference = document.createElement("div");
+    reference.className = "small";
+    reference.textContent = details.join(" · ");
+    line.append(reference);
+
     const controls = document.createElement("div");
     [-1, 1].forEach(delta => {
       const button = document.createElement("button");
@@ -153,10 +296,15 @@ function renderCatalogueCart() {
       button.className = "btn";
       button.textContent = delta === 1 ? "+" : "−";
       button.setAttribute("aria-label", `${delta === 1 ? "Augmenter" : "Diminuer"} la quantité de ${product.name}`);
+      const availability = variantAvailability(variant);
+      button.disabled = delta === 1
+        && (row.qty >= availability.remaining || row.qty >= 99);
       button.addEventListener("click", () => {
+        if (delta === 1 && (row.qty >= availability.remaining || row.qty >= 99)) return;
         row.qty += delta;
         cart = cart.filter(item => item.qty > 0);
-        save();
+        saveCatalogueCart();
+        renderCatalogueProducts();
       });
       controls.append(button);
       if (delta === -1) {
@@ -171,7 +319,8 @@ function renderCatalogueCart() {
     remove.textContent = "Retirer";
     remove.addEventListener("click", () => {
       cart = cart.filter(item => item !== row);
-      save();
+      saveCatalogueCart();
+      renderCatalogueProducts();
     });
     controls.append(remove);
     line.append(controls);
@@ -186,40 +335,177 @@ function renderCatalogueCart() {
   document.getElementById("cart-total").textContent = `Total indicatif : ${formatPrice(total)}`;
 }
 
+function normalizeOptions(item) {
+  if (Array.isArray(item.options)) {
+    return item.options
+      .filter(option => option && typeof option === "object")
+      .map(option => ({
+        name: typeof option.set === "string" ? option.set.trim() : "",
+        value: typeof option.value === "string" ? option.value.trim() : ""
+      }))
+      .filter(option => option.value);
+  }
+  return Array.from({ length: 4 }, (_, index) => {
+    const number = index + 1;
+    const value = typeof item[`option${number}`] === "string" ? item[`option${number}`].trim() : "";
+    const name = typeof item[`optionSet${number}`] === "string" ? item[`optionSet${number}`].trim() : "";
+    return { name, value };
+  }).filter(option => option.value);
+}
+
+function normalizeProductRow(item, index) {
+  const name = item.name.trim();
+  const category = typeof item.category === "string" ? item.category.trim() : "";
+  const sku = typeof item.sku === "string" && item.sku.trim() ? item.sku.trim() : "";
+  const itemId = typeof item.sumupItemId === "string" && item.sumupItemId.trim()
+    ? item.sumupItemId.trim()
+    : "";
+  const sumupVariantId = typeof item.sumupVariantId === "string" && item.sumupVariantId.trim()
+    ? item.sumupVariantId.trim()
+    : "";
+  const identity = sumupVariantId || itemId || sku || `${normalizeText(name)}|${normalizeText(category)}|${index}`;
+  const price = typeof item.price === "number" && Number.isFinite(item.price) && item.price >= 0
+    ? item.price
+    : null;
+  const regularPrice = typeof item.regularPrice === "number"
+    && Number.isFinite(item.regularPrice)
+    && item.regularPrice >= 0
+    ? item.regularPrice
+    : null;
+  const images = Array.isArray(item.images)
+    ? item.images.map(validImageUrl).filter(Boolean)
+    : [];
+  const image = validImageUrl(item.image) || images[0] || "";
+  const options = normalizeOptions(item);
+  const label = optionLabel(options)
+    || (typeof item.variations === "string" ? item.variations.trim() : "")
+    || sku
+    || `Déclinaison ${index + 1}`;
+
+  return {
+    groupKey: itemId ? `item:${itemId}` : `row:${identity}:${index}`,
+    groupId: itemId ? `sumup-${itemId}` : `sumup-${identity}`,
+    legacyId: `sumup-${identity}`,
+    name,
+    category,
+    description: typeof item.description === "string" ? item.description.trim() : "",
+    image,
+    sku,
+    price,
+    regularPrice,
+    trackInventory: item.trackInventory === true,
+    quantity: Number.isInteger(item.quantity) && item.quantity >= 0 ? item.quantity : null,
+    sumupVariantId,
+    options,
+    label,
+    visible: item.visibleOnline === true,
+    isOnSale: item.isOnSale === true
+  };
+}
+
+function makeVariant(row, index) {
+  const key = row.sumupVariantId
+    || (row.sku ? `${row.groupKey}:sku:${row.sku}` : `${row.groupKey}:variant:${index}`);
+  return {
+    key,
+    legacyId: row.legacyId,
+    sumupVariantId: row.sumupVariantId,
+    sku: row.sku,
+    options: row.options,
+    label: row.label,
+    price: row.price,
+    regularPrice: row.regularPrice,
+    trackInventory: row.trackInventory,
+    quantity: row.quantity,
+    image: row.image,
+    isOnSale: row.isOnSale
+  };
+}
+
+function buildProducts(source) {
+  const groups = new Map();
+  const seenVariants = new Map();
+  source.forEach((item, index) => {
+    if (!item || typeof item.name !== "string" || !item.name.trim()) return;
+    const row = normalizeProductRow(item, index);
+    if (!row.visible) return;
+    const variant = makeVariant(row, index);
+    let groupVariants = seenVariants.get(row.groupKey);
+    if (!groupVariants) {
+      groupVariants = new Set();
+      seenVariants.set(row.groupKey, groupVariants);
+    }
+    if (groupVariants.has(variant.key)) return;
+    groupVariants.add(variant.key);
+    let product = groups.get(row.groupKey);
+    if (!product) {
+      product = {
+        id: row.groupId,
+        name: row.name,
+        category: row.category,
+        description: row.description,
+        image: row.image,
+        variants: []
+      };
+      groups.set(row.groupKey, product);
+    }
+    if (!product.image && row.image) product.image = row.image;
+    product.variants.push(variant);
+  });
+
+  return [...groups.values()]
+    .filter(product => product.variants.length > 0)
+    .map(product => {
+      product.price = product.variants.reduce((lowest, variant) => (
+        variant.price === null ? lowest : lowest === null ? variant.price : Math.min(lowest, variant.price)
+      ), null);
+      return product;
+    });
+}
+
+function restoreCart() {
+  try {
+    const saved = JSON.parse(localStorage.getItem("fg-demo-selection-v1") || "[]");
+    if (Array.isArray(saved)) {
+      cart = saved.filter(row => (
+        row
+        && typeof row.id === "string"
+        && typeof row.variant === "string"
+        && Number.isInteger(row.qty)
+        && row.qty > 0
+        && row.qty <= 99
+      ));
+    }
+  } catch {
+    cart = [];
+  }
+}
+
+function saveCatalogueCart() {
+  try {
+    localStorage.setItem("fg-demo-selection-v1", JSON.stringify(cart));
+  } catch {
+    toast("Impossible d’enregistrer ta sélection dans ce navigateur.");
+  }
+  renderCatalogueCart();
+}
+
+function activateCatalogueRenderers() {
+  renderCategories = renderCatalogueCategories;
+  render = renderCatalogueProducts;
+  renderCart = renderCatalogueCart;
+  document.getElementById("search").oninput = renderCatalogueProducts;
+  document.getElementById("sort").onchange = renderCatalogueProducts;
+}
+
 async function loadSumUpCatalogue() {
   try {
     const response = await fetch(catalogueJsonUrl);
     if (!response.ok) throw new Error("Catalogue indisponible");
     const source = await response.json();
     if (!Array.isArray(source)) throw new Error("Format du catalogue invalide");
-    const seen = new Set();
-    products = source.reduce((result, item, index) => {
-      if (!item || item.visibleOnline !== true || typeof item.name !== "string" || !item.name.trim()) return result;
-      const name = item.name.trim();
-      const category = typeof item.category === "string" ? item.category.trim() : "";
-      const sku = typeof item.sku === "string" && item.sku.trim() ? item.sku.trim() : "";
-      const price = typeof item.price === "number" && Number.isFinite(item.price) && item.price >= 0 ? item.price : null;
-      const identity = item.sumupVariantId || item.sumupItemId || sku || `${normalizeText(name)}|${normalizeText(category)}|${price}`;
-      if (seen.has(identity)) return result;
-      seen.add(identity);
-      let image = "";
-      if (typeof item.image === "string" && item.image.trim()) {
-        try {
-          const imageUrl = new URL(item.image, document.baseURI);
-          if (imageUrl.protocol === "https:" || imageUrl.protocol === "http:") image = imageUrl.href;
-        } catch {}
-      }
-      result.push({
-        id: `sumup-${identity || index}`,
-        name,
-        category,
-        description: typeof item.description === "string" ? item.description.trim() : "",
-        price,
-        image,
-        sku
-      });
-      return result;
-    }, []);
+    products = buildProducts(source);
+    restoreCart();
     categoryLabels.clear();
     categoryLabels.set("all", "Tout le catalogue");
     [...new Set(products.map(product => product.category).filter(Boolean))].forEach(value => {
@@ -228,11 +514,7 @@ async function loadSumUpCatalogue() {
     category = "all";
     document.getElementById("source-label").textContent = "Export statique SumUp";
     document.getElementById("demo-notice").textContent = "Catalogue issu d’un export statique SumUp · Paiement non disponible";
-    renderCategories = renderCatalogueCategories;
-    render = renderCatalogueProducts;
-    renderCart = renderCatalogueCart;
-    document.getElementById("search").oninput = renderCatalogueProducts;
-    document.getElementById("sort").onchange = renderCatalogueProducts;
+    activateCatalogueRenderers();
     renderCatalogueCategories();
     renderCatalogueProducts();
     renderCatalogueCart();
@@ -242,18 +524,13 @@ async function loadSumUpCatalogue() {
     categoryLabels.set("all", "Tout le catalogue");
     document.getElementById("source-label").textContent = "Catalogue indisponible";
     document.getElementById("demo-notice").textContent = "Impossible de charger l’export statique SumUp.";
-    renderCategories = renderCatalogueCategories;
-    render = renderCatalogueProducts;
-    renderCart = renderCatalogueCart;
-    document.getElementById("search").oninput = renderCatalogueProducts;
-    document.getElementById("sort").onchange = renderCatalogueProducts;
+    activateCatalogueRenderers();
     renderCatalogueCategories();
     renderCatalogueProducts();
     renderCatalogueCart();
   }
 }
 
-// Fonctionne aussi si le script arrive après DOMContentLoaded.
 if (document.readyState === "loading") {
   document.addEventListener("DOMContentLoaded", loadSumUpCatalogue, { once: true });
 } else {

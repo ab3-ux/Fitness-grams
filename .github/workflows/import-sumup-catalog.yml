@@ -1,0 +1,65 @@
+name: Import SumUp catalog CSV
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Validate source configuration
+        env:
+          SUMUP_CSV_REPOSITORY: ${{ vars.SUMUP_CSV_REPOSITORY }}
+          SUMUP_CSV_PATH: ${{ vars.SUMUP_CSV_PATH }}
+          CATALOG_SYNC_TOKEN: ${{ secrets.CATALOG_SYNC_TOKEN }}
+        run: |
+          set -euo pipefail
+          test -n "$SUMUP_CSV_REPOSITORY" || { echo "Configure the SUMUP_CSV_REPOSITORY repository variable."; exit 1; }
+          test -n "$SUMUP_CSV_PATH" || { echo "Configure the SUMUP_CSV_PATH repository variable."; exit 1; }
+          test -n "$CATALOG_SYNC_TOKEN" || { echo "Configure the CATALOG_SYNC_TOKEN repository secret."; exit 1; }
+          python - "$SUMUP_CSV_PATH" <<'PY'
+          import pathlib
+          import sys
+
+          path = pathlib.PurePosixPath(sys.argv[1])
+          if path.is_absolute() or ".." in path.parts or not path.parts:
+              raise SystemExit("SUMUP_CSV_PATH must be a relative path inside the source repository.")
+          PY
+
+      - name: Checkout Fitness-Grams repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.CATALOG_SYNC_TOKEN }}
+
+      - name: Checkout private CSV repository
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ vars.SUMUP_CSV_REPOSITORY }}
+          token: ${{ secrets.CATALOG_SYNC_TOKEN }}
+          path: sumup-source
+          persist-credentials: false
+
+      - name: Convert and validate catalog
+        env:
+          SUMUP_CSV_PATH: ${{ vars.SUMUP_CSV_PATH }}
+        run: |
+          set -euo pipefail
+          python scripts/import-sumup-csv.py \
+            --csv "sumup-source/$SUMUP_CSV_PATH" \
+            --output fitness-grams-produits-sumup.json
+
+      - name: Commit and push catalog
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add fitness-grams-produits-sumup.json
+          if git diff --cached --quiet; then
+            echo "Catalog is unchanged; no commit needed."
+            exit 0
+          fi
+          git commit -m "Update SumUp product catalog"
+          git push
