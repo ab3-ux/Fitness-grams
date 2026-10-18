@@ -4,6 +4,7 @@ import { applyD1Migrations } from "cloudflare:test";
 import { createD1PaymentRepository } from "../src/payment-adapters.mjs";
 import { createPaymentApi } from "../src/payment-api.mjs";
 import { runPaymentReconciliation } from "../src/payment-reconciliation.mjs";
+import { createPaymentStagingWorker } from "../src/payment-staging-worker.mjs";
 
 const ITEM_ID = "00000000-0000-4000-8000-000000000001";
 const VARIANT_ID = "00000000-0000-4000-8000-000000000002";
@@ -355,6 +356,38 @@ describe("Cloudflare Workers runtime and D1 integration", () => {
     expect(summary.notificationsProcessed).toBe(1);
     expect(summary.notificationsDeferred).toBe(0);
     expect(transport.calls).toHaveLength(1);
+    expect(await repository.getOrderById(ORDER_ID)).toMatchObject({
+      checkout_id: CHECKOUT_ID,
+      status: "paid"
+    });
+  });
+
+  it("runs scheduled reconciliation with real D1 and an injected SumUp transport", async () => {
+    await createPendingOrder();
+    await repository.recordWebhookNotification(CHECKOUT_ID, "CHECKOUT_STATUS_CHANGED");
+    const transport = makeFakeSumupFetch({
+      checkout: sumupCheckout({ status: "PAID" })
+    });
+    const worker = createPaymentStagingWorker({
+      reconcile: scheduledEnv => runPaymentReconciliation(scheduledEnv, {
+        repository,
+        fetchImpl: transport.fetchImpl
+      })
+    });
+    let scheduledTask;
+
+    worker.scheduled(
+      { cron: "* * * * *" },
+      createEnvironment(),
+      { waitUntil(task) { scheduledTask = task; } }
+    );
+
+    expect(scheduledTask).toBeInstanceOf(Promise);
+    const summary = await scheduledTask;
+    expect(summary.notificationsProcessed).toBe(1);
+    expect(summary.notificationsDeferred).toBe(0);
+    expect(transport.calls).toHaveLength(1);
+    expect(transport.calls.every(call => call.url.startsWith("https://api.sumup.com/"))).toBe(true);
     expect(await repository.getOrderById(ORDER_ID)).toMatchObject({
       checkout_id: CHECKOUT_ID,
       status: "paid"

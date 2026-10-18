@@ -32,11 +32,14 @@ de clé réelle dans le dépôt.
 Pour préparer le développement local, copier le modèle à la racine du dépôt :
 
 ```sh
-cp .dev.vars.example .dev.vars
+cp .dev.vars.example cloudflare/.dev.vars
 ```
 
-Ne remplacez la valeur que dans le fichier local ignoré par Git. Pour un futur
-déploiement, la commande prévue est :
+Wrangler charge `.dev.vars` depuis le même dossier que le fichier de
+configuration sélectionné. Avec les commandes de ce dépôt qui utilisent
+`--config cloudflare/wrangler.toml`, le fichier local doit donc être
+`cloudflare/.dev.vars`. Ne remplacez les marqueurs que dans ce fichier local
+ignoré par Git. Pour un futur déploiement, la commande prévue est :
 
 ```sh
 npx wrangler secret put SUMUP_API_KEY --config cloudflare/wrangler.toml
@@ -44,6 +47,13 @@ npx wrangler secret put ORDER_ACCESS_SECRET --config cloudflare/wrangler.toml
 ```
 
 Ne l’exécutez pas avant d’avoir approuvé et configuré l’étape de paiement.
+
+`wrangler.staging.toml` et `src/payment-staging-worker.mjs` préparent une
+configuration isolée pour un futur staging. Le fichier contient uniquement un
+marqueur pour l’identifiant D1, aucun domaine de production, et aucun Cron
+Trigger. Le Worker actif continue d’utiliser `wrangler.toml` et `src/index.js`.
+Le handler planifié et le runner sont testés localement avec Miniflare, D1
+locale et un transport SumUp simulé ; ces tests n’activent pas de déclencheur.
 
 ## Origines navigateur
 

@@ -1,0 +1,13 @@
+name = "fitness-grams-payment-staging"
+main = "src/payment-staging-worker.mjs"
+compatibility_date = "2026-10-18"
+workers_dev = false
+
+[vars]
+ALLOWED_ORIGINS = ""
+
+[[d1_databases]]
+binding = "DB"
+database_name = "fitness-grams-payment-staging"
+database_id = "REPLACE_WITH_STAGING_D1_DATABASE_ID"
+migrations_dir = "migrations"
