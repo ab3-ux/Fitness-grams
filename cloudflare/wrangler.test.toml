@@ -1,0 +1,14 @@
+name = "fitness-grams-payment-runtime-tests"
+main = "src/index.js"
+compatibility_date = "2026-10-18"
+workers_dev = false
+
+[vars]
+ALLOWED_ORIGINS = "https://ab3-ux.github.io"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "fitness-grams-payment-test"
+database_id = "00000000-0000-4000-8000-000000000001"
+preview_database_id = "fitness-grams-payment-test-local"
+migrations_dir = "migrations"

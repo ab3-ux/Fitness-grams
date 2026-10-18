@@ -1,0 +1,4 @@
+# Copiez ce fichier en .dev.vars pour le développement local.
+# Ne renseignez aucune vraie clé dans ce fichier modèle.
+SUMUP_API_KEY=REPLACE_WITH_A_LOCAL_SECRET
+ORDER_ACCESS_SECRET=REPLACE_WITH_A_LOCAL_SECRET

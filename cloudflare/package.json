@@ -1,0 +1,19 @@
+{
+  "name": "fitness-grams-cloudflare",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "test": "npm run test:unit && npm run test:runtime",
+    "test:unit": "node --test test/payment-api.test.mjs test/payment-adapters.test.mjs",
+    "test:runtime": "vitest run --config vitest.config.mjs",
+    "d1:migrate:local": "wrangler d1 migrations apply fitness-grams-payment-test --local --config wrangler.test.toml"
+  },
+  "devDependencies": {
+    "@cloudflare/vitest-plugin": "1.4.4",
+    "vitest": "5.0.5",
+    "wrangler": "4.151.1"
+  }
+}

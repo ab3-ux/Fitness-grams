@@ -1,0 +1,15 @@
+name = "fitness-grams-commerce-api"
+main = "src/index.js"
+compatibility_date = "2026-10-18"
+workers_dev = true
+
+[vars]
+# Origines exactes autorisées à appeler l'API depuis un navigateur.
+# Ajoutez l'origine publique HubSpot si elle diffère du domaine personnalisé.
+ALLOWED_ORIGINS = "https://ab3-ux.github.io,https://www.fitness-grams.com"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "fitness-grams-commerce"
+database_id = "REPLACE_WITH_D1_DATABASE_ID"
+migrations_dir = "migrations"
