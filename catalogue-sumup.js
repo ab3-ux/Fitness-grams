@@ -8,6 +8,38 @@ const formatPrice = value => new Intl.NumberFormat("fr-FR", {
   style: "currency",
   currency: "EUR"
 }).format(value);
+const catalogueStyles = document.createElement("style");
+catalogueStyles.textContent = `
+  .grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+  .picture { aspect-ratio: 1.5; }
+  .info { padding: 15px; }
+  .info h3 { font-size: 18px; margin: 8px 0; }
+  .info > p:not(.small) {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    flex: 0 0 auto;
+    font-size: 12px;
+    line-height: 1.4;
+    margin: 8px 0;
+  }
+  .info .variant-select { margin-top: 8px; padding: 8px; font-size: 12px; }
+  .product-bottom { gap: 8px; margin-top: 12px; }
+  .product-bottom .price { font-size: 19px; }
+  .product-bottom .btn { padding: 9px 10px; font-size: 12px; }
+  .detail { margin-top: 8px; font-size: 12px; }
+  @media (max-width: 850px) {
+    .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  }
+  @media (max-width: 520px) {
+    .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  @media (max-width: 360px) {
+    .grid { grid-template-columns: 1fr; }
+  }
+`;
+document.head.append(catalogueStyles);
 const validImageUrl = value => {
   if (typeof value !== "string" || !value.trim()) return "";
   try {
@@ -43,7 +75,7 @@ function variantAvailability(variant) {
   return {
     available: true,
     remaining: variant.quantity,
-    label: `En stock : ${variant.quantity}`
+    label: ""
   };
 }
 
@@ -121,6 +153,7 @@ function renderCatalogueProducts() {
     info.append(title);
     if (product.description) {
       const description = document.createElement("p");
+      description.className = "description";
       description.textContent = product.description;
       info.append(description);
     }
@@ -150,10 +183,6 @@ function renderCatalogueProducts() {
     const reference = document.createElement("p");
     reference.className = "small";
     info.append(reference);
-    const availabilityElement = document.createElement("p");
-    availabilityElement.className = "small";
-    info.append(availabilityElement);
-
     const bottom = document.createElement("div");
     bottom.className = "product-bottom";
     const priceGroup = document.createElement("div");
@@ -183,7 +212,6 @@ function renderCatalogueProducts() {
       ].filter(Boolean).join(" · ");
       const availability = variantAvailability(variant);
       const inCart = quantityInCart(product, variant);
-      availabilityElement.textContent = availability.label;
       const canAdd = variant.price !== null && availability.available && inCart < availability.remaining && inCart < 99;
       add.disabled = !canAdd;
       if (variant.price === null) add.textContent = "Prix indisponible";
@@ -215,7 +243,7 @@ function renderCatalogueProducts() {
     const detail = document.createElement("button");
     detail.type = "button";
     detail.className = "detail";
-    detail.textContent = "Voir le détail";
+    detail.textContent = "Voir plus de détails";
     detail.addEventListener("click", () => {
       const variant = selectedVariant(product, variantSelect?.value);
       document.getElementById("detail-title").textContent = product.name;
