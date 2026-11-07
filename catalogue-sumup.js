@@ -13,7 +13,7 @@ catalogueStyles.textContent = `
   .grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
   .picture {
     aspect-ratio: 1;
-    background: #101010 url("../../../fondproduit.png") center / cover no-repeat;
+    background: #101010 url("https://ab3-ux.github.io/Fitness-grams/fondproduit.png") center / cover no-repeat;
   }
   .picture img { filter: drop-shadow(0 12px 10px rgba(0, 0, 0, .7)); }
   .info { padding: 15px; }
