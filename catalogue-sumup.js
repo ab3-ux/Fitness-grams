@@ -2,6 +2,7 @@ const catalogueJsonUrl = new URL(
   "./fitness-grams-produits-sumup.json",
   document.currentScript.src
 );
+const previewOnly = true;
 const categoryLabels = new Map([["all", "Tout le catalogue"]]);
 const normalizeText = value => value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
 const formatPrice = value => new Intl.NumberFormat("fr-FR", {
@@ -16,6 +17,23 @@ catalogueStyles.textContent = `
     background: #101010 url("https://ab3-ux.github.io/Fitness-grams/fondproduit.png") center / cover no-repeat;
   }
   .picture img { filter: drop-shadow(0 12px 10px rgba(0, 0, 0, .7)); }
+  .catalog-preview .tools,
+  .catalog-preview .categories,
+  .catalog-preview .results { display: none; }
+  .catalog-preview .grid {
+    grid-template-columns: min(100%, 360px);
+    justify-content: center;
+  }
+  .product-preview .picture span {
+    padding: 8px 12px;
+    border: 1px solid #ffffff55;
+    background: #101010a8;
+    color: #f5f2ee;
+    font-size: 13px;
+    font-weight: 700;
+    text-align: center;
+  }
+  .product-preview .info { min-height: 130px; }
   .info { padding: 15px; }
   .info h3 { font-size: 18px; margin: 8px 0; }
   .info > p:not(.small) {
@@ -101,6 +119,37 @@ function renderCatalogueCategories() {
 }
 
 function renderCatalogueProducts() {
+  const grid = document.getElementById("products");
+  if (previewOnly) {
+    const section = document.getElementById("catalogue");
+    section.classList.add("catalog-preview");
+    section.querySelector(".eyebrow").textContent = "Aperçu";
+    document.getElementById("catalog-title").textContent = "Nouvelle fiche produit";
+
+    const card = document.createElement("article");
+    card.className = "product product-preview";
+    const picture = document.createElement("div");
+    picture.className = "picture";
+    const imagePlaceholder = document.createElement("span");
+    imagePlaceholder.textContent = "Visuel produit à venir";
+    picture.append(imagePlaceholder);
+
+    const info = document.createElement("div");
+    info.className = "info";
+    const label = document.createElement("div");
+    label.className = "eyebrow";
+    label.textContent = "Nouveau produit";
+    const title = document.createElement("h3");
+    title.textContent = "Nom à importer";
+    const description = document.createElement("p");
+    description.textContent = "La photo et la description seront ajoutées depuis le prochain export SumUp.";
+    info.append(label, title, description);
+    card.append(picture, info);
+    grid.replaceChildren(card);
+    document.getElementById("empty").hidden = true;
+    return;
+  }
+
   const query = normalizeText(document.getElementById("search").value.trim());
   const sort = document.getElementById("sort").value;
   const list = products.filter(product => {
@@ -124,7 +173,6 @@ function renderCatalogueProducts() {
       return sort === "asc" ? first.price - second.price : second.price - first.price;
     });
   }
-  const grid = document.getElementById("products");
   grid.replaceChildren();
   document.getElementById("result-count").textContent = `${list.length} produit${list.length > 1 ? "s" : ""}`;
   document.getElementById("empty").hidden = list.length > 0;
